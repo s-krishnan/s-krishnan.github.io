@@ -193,6 +193,7 @@ components:
         - AcademicYearDescription
         - ModuleDescription
         - ModuleSubjects
+        - ModuleIdentifier
       title:  Module for given academic year.
       properties:
         ModuleIdentifier:
@@ -380,8 +381,8 @@ components:
       allOf:
         - $ref: 'Domains.yaml#/components/schemas/Module'
         - $ref: 'Domains.yaml#/components/schemas/ModuleInstance'
-      discriminator:
-        propertyName: ModuleIdentifier
+      #discriminator:
+        #propertyName: ModuleIdentifier
   
   parameters:
     skipParam:
@@ -439,7 +440,7 @@ components:
         Each selection clause should be a Property name."
       schema:
         type: string
-      example:  ModuleTitle,ModuleTeachingDepartment,ModuleLevel,ModuleTeachingTerm,ModuleSearchKeywords,ModeOfModuleStudy,ModuleTeachingLocation ,ModuleCode,ModuleTeachingFaculty,ModuleSubject,ModuleIdentifier
+      #example:  ModuleTitle,ModuleTeachingDepartment,ModuleLevel,ModuleTeachingTerm,ModuleSearchKeywords,ModeOfModuleStudy,ModuleTeachingLocation ,ModuleCode,ModuleTeachingFaculty,ModuleSubject,ModuleIdentifier
     
     filterParam:
       name: "$filter"
