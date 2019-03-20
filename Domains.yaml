@@ -381,8 +381,7 @@ components:
       allOf:
         - $ref: 'Domains.yaml#/components/schemas/Module'
         - $ref: 'Domains.yaml#/components/schemas/ModuleInstance'
-      #discriminator:
-        #propertyName: ModuleIdentifier
+
   
   parameters:
     skipParam:
