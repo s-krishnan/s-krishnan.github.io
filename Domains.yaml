@@ -1,0 +1,554 @@
+---
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+
+info:
+  description: "This is a collection of domain models for module catalogue in UCL"
+  version: '1.0.0'
+  title:  Domain models
+
+components:
+  
+  schemas:
+
+    Person:
+      type: "object"
+      description: domain model that represents contact detail of a UCL person
+      required:
+        - name
+      properties:
+        PersonIdentifier:
+          type: string
+          title:  Unique identifier of the person in UCL 
+        name:
+          type: "string"
+          title: UCL person full name 
+        email:
+          type: "string"
+          format: "email"
+          title: UCL person email address
+
+   
+    Period:
+      type: "object"
+      title: object to represents the period detail of the module delivery.
+      required:
+        - PeriodTitle
+      properties:
+        PeriodCode:
+          title: module delivery period code.
+          type: string
+          minLength:  1
+          maxLength:  6
+        PeriodTitle:
+          title:  module delivery period title.
+          type: string
+          minLength:  1
+          maxLength:  50
+    
+    AcademicProgramme:
+      type: "object"
+      required:
+        - ProgrammeCode
+        - ProgrammeTitle
+      description: |
+            Assessment for the module is different depends on which programme student 
+            is enrolled to. possible programme levels in UCL is 
+            * U - Undergraduate 
+            * P - Postgraduate
+      properties:
+        ProgrammeIdentifier:
+          title: Programme unique identifier.
+          type: string
+          nullable: false
+        ProgrammeLevel:
+          title:  module delivery level title.
+          type: string
+          minLength:  1
+          maxLength:  50
+          nullable: false
+    
+    AcademicLevel:
+      type: "object"
+      required:
+        - AcademicLevelCode
+        - AcademicLevelTitle
+      properties:
+        AcademicLevelCode:
+          title: module delivery level code.
+          type: string
+          minimum:  1
+          maximum:  6
+          nullable: false
+        AcademicLevelTitle:
+          title:  module delivery level title.
+          type: string
+          minimum:  1
+          maximum:  50
+          nullable: false
+    
+    ModuleDeliveryAssessment:
+      title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+      type: object
+      required:
+        - AssessmentWeightPercentage
+        - AssessmentTitle
+      properties:
+        AssessmentBodySequence:
+          type: string
+          minLength:  0
+          maxLength:  3
+          pattern:  ^(\d){3}$          
+        AssessmentGroup:
+          type: string
+          minLength:  0
+          maxLength:  2
+        AssessmentTitle:
+          type: string
+          minLength:  1
+          maxLength:  120
+        AssessmentWeightPercentage:
+          type: integer
+          minimum:  0
+          maximum:  100 
+          format: int32
+    
+    ModuleDelivery:
+      type: "object"
+      required:
+        - ModuleDeliveryIdentifier
+        - ModuleDeliveryPeriod
+        - ModuleDeliveryLevel
+        - ModeOfStudy
+        - ModuleDeliveryTypes
+        - NumberOfStudents
+        - ModuleDeliveryLocation
+        - ModuleDeliveryContact
+        - ModuleDeliveryAssessments
+      title:  An instance of the module, this domain contains year specific module detail i.e. Detail stored in this domain is subject to change each year for a given module.
+      properties:
+        ModuleDeliveryIdentifier:
+          title:  Unique identifier for this module delivery
+          type: string
+          minimum:  1
+          maximum:  50
+          nullable: false
+        ModuleDeliveryPeriod:
+          type: object
+          $ref: "#/components/schemas/Period"
+        AcademicLevel:
+          $ref: "#/components/schemas/AcademicLevel"
+        Programme:
+          $ref: "#/components/schemas/AcademicProgramme"
+        ModeOfStudy:
+          title: Applicable mode of study for this module such as face-face.
+          type: string
+          minLength: 1
+          maxLength: 15
+          nullable: false
+        ModuleDeliveryType:
+          title: Delivery included in the module such as Field trips and Placements
+          type: array
+          items:
+            type: string
+            enum:
+              - Field Trips 
+              - Lab Work
+              - Work Placements
+              - Field Trips, Lab Work and Work Placements
+              - Field Trips and Lab Work
+              - Field Trips and Work Placements 
+              - Lab Work and Work Placements
+        PreviousYearStudentCount:
+          title: Number of students enrolled on module in previous year.  
+          type: number
+          minimum: 1
+          format: int32
+          maximum: 999
+          nullable: false
+        NumberOfStudents:
+          title: Number of students on module for an acdemic year, if the selected year is the current academic year then this number is an indicative student count.
+          type: number
+          minimum: 1
+          format: int32
+          maximum: 999
+          nullable: false
+        ModuleDeliveryLocation:
+          title: UCL location (Building / Geography) where the module is scheduled to be learned.
+          $ref: "#/components/schemas/Location"
+        ModuleDeliveryContact:
+          title: Contact Information,
+          $ref: '#/components/schemas/Person'
+        ModuleDeliveryAssessments:
+          $ref: '#/components/schemas/ModuleDeliveryAssessment'
+    
+    ModuleInstance:
+      type: object
+      required:
+        - AcademicYearCode
+        - AcademicYearDescription
+        - ModuleDescription
+        - ModuleSubjects
+      title:  Module for given academic year.
+      properties:
+        ModuleIdentifier:
+            title: Unique system identifier of the module (Business Data object aka BDOid).
+            type: string
+            nullable: false
+            minimum: 1
+            maximum: 50
+            readOnly: true    # Returned by GET, not used in POST/PUT/PATCH
+            pattern: ^([A-Z]|\d)*$
+        AcademicYearCode:
+          title: The module is applicable to the academic year.
+          type: string
+          format: date
+          minLength: 1
+          maxLength: 50
+          nullable: false
+        AcademicYearDescription:
+          title: Description of the academic year.
+          type: string
+          minLength: 1
+          maxLength: 100
+          nullable: false
+        ModuleDescription:
+          title: Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.
+          type: string
+          minLength: 100
+          maxLength: 4000000000
+          nullable: true
+        ModuleRestriction:
+          title: A restriction applicable on module
+          type: string
+          minLength: 0
+          maxLength: 1000
+          nullable: true
+        ModuleSubjects:
+          title: The subject this module teaches.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 150
+          nullable: true
+  
+    Location:
+      type: object
+      required:
+        - LocationName
+        - LocationIdentifier
+      properties:
+        LocationIdentifier:
+          title: Unique identifier of the UCL location.
+          type: string
+          minLength: 1
+          maxLength: 12
+          nullable: false
+        LocationName:
+          title: Name of the teaching location to which madule belongs to.
+          type: string
+          minLength: 0
+          maxLength: 50
+          nullable: false
+    Faculty:
+      type: object
+      required:
+        - FacultyName
+        - FacultyCode
+      properties:
+        FacultyCode:
+          title: Code of the teaching faculty code to which madule belongs to.
+          type: string
+          minLength: 3
+          maxLength: 3
+          nullable: false
+          pattern: ^([A-Z]){3}$
+        FacultyName:
+          title: Name of the teaching faculty to which madule belongs to.
+          type: string
+          minLength: 1
+          maxLength: 150
+          nullable: false
+
+    Department:
+      type: object
+      required:
+        - DepartmentName
+        - DepartmentCode
+      properties:
+        DepartmentCode:
+          title: Teaching department code in UCL.
+          type: string
+          minLength: 3
+          maxLength: 3
+          nullable: false
+          pattern: ^([A-Z]|_|\d|-)*$
+        DepartmentName:
+          title: Teaching department name in UCL.
+          type: string
+          minLength: 1
+          maxLength: 150
+          nullable: false
+    
+    AcademicUnit:
+      type: object
+      required:
+        - Faculty
+        - Department
+      properties:
+        Faculty:
+          $ref: "#/components/schemas/Faculty"
+        Department:
+          $ref: "#/components/schemas/Department"
+
+    Module:
+      type: "object"
+      title:  Module Domain
+      required:
+        - ModuleIdentifier
+        - ModuleTitle
+        - ModuleCode
+      properties:
+        ModuleIdentifier:
+            title: Unique system identifier of the module (Business Data object aka BDOid).
+            type: string
+            nullable: false
+            minimum: 1
+            maximum: 50
+            readOnly: true    # Returned by GET, not used in POST/PUT/PATCH
+            pattern: ^([A-Z]|\d)*$
+        ModuleTitle:
+          title: Title of the module.
+          type: string
+          minLength: 0
+          maxLength: 120
+          nullable: false
+        ModuleSearchKeywords:
+          title: Keywords used to search this module.
+          type: string
+          minLength: 0
+          maxLength: 100
+          nullable: true     
+        ModuleCode:
+          title: Module code that is unique in UCL that is in the human readable format.
+          type: string
+          minLength: 1
+          maxLength: 12
+          nullable: false
+        ModuleLearningHours:
+          title: 'Learning hours of the module, this is indicative only.'
+          type: integer
+          minimum: 0
+          maximum: 9999
+          format: int32
+        ModuleStudyHours:
+          title: 'Learning hours of the module, this is indicative only.'
+          type: integer
+          minimum: 0
+          maximum: 9999
+          format: int32
+        SuperModuleGroup:
+          title: Super module grouping such as Meets with Spanish Level 1 and 2
+          type: string
+          minLength: 0
+          maxLength: 50
+          nullable: true  
+        CEFRLevel:
+          title: Language Modules Only CEFR level
+          type: string
+          minLength: 0
+          maxLength: 50
+          pattern: ^([A-Z]{1}\d{1}\/?)*$
+        AcademicUnit:
+          title: Detail of the academicUnit in UCL that owns the module.
+          $ref: '#/components/schemas/AcademicUnit'
+        ModuleContactInformation:
+          title: Contact Information,
+          $ref: '#/components/schemas/Person'
+        ModuleValue:
+          type: number
+          format:  float
+          title:  Credit value awarded to student on the successfull completion of the module.
+    
+    ModuleCatalogueItem:
+      type: object
+      allOf:
+        - $ref: 'Domains.yaml#/components/schemas/Module'
+        - $ref: 'Domains.yaml#/components/schemas/ModuleInstance'
+      discriminator:
+        propertyName: ModuleIdentifier
+  
+  parameters:
+    skipParam:
+      in: "query"
+      name: "$skip"
+      description: | 
+            System Query Option identifies a subset of the Entries in the Collection of Entries >
+            identified by the Resource Path section of the URI. That subset is defined by seeking N >
+            Page navigation option identifies a subset of the Entries in the Collection of Entries >
+            identified by the Resource Path section of the URI. This subset is formed by selecting >
+            only the first N items of the set, where N is an integer greater than or equal to zero >
+            specified by this query option. If a value less than zero is specified, the URI should be >
+            considered malformed. Entries into the Collection and selecting only the remaining Entries >
+            (starting with Entry N+1). N is an integer greater than or equal to zero specified by this query option. >
+            If a value less than zero is specified, the URI should be considered malformed.
+            Entries in the Collection must first be fully ordered by the data service using default property such >
+            as identifier. While no ordering semantics are mandated, to ensure repeatable results a data service must >
+            always use the same semantics to obtain a full ordering across requests.
+      allowReserved:  false
+      schema:
+        type: integer
+        minimum:  1
+        format: int32
+        default: 10
+      example:  10
+    
+    limitParam:
+      name: "$limit"
+      in: "query"
+      description: |
+        Page navigation option identifies a subset of the Entries in the Collection of Entries identified by the Resource Path section of the URI. 
+        This subset is formed by selecting only the first N items of the set, where N is an integer greater than or equal to zero 
+        specified by this query option. If a value less than zero is specified, the URI should be considered malformed.
+        Entries in the Collection must first be fully ordered by the service using default property such as identifier. 
+        While no ordering semantics are mandated, to ensure repeatable results a data service must always use the same 
+        semantics to obtain a full ordering across requests."
+      required: false
+      allowEmptyValue:  false
+      schema:
+        type: integer
+        minimum:  1
+        maximum:  50
+        format: int32
+        default: 10
+      example:  10
+    selectParam:
+      name: "$select"
+      in: "query"
+      description:  |
+        Query Option identifies the same set of Entries as a URI without a `$select` query option; however, 
+        the value of $select specifies that a response from an service should return a subset of the Properties which 
+        would have been returned had the URI not included a $select query option.
+        
+        The value of a `$select` Query Option is a comma-separated list of selection clauses. 
+        Each selection clause should be a Property name."
+      schema:
+        type: string
+      example:  ModuleTitle,ModuleTeachingDepartment,ModuleLevel,ModuleTeachingTerm,ModuleSearchKeywords,ModeOfModuleStudy,ModuleTeachingLocation ,ModuleCode,ModuleTeachingFaculty,ModuleSubject,ModuleIdentifier
+    
+    filterParam:
+      name: "$filter"
+      in: "query"
+      description:  |
+        Query Option identifies a subset of the Entries from the Collection of Entries. 
+        Page navigation option identifies a subset of the Entries in the Collection of Entries 
+        Page navigation option identifies a subset of the Entries in the Collection of Entries 
+        identified by the Resource Path section of the URI. This subset is formed by selecting 
+        only the first N items of the set, where N is an integer greater than or equal to zero 
+        specified by this query option. If a value less than zero is specified, the URI should 
+        be considered malformed. identified by the Resource Path section of the URI. 
+        This subset is formed by selecting only the first N items of the set, where N is an integer 
+        greater than or equal to zero specified by this query option. If a value less than zero is specified, 
+        the URI should be considered malformed. The subset is determined by selecting only the Entries 
+        that satisfy the predicate expression specified by the query option.
+        
+        The expression language that is used in `$filter` operators supports references to properties and literals. 
+        The literal values can be strings enclosed in single quotes, numbers and boolean values (true or false).
+        
+        The operators supported in the expression language are eq, and.
+      
+        ***
+      
+        Example for applying `eq` operator
+        
+        ***
+        
+        - $filter=ModuleInAcademicYear `eq` 2019
+        - $filter=ModuleActiveInCatalogue `eq` true
+        - $filter=ModuleTeachingLocation `eq` 'Bidborough'
+        
+        ***
+        
+        Example for applying `eq`,`and` operator
+        
+        ***
+        
+        - $filter=ModuleActiveInCatalogue `eq` true `and` ModuleInAcademicYear eq 2019
+      
+      schema:
+        type: string
+      examples:
+        Logical-Equal-Number:
+          summary:  eq
+          description:  Logical Equal
+          value:  $filter=ModuleInAcademicYear eq 2019
+        Logical-Equal-Boolean:
+          summary:  eq
+          description:  Logical Equal
+          value:  $filter=ModuleActiveInCatalogue eq true
+        Logical-Equal-String:
+          summary:  and
+          description:  Logical Equal
+          value:  $filter=ModuleTeachingLocation eq 'Bidborough'
+        Logical-And:
+          summary:  and
+          description:  Logical `And`
+          value:  $filter=ModuleActiveInCatalogue eq true and ModuleInAcademicYear eq 2019
+
+    academicyearcode:
+      name: academicyearcode
+      in: path
+      required: true
+      description: Academic year.
+      style:  simple
+      schema:
+        type: integer
+        format: int32
+        minimum: 2017
+        maximum: 2050
+        nullable: false
+      example:  2019
+    
+    ModuleIdentifier:
+      name: ModuleIdentifier
+      in: path
+      required: true
+      description:  Unique system identifier of the module (Business Data object aka BDOid).
+      schema:
+        type: string
+        minimum: 1
+        maximum: 50
+        readOnly: true    # Returned by GET, not used in POST/PUT/PATCH
+        pattern: ^([A-Z]|\d)*$
+        example:  '123E4567E89b12D3A456426655440000'
+
+responses:
+  modulecataloguecontent:
+    200:
+      description: Module catalogue response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+        application/xml:
+          schema:
+            type: array
+            items:
+              $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+
+# pathitems:
+  # EntityOperations:
+  #   get:
+  #     description: "Returns a pet based on ID"
+  #     summary: "Find pet by ID"
+  #     responses:
+  #       default:
+  #         $ref: '#/responses/GeneralError'
+...

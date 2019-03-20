@@ -1,0 +1,115 @@
+---
+openapi: 3.0.2
+# Added by API Auto Mocking Plugin
+servers:
+  - description:  Unit testing
+    url: http://localhost:8002/module
+info:
+  description: This is a UCL enterprise api for module catalogue
+  version: "3.0.0"
+  title: Module Catalogue API
+  contact:
+    name: saravanakumar krishnan
+    email: saravanakumar.krishnan@ucl.ac.uk
+  termsOfService: https://www.ucl.ac.uk/isd/services/software-hardware/help/software-policy-faqs
+  license:
+    name: UCLl API
+    url: 'https://www.ucl.ac.uk/isd/services/software-hardware/help/software-policy-faqs'
+# tags:
+#   - name: Module API
+#     description: Module API
+#   - name: Single API
+#     description: Single API
+paths:
+  /module:
+    get:
+      # tags:
+      #   - Multiple API
+      summary: Module API
+      operationId: Module
+      description: "Get the instance of the module for the current academic year."
+      externalDocs:
+        description: Find more info about interface design here
+        url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
+      parameters:
+        - $ref: Domains.yaml#/components/parameters/skipParam
+        - $ref: Domains.yaml#/components/parameters/limitParam
+        #- $ref: Domains.yaml#/components/parameters/selectParam
+        - $ref: Domains.yaml#/components/parameters/filterParam
+      responses:
+        200:
+          description: Module catalogue response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+  /module/{academicyearcode}:
+    get:
+      # tags:
+      #   - Multiple API
+      summary: List of modules for selected year
+      operationId: ModuleCatalogueFilterByYear
+      description: "Get the instance of the module for the selected academic year."
+      externalDocs:
+        description: Find more info about interface design here
+        url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
+      parameters:
+        - $ref: Domains.yaml#/components/parameters/skipParam
+        - $ref: Domains.yaml#/components/parameters/limitParam
+        # - $ref: Domains.yaml#/components/parameters/selectParam
+        - $ref: Domains.yaml#/components/parameters/filterParam
+        - $ref: Domains.yaml#/components/parameters/academicyearcode
+      responses:
+        200:
+          description: Return set of modules that meets the criteria specified in the URI by the user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+        400:
+          description: bad input parameter
+  /module/{academicyearcode}/{ModuleIdentifier}:
+    get:
+      # tags:
+      #   - Multiple API
+      summary: Module Detail
+      operationId: ModuleCatalogueById
+      description: "Detail of the module for the selected module code and year"
+      externalDocs:
+        description: Find more info about interface design here
+        url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
+      parameters:
+        - $ref: Domains.yaml#/components/parameters/academicyearcode
+        - $ref: Domains.yaml#/components/parameters/ModuleIdentifier
+
+      responses:
+        200:
+          description: Get module delivery.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'Domains.yaml#/components/schemas/ModuleDelivery'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: 'Domains.yaml#/components/schemas/ModuleDelivery'
+        400:
+          description: bad input parameter
+...
