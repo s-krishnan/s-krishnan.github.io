@@ -44,12 +44,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'Domains.yaml#/components/schemas/Module'
+                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: 'Domains.yaml#/components/schemas/Module'
+                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
   /module/{academicyearcode}:
     get:
       # tags:
