@@ -197,7 +197,7 @@ info:
   version: "2019.03.25-1820"
   title: UCL Academic API Reference
   x-logo:
-    url: images/isdi_logo_grey-trans-large.png  
+    url: Images/isdi_logo_grey-trans-large.png  
   contact:
     name: saravanakumar krishnan
     email: saravanakumar.krishnan@ucl.ac.uk
