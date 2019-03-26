@@ -205,20 +205,26 @@ info:
   license:
     name: UCLl API
     url: 'https://www.ucl.ac.uk/isd/services/software-hardware/help/software-policy-faqs'
+externalDocs:
+        description: Find more info about interface design here
+        url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
 tags:
   - name: ModuleCatalogue API
     description: Academic Module Catalogue API
 paths:
-  /module:
+  #List of Module
+  /Module:
     get:
       tags:
         - ModuleCatalogue API
-      summary: module instance - current year
+      summary: /Module
       operationId: Module
-      description: "Get the instance of the module for the current academic year."
-      externalDocs:
-        description: Find more info about interface design here
-        url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
+      description: |
+        Get the list of module(s) in UCL, response includes only module header information that doesn't 
+        change based on academic years. 
+        ```
+        [Module]
+        ```
       parameters:
         - $ref: Domains.yaml#/components/parameters/skipParam
         - $ref: Domains.yaml#/components/parameters/limitParam
@@ -227,7 +233,7 @@ paths:
       responses:
         # Successfull request
         "200":
-          $ref: 'Domains.yaml#/components/responses/modulecataloguecontent'
+          $ref: 'Domains.yaml#/components/responses/module'
         "204":
           description: No Content - Successful request but no response body. e.g requesting module filter by modulecode which doesn't exist.
         
@@ -252,13 +258,17 @@ paths:
         "502":
           description: Bad Gateway
 
-  /module/{academicyearcode}:
+  /Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}:
     get:
       tags:
         - ModuleCatalogue API
-      summary: module instance - Any Year
+      summary: /Module/{.}/ModuleInstance/{.}
       operationId: ModuleCatalogueFilterByYear
-      description: "Get the instance of the academic module for the selected academic year."
+      description: |
+        Get the list of module instances for given {moduleidentifier} and {academic year} in UCL
+        ```
+        [Module] -(academicyear)-> *[Module Instance]
+        ```
       externalDocs:
         description: Find more info about interface design here
         url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
@@ -267,11 +277,12 @@ paths:
         - $ref: Domains.yaml#/components/parameters/limitParam
         # - $ref: Domains.yaml#/components/parameters/selectParam
         - $ref: Domains.yaml#/components/parameters/filterParam
-        - $ref: Domains.yaml#/components/parameters/academicyearcode
+        - $ref: Domains.yaml#/components/parameters/AcademicYearCode
+        - $ref: Domains.yaml#/components/parameters/ModuleIdentifier
       responses:
         # Successfull request
         "200":
-          $ref: 'Domains.yaml#/components/responses/modulecataloguecontent'
+          $ref: 'Domains.yaml#/components/responses/moduleinstance'
         "204":
           description: No Content - Successful request but no response body. e.g requesting module filter by modulecode which doesn't exist.
         
@@ -295,18 +306,19 @@ paths:
           $ref: 'Domains.yaml#/components/responses/GeneralError'
         "502":
           description: Bad Gateway
-  /module/{academicyearcode}/{ModuleIdentifier}:
+  /Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}/ModuleDelivery:
     get:
       tags:
         - ModuleCatalogue API
-      summary: Module Delivery
+      summary: /Module/{..}/ModuleInstance/{..}/ModuleDelivery
       operationId: ModuleCatalogueById
-      description: "Detail of the module for the selected module code and year"
-      externalDocs:
-        description: Find more info about interface design here
-        url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
+      description: |
+        Get the list of module delivery for given {moduleidentifier} and {academic year} in UCL
+        ```
+        [Module] -(academicyear)-> *[Module Instance] -(academicyear, moduleidentifier)-> *[ModuleDelivery]
+        ```
       parameters:
-        - $ref: Domains.yaml#/components/parameters/academicyearcode
+        - $ref: Domains.yaml#/components/parameters/AcademicYearCode
         - $ref: Domains.yaml#/components/parameters/ModuleIdentifier
 
       responses:

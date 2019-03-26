@@ -364,7 +364,7 @@ components:
           minimum: 0
           maximum: 9999
           format: int32
-        SuperModuleGroup:
+        ModuleSuperGroup:
           title: Super module grouping such as Meets with Spanish Level 1 and 2
           type: string
           minLength: 0
@@ -390,8 +390,8 @@ components:
     ModuleCatalogueItem:
       type: object
       allOf:
-        - $ref: 'Domains.yaml#/components/schemas/Module'
-        - $ref: 'Domains.yaml#/components/schemas/ModuleInstance'
+        - $ref: '#/components/schemas/Module'
+        - $ref: '#/components/schemas/ModuleInstance'
     
     
     GeneralError:
@@ -500,39 +500,58 @@ components:
       description:  |
         Query Option identifies a subset of the Entries from the Collection of Entries. 
         Page navigation option identifies a subset of the Entries in the Collection of Entries 
-        Page navigation option identifies a subset of the Entries in the Collection of Entries 
         identified by the Resource Path section of the URI. This subset is formed by selecting 
         only the first N items of the set, where N is an integer greater than or equal to zero 
         specified by this query option. If a value less than zero is specified, the URI should 
-        be considered malformed. identified by the Resource Path section of the URI. 
-        This subset is formed by selecting only the first N items of the set, where N is an integer 
-        greater than or equal to zero specified by this query option. If a value less than zero is specified, 
-        the URI should be considered malformed. The subset is determined by selecting only the Entries 
+        be considered malformed. The subset is determined by selecting only the Entries 
         that satisfy the predicate expression specified by the query option.
         
         The expression language that is used in `$filter` operators supports references to properties and literals. 
-        The literal values can be strings enclosed in single quotes, numbers and boolean values (true or false).
         
-        The operators supported in the expression language are eq, and.
-      
-        ***
-      
-        Example for applying `eq` operator
+        ### Expression language structure
+        ```
+          property Op literal
+        ```
+        NOTE: API only supports following property in the expression language in this version of the API.
+        * ModuleCode
+        * ModuleSuperGroup
+
+        ### Literal
+        Possible literal values 
         
-        ***
+        | Type     | Description                                | Example   |
+        |----------|--------------------------------------------|---------  |
+        |string    | This should be enclosed by single quotes ''| 'ANAT0010'| 
+        |boolean   | Allowed values true or false               | true      | 
+        |number    | valid positive whole numbers               | 2019      | 
+    
         
-        - $filter=AcademicYearCode `eq` 2019
-        - $filter=ModuleCode `eq` 'ANAT0010'
-        - $filter=SuperModuleGroup `eq` 'GE001'
-        ***
+        ### Operator
+        The operators supported in the expression language are 
         
-        Example for applying `eq`,`and` operator
+        | Operator  | Description          |
+        |-----------|----------------------|
+        |Eq         | Equal                |
+        |Ne         | Not equal            |    
+        |Gt         | Greater than         |       
+        |Ge         | Greater than or equal|               
+        |Lt         | Less than            |        
+        |Le         | Less than or equal   |             
+        |And        | Logical and          |      
+        |Or         | Logical or           |     
+        |Not        | Logical negation     |           
+        |( )        | Precedence grouping  |              
+
+        #### NOTE: Only 'eq', 'and' operators are supported in this version of the API. 
         
-        ***
+        ### Examples
         
-        - $filter=AcademicYearCode `eq` 2019 `and` ModuleCode eq 'ANAT0010'
-        - $filter=AcademicYearCode `eq` 2019 `and` SuperModuleGroup `eq` 'GE001'
-      
+        | Description                       |       Example                |
+        |-----------------------------------|-----------------------|
+        | Returns one or more entities that has the property ModuleCode with the string ANAT0010 | $filter=ModuleCode Eq 'ANAT0010'|
+        | Returns one or more entities that has the property SuperModuleGroup with the string GE001 | $filter=SuperModuleGroup Eq 'GE001'|
+        | Returns one or more entities that has the property ModuleCode with the string ANAT0010 AND the SuperModuleGroup with the string GE001 | $filter=ModuleCode Eq 'ANAT0010' And SuperModuleGroup Eq 'GE001'|
+       
       schema:
         type: string
       examples:
@@ -549,8 +568,8 @@ components:
           description:  Logical `And`
           value:  $filter=AcademicYearCode `eq` 2019 `and` ModuleCode eq 'ANAT0010'
 
-    academicyearcode:
-      name: academicyearcode
+    AcademicYearCode:
+      name: AcademicYearCode
       in: path
       required: true
       description: Academic year.
@@ -563,6 +582,19 @@ components:
         nullable: false
       example:  2019
     
+    ModuleDeliveryIdentifier:
+      name: ModuleDeliveryIdentifier
+      in: path
+      required: true
+      description:  Unique system identifier of the module (Business Data object aka BDOid).
+      schema:
+        type: string
+        minimum: 1
+        maximum: 50
+        readOnly: true    # Returned by GET, not used in POST/PUT/PATCH
+        pattern: ^([A-Z]|\d)*$
+        example:  '123E4567E89b12D3A456426655440000'
+
     ModuleIdentifier:
       name: ModuleIdentifier
       in: path
@@ -581,7 +613,49 @@ components:
   # (Referencing from Domain.yaml is not working )
   # -----------------------------------------------------
   responses:
-    modulecataloguecontent:
+    module:
+      description: Module catalogue response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Module:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+        application/xml:
+          schema:
+            type: object
+            properties:
+              Module:
+                type: array
+                items:
+                   $ref: '#/components/schemas/Module'
+      headers:
+        X-RateLimit-Limit:
+          $ref: '#/components/headers/X-RateLimit-Limit'
+        X-RateLimit-Remaining:
+          $ref: '#/components/headers/X-RateLimit-Remaining'
+        X-Rate-Limit-Reset:
+          $ref: '#/components/headers/X-RateLimit-Reset'
+        Retry-After:
+          $ref: '#/components/headers/Retry-After'
+      # -----------------------------------------------------
+      # Links
+      # -----------------------------------------------------
+      links:
+        nextpage:
+        #nextpage: # <---- arbitrary name for the link
+          description: Link to get next page.
+          operationId: nextpage
+          # or
+          # operationRef: '#/paths/Module/get'
+          parameters:
+            $skipParam: $request.query.$skip
+            $limit: $request.query.$limit
+
+    moduleinstance:
       description: Module catalogue response
       content:
         application/json:
