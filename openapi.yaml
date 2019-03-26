@@ -126,8 +126,9 @@ info:
     \ of record to return in a response. The maximum is `10`; larger values are treated\
     \ as `10`. If this value is empty or invalid, '$skip' typically defaults to\
     \ `0` and '$limit' defaults to 10.\n\nThe default value for the maximum number of rows retrieved can be overridden\
-    \ at the method level.\n\nIf more rows are available, the response will include\
-    \ a `nextPage` element, which contains a URL for requesting the next page, \
+    \ at the method level.\n\nIf more rows are available, the response will include one of the following option for pagination\
+    \ \n\n## HATEOAS \n Array of 'Links' with `nextPage` element will be included in the response payload, 
+    \ which contains a URL for requesting the next page, [refer](https://restfulapi.net/hateoas/) for more detail of using Links in the rest service. \
     \ \n\n    {
     \ \n        \"Module\":[
     \ \n          {
@@ -147,8 +148,45 @@ info:
     \ \n\n client follow the link provided in 'nextpage' at their discretion. \
     \ Neither permissions, nor the capability to make a successful call to that link, is guaranteed solely by the existence of a relationship.  \ 
     \ If this value is not provided, no more rows are available. No \"previous page\"\
-    \ element is explicitly provided; use the previous\
-    \ call instead.\n\n## Array Size\n\nFor data items that are not paginated, the REST API\
+    \ element is explicitly provided; use the previous call instead.\
+
+    \ \n\n ### Pagination attribute in the main Body:
+    \ \n    {
+    \ \n        \"Module\":[
+    \ \n          {
+    \ \n            \"ModuleIdentifier\": .......
+    \ \n            ......................
+    \ \n          }
+    \ \n        ],
+    \ \n        \"_pagination\": \"true\", 
+    \ \n        \"_count\": \"100\", 
+    \ \n        \"_offset\": \"10\", 
+    \ \n        \"_limit\": \"10\", 
+    \ \n }
+    \ \n\n
+    
+    \ ### Pagination property in the main Body:
+    \ \n\n    {
+    \ \n        \"Modules\":{
+    \ \n          \"Module\":[
+    \ \n            {
+    \ \n              \"ModuleIdentifier\": .......
+    \ \n              ......................
+    \ \n            }
+    \ \n          ]
+    \ \n        },
+    \ \n        \"pagination\":[
+    \ \n            {
+    \ \n              \"pagination\": \"true\", 
+    \ \n              \"count\": \"100\", 
+    \ \n              \"offset\": \"10\", 
+    \ \n              \"limit\": \"10\", 
+    \ \n            }
+    \ \n          ]
+    \ \n       }
+    \ \n\n
+
+    \ \n\n## Array Size\n\nFor data items that are not paginated, the REST API\
     \ supports arrays of up to 50 rows. \
     \ \n\n# API Versions\n\nThe Academic REST \
     \ API are version controlled. Versioning ensures that UCL Academic REST API changes are\
@@ -211,6 +249,9 @@ externalDocs:
 tags:
   - name: ModuleCatalogue API
     description: Academic Module Catalogue API
+  # 2) Apply the security globally to all operations
+security:
+  - bearerAuth: []         # use the same name as above
 paths:
   #List of Module
   /Module:
@@ -225,6 +266,7 @@ paths:
         ```
         [Module]
         ```
+        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
       parameters:
         - $ref: Domains.yaml#/components/parameters/skipParam
         - $ref: Domains.yaml#/components/parameters/limitParam
@@ -269,6 +311,7 @@ paths:
         ```
         [Module] -(academicyear)-> *[Module Instance]
         ```
+        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
       externalDocs:
         description: Find more info about interface design here
         url: "https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1"
@@ -338,13 +381,13 @@ paths:
           
           headers:
             X-RateLimit-Limit:
-              $ref: '#/components/headers/X-RateLimit-Limit'
+              $ref: 'Domains.yaml#/components/headers/X-RateLimit-Limit'
             X-RateLimit-Remaining:
-              $ref: '#/components/headers/X-RateLimit-Remaining'
+              $ref: 'Domains.yaml#/components/headers/X-RateLimit-Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X-RateLimit-Reset'        
+              $ref: 'Domains.yaml#/components/headers/X-RateLimit-Reset'        
             Retry-After:
-              $ref: '#/components/headers/Retry-After'
+              $ref: 'Domains.yaml#/components/headers/Retry-After'
           links:
             nextpage:   #nextpage: # <---- arbitrary name for the link
               description: Link to get next page.
@@ -378,41 +421,10 @@ paths:
         "502":
           description: Bad Gateway
 components:
-  # -----------------------------------------------------
-  # Common Header
-  # (Referencing from Domain.yaml is not working )
-  # -----------------------------------------------------
-  headers:
-    X-RateLimit-Limit:
-      description: Request limit per time window
-      schema:
-        type: integer
-        format: int32
-      example: 100
-      required: true
-    X-RateLimit-Remaining:
-      description: Remaining requests for the current time window
-      schema:
-        type: integer
-        format: int32
-      example: 94
-      required: true
-    X-RateLimit-Reset:
-      description: Time to the current window ends, in seconds from the current time.
-      schema:
-        type: integer
-        format: int32
-      example: 1553528925
-      required: true
-    Retry-After:
-      description: |
-        When an application exceeds the rate limit for a given API endpoint, the API will return a 
-        [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
-        and this response header indicate the remaining time window before the rate limit resets, 
-        in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
-      schema:
-        type: integer
-        format: int32
-      required: false
-      example: 1553528925
+   # 1) Define the security scheme type (HTTP bearer)
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
 ...

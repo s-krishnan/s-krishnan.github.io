@@ -748,7 +748,6 @@ components:
         format: int32
       required: false
       example: 1553528925
-    
 
 # pathitems:
   # EntityOperations:
