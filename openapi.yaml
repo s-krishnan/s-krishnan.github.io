@@ -7,8 +7,8 @@ servers:
   - description: Performance Test
     url: 'http://localhost:8002'
 info:
-  description: "# Introduction\nWelcome to the reference for the UCL Academic REST API!\n<a href=\"http://en.wikipedia.org/wiki/REST_API\" target=\"_blank\">REST</a> is a web-service protocol that lends itself to rapid development by using everyday HTTP and JSON, XML technology.\n\nThe UCL Academic REST API provides a broad set of operations and resources that:\n\n  * Enable Web integration from the website.\n  * Support self-service subscriber sign-ups and account management (future).\n  * Enable manipulation of most objects in the Academic Object Model.\n\nWant to share your opinion on how our API works for you? <a href=\"_self\" target=\"_blank\">Tell us how you feel </a>about using our API and what we can do to make it better.\n\n## Access to the API\n\n  You can access the UCL Academic REST API via one of the following endpoints:\n\n| Environment              | Base URL for REST Endpoints |\n|-------------------------|-------------------------|\n|Production | TBC   |\n|UAT    | TBC|\n|Performance Test | TBC |\n\nThe Production endpoint provides access to the live data. UAT tenants are a good place to test code without affecting real-world data. If you would like UCL to provision an UAT tenant for you, contact API service owner for assistance.\n\n\n# API Changelog\nYou can find the <a href=\"_self\" target=\"_blank\">Changelog</a> of the API Reference in the API wiki page.\n\n# Authentication\n\n## OAuth v2.0\n\nAPI team recommends that you use OAuth v2.0 to authenticate to the UCL Academic REST API. Currently, OAuth is not available. See [API Wiki](TBC) for more information.\n\nAPI team recommends you to create a dedicated API user with API write access on a tenant when authenticating via OAuth, and then create an OAuth client for this user. See <a href=\"_self\" target=\"_blank\">Create an API User</a> for how to do this. By creating a dedicated API user, you can control permissions of the API user without affecting other non-API users.\n\nIf a user is deactivated, all of the user's OAuth clients will be automatically deactivated.\n\nAuthenticating via OAuth requires the following steps:\n1. Create a Client\n2. Generate a Token\n3. Make Authenticated Requests\n\n### Create a Client\n\nYou must first [create an OAuth client](TBC) in the UI (TBC). To do this, you must be an administrator. This is a one-time operation. You will be provided with a Client ID and a Client Secret. Please note this information down, as it will be required for the next step.\n\n**Note:** The OAuth client will be owned by a user account used to login to create client id in first place. If you want to perform PUT, POST, or DELETE operations using the OAuth client, the owner of the OAuth client must have a Platform role that includes the \"API Write Access\" permission.\n\n### Generate a Token\n\nAfter creating a client, you must make a call to obtain a bearer token using the [Generate an OAuth token](TBC) operation. This operation requires the following parameters:\n- `client_id` - the Client ID displayed when you created the OAuth client in the previous step\n- `client_secret` - the Client Secret displayed when you created the OAuth client in the previous step\n- `grant_type` - must be set to `client_credentials`\n\n**Note**: The Client ID and Client Secret mentioned above were displayed when you created the OAuth Client in the prior step. The [Generate an OAuth token](TBC) response specifies how long the bearer token is valid for. Call [Generate an OAuth token](TBC) again to generate a new bearer token.\n\n### Make Authenticated Requests\n\nTo authenticate subsequent API requests, you must provide a valid bearer token in an HTTP header:\n\n`Authorization: Bearer {bearer_token}`\n\n## Other Supported Authentication Schemes\n\nAPI team continues to support the following additional legacy means of authentication:\n\n  * Use username and password. Include authentication with each request in the header: \n  \n    * `apiAccessKeyId` \n    * `apiSecretAccessKey`\n    \n    API team recommends that you create an API user specifically for making API calls. See <a href=\_self\" target=\"_blank\">Create an API User</a> for more information.\n  \n  * Use an authorization cookie. The cookie authorizes the user to make calls to the REST API for the duration specified in  **Administration > Security Policies > Session timeout**. The cookie expiration time is reset with this duration after every call to the REST API. To obtain a cookie, call the [Connections](TBC) resource with the following API user information: \n  \n    *   ID    \n    *   Password\n\n# Requests and Responses\n\n## BDO IDs \nAs a general rule, pass BDOid to select / update / delete single resource in academic REST APIs   \n\n## HTTP Request Body\n\nMost of the parameters and data accompanying your requests will be contained in the body of the HTTP request. \n\nThe UCL Academic REST API accepts JSON, XML in the HTTP request body. No other data format (e.g., SOAP, RSS, TEXT) is supported.\n\n### Data Type\n\n (CRUD operations only) We recommend that you do not specify the decimal values with quotation marks, commas, and spaces. Use characters of `+-0-9.eE`, for example, `5`, `1.9`, `-8.469`, and `7.7e2`. Also, year in four digits 'YYYY' where applicable such as academicyearcode. \n\n## Testing a Request\n\nUse a third party client, such as [curl](https://curl.haxx.se \"curl\"), [Postman](https://www.getpostman.com \"Postman\"), or [Advanced REST Client](https://advancedrestclient.com \"Advanced REST Client\"), to test the UCL Academic REST API.\n\nYou can test the UCL Academic REST API for any enviornment as long as you have sufficient access. If connecting to Production, bear in mind that you are working with your live production data, not sample data or test data.\n\n  Timeout Limit\n\nIf a request does not complete within 120 seconds, the request times out and API platform returns a Gateway Timeout error.\n\n## Error Handling\n\nResponses and error codes are detailed in [Responses and errors](https://wiki.ucl.ac.uk/display/IA/API+Integration+Patterns?preview=/111477057/112333232/API%20Design%20Principles%20Standards.docx). \n\n# API Rate Limits\n\nAPI platform enforces client-level, Rate limiting of the standard API is primarily on a  per-user basis — or more accurately described, per user access token. If a method allows for X requests per rate limit   window, then it allows X requests per window per access token.  \n See below for more information.\n ##  HTTP Headers and Response Codes \n Use the HTTP headers in order to understand where the application is at for a given rate limit,  on the method that was just utilized. \n  *\t`x-rate-limit-limit:`  the rate limit ceiling for that given endpoint, indicates how many calls  your application may make per time window. This time window is currently 60 seconds for most the resources,  but for the most reliable code you should not assume this is the case - use the X-Rate-Limit-Reset header instead. \n  *   `x-rate-limit-remaining:`  the number of requests left for the current time window \n  *   `x-rate-limit-reset:`  the remaining window before the rate limit resets, in UTC \n  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time) \n  When an application exceeds the rate limit for a given API endpoint, the API will return a   [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code,    and the following error will be returned in the response body \n  '{ \"errors\": [ { \"code\": 88, \"message\": \"Rate limit exceeded\" } ] }' \n  and the following response header  `Retry-After: `the remaining window before the rate limit resets, in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)  \n\n ##  Concurrent Request Limits \n\n ### ModuleCatalogue API  \n Number of simultaneous request accepted by API from single clinet for the selected resource at any given time in ms. /  \n\n| Tenant              | GET| PUT | DELETE | POST | \n  |-------------------------|----| ----| -------| -----| \n  |Drupal                   | 1  | N/A | N/A | N/A |\n  \n\n ##  Request Limits \n\n ### ModuleCatalogue API  \n Total number of request accepted by API from single clinet for the selected resource in 24 Hours.  \n\n| Tenant              | GET| PUT | DELETE | POST | \n  |-------------------------|----| ----| -------| -----| \n  |Drupal                   | 20,000  | N/A | N/A | N/A |\n  \n\n# Pagination\n\nWhen retrieving information (using GET methods), the optional `$skip` and '$limit' query parameters sets the stating record and maximum number of record to return in a response. The maximum is `10`; larger values are treated as `10`. If this value is empty or invalid, '$skip' typically defaults to `0` and '$limit' defaults to 10.\n\nThe default value for the maximum number of rows retrieved can be overridden at the method level.\n\nIf more rows are available, the response will include one of the following option for pagination \n\n## HATEOAS \n Array of 'Links' with `nextPage` element will be included in the response payload,   which contains a URL for requesting the next page, [refer](https://restfulapi.net/hateoas/) for more detail of using Links in the rest service.  \n\n    {  \n        \"Module\":[  \n          {  \n            \"ModuleIdentifier\": .......  \n            ......................  \n          }  \n        ],  \n        \"links\":[  \n            {  \n              \"href\": \"module?$skip=20&$limit=50\",  \n              \"rel\": \"nextpage\",  \n              \"type\" : \"GET\"  \n            }  \n          ]  \n       }  \n\n  \n\n client follow the link provided in 'nextpage' at their discretion.  Neither permissions, nor the capability to make a successful call to that link, is guaranteed solely by the existence of a relationship.     If this value is not provided, no more rows are available. No \"previous page\" element is explicitly provided; use the previous call instead. \n\n ### Pagination attribute in the main Body:  \n    {  \n        \"Module\":[  \n          {  \n            \"ModuleIdentifier\": .......  \n            ......................  \n          }  \n        ],  \n        \"_pagination\": \"true\",   \n        \"_count\": \"100\",   \n        \"_offset\": \"10\",   \n        \"_limit\": \"10\",   \n }  \n\n\n ### Pagination property in the main Body:  \n\n    {  \n        \"Modules\":{  \n          \"Module\":[  \n            {  \n              \"ModuleIdentifier\": .......  \n              ......................  \n            }  \n          ]  \n        },  \n        \"pagination\":[  \n            {  \n              \"pagination\": \"true\",   \n              \"count\": \"100\",   \n              \"offset\": \"10\",   \n              \"limit\": \"10\",   \n            }  \n          ]  \n       }  \n\n\n \n\n## Array Size\n\nFor data items that are not paginated, the REST API supports arrays of up to 50 rows.  \n\n# API Versions\n\nThe Academic REST  API are version controlled. Versioning ensures that UCL Academic REST API changes are backward compatible. This API uses a major and minor version nomenclature to manage changes. By specifying a version in a REST request, you can get expected responses regardless of future changes to the API.\n\n## Major Version\n\nThe major version number of the REST API appears in the REST URL. Currently, Academic API only supports the **v1** major version. For example, `POST https://TBC/v1`.\n\n## Minor Version\n\nAcademic API uses minor versions for the REST API to control small changes. For example, a field in a REST method is deprecated and a new field is used to replace it. \n\nSome fields in the REST methods are supported as of minor versions. If a field is not noted with a minor version, this field is available for all minor versions. If a field is noted with a minor version, this field is in version control. You must specify the supported minor version in the request header to process without an error. \n\nIf a field is in version control, it is either with a minimum minor version or a maximum minor version, or both of them. You can only use this field with the minor version between the minimum and the maximum minor versions.  \n\nIf you specify a version number in the request header that is not supported, API will use the minimum minor version of the REST API. In our REST API documentation, if a field or feature requires a minor version number, we note that in the field description.\n\nYou only need to specify the version number when you use the fields require a minor version. To specify the minor version, set the `minor-version` parameter to the minor version number in the request header for the request call. The `minor-version` parameter is case sensitive.\n\nFor all the REST API fields, by default, if the minor version is not specified in the request header, API will use the minimum minor version of the REST API to avoid breaking your integration. \n\n### Minor Version History\n\nThe supported minor versions are not serial. This section documents the changes made to each UCL Academic REST API minor version.\n\nThe following table lists the supported versions and the fields that have a UCL Academic REST API minor version.\n\n| Fields         | Minor Version      | REST Methods    | Description |\n|:--------|:--------|:--------|:--------|\n | TBC | TBC  | TBC|TBC|    \n\n\n# Academic Object Model\n\n### Module Catalogue Object Model \n\nThe following diagram presents a high-level view of the Module Catalogue objects. Click the image to open it in a new tab to resize it.\n\n<a href=\"https://wiki.ucl.ac.uk/download/attachments/112330630/Target%20Solution%20-%20Information%20Architecture.png?version=2&modificationDate=1553012583000&api=v2\" target=\"_blank\"><img src=\"https://wiki.ucl.ac.uk/download/attachments/112330630/Target%20Solution%20-%20Information%20Architecture.png?version=2&modificationDate=1553012583000&api=v2\" alt=\"Module Object Model Diagram\"></a>\n\nThe following table provides the API name of each Academic object:\n\n| Object                                        | API Name                                   |\n|-----------------------------------------------|--------------------------------------------|\n | Academic Module                                       | `Module`                  |\n |Academic Module Delivery                               | `ModuleDelivery` \n"
-  version: 2019.03.26-1525
+  description: "# Introduction\nWelcome to the reference for the UCL Academic REST API!\n<a href=\"http://en.wikipedia.org/wiki/REST_API\" target=\"_blank\">REST</a> is a web-service protocol that lends itself to rapid development by using everyday HTTP and JSON, XML technology.\n\nThe UCL Academic REST API provides a broad set of operations and resources that:\n\n  * Enable Web integration from the website.\n  * Support self-service subscriber sign-ups and account management (future).\n  * Enable manipulation of most objects in the Academic Object Model.\n\nWant to share your opinion on how our API works for you? <a href=\"_self\" target=\"_blank\">Tell us how you feel </a>about using our API and what we can do to make it better.\n\n## Access to the API\n\n  You can access the UCL Academic REST API via one of the following endpoints:\n\n| Environment              | Base URL for REST Endpoints |\n|-------------------------|-------------------------|\n|Production | TBC   |\n|UAT    | TBC|\n|Performance Test | TBC |\n\nThe Production endpoint provides access to the live data. UAT tenants are a good place to test code without affecting real-world data. If you would like UCL to provision an UAT tenant for you, contact API service owner for assistance.\n\n\n# API Changelog\nYou can find the <a href=\"_self\" target=\"_blank\">Changelog</a> of the API Reference in the API wiki page.\n\n# Authentication\n\n Authentication detail \n\n# Requests and Responses\n\n## BDO IDs \nAs a general rule, pass BDOid to select / update / delete single resource in academic REST APIs   \n\n## HTTP Request Body\n\nMost of the parameters and data accompanying your requests will be contained in the body of the HTTP request. \n\nThe UCL Academic REST API accepts JSON, XML in the HTTP request body. No other data format (e.g., SOAP, RSS, TEXT) is supported.\n\n## Testing a Request\n\nUse a third party client, such as [curl](https://curl.haxx.se \"curl\"), [Postman](https://www.getpostman.com \"Postman\"), or [Advanced REST Client](https://advancedrestclient.com \"Advanced REST Client\"), to test the UCL Academic REST API.\n\nYou can test the UCL Academic REST API for any enviornment as long as you have sufficient access. If connecting to Production, bear in mind that you are working with your live production data, not sample data or test data.\n\n  Timeout Limit\n\nIf a request does not complete within 120 seconds, the request times out and API platform returns a Gateway Timeout error.\n\n## Error Handling\n\nResponses and error codes are detailed in [Responses and errors](https://wiki.ucl.ac.uk/display/IA/API+Integration+Patterns?preview=/111477057/112333232/API%20Design%20Principles%20Standards.docx). \n\n# API Rate Limits\n\nAPI platform enforces client-level, Rate limiting of the standard API is primarily on a  per-user basis — or more accurately described, per user access token. If a method allows for X requests per rate limit   window, then it allows X requests per window per access token.  \n See below for more information.\n ##  HTTP Headers and Response Codes \n Use the HTTP headers in order to understand where the application is at for a given rate limit,  on the method that was just utilized. \n  *\t`x-rate-limit-limit:`  the rate limit ceiling for that given endpoint, indicates how many calls  your application may make per time window. This time window is currently 60 seconds for most the resources,  but for the most reliable code you should not assume this is the case - use the X-Rate-Limit-Reset header instead. \n  *   `x-rate-limit-remaining:`  the number of requests left for the current time window \n  *   `x-rate-limit-reset:`  the remaining window before the rate limit resets, in UTC \n  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time) \n  When an application exceeds the rate limit for a given API endpoint, the API will return a   [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code,    and the following error will be returned in the response body \n  '{ \"errors\": [ { \"code\": 88, \"message\": \"Rate limit exceeded\" } ] }' \n  and the following response header  `Retry-After: `the remaining window before the rate limit resets, in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)  \n\n ##  Concurrent Request Limits \n\n ### ModuleCatalogue API  \n Number of simultaneous request accepted by API from single clinet for the selected resource at any given time in ms. /  \n\n| Tenant              | GET| PUT | DELETE | POST | \n  |-------------------------|----| ----| -------| -----| \n  |Drupal                   | 1  | N/A | N/A | N/A |\n  \n\n ##  Request Limits \n\n ### ModuleCatalogue API  \n Total number of request accepted by API from single clinet for the selected resource in 24 Hours.  \n\n| Tenant              | GET| PUT | DELETE | POST | \n  |-------------------------|----| ----| -------| -----| \n  |Drupal                   | 20,000  | N/A | N/A | N/A |\n  \n\n# Pagination\n\nWhen retrieving information (using GET methods), the optional `$skip` and '$limit' query parameters sets the stating record and maximum number of record to return in a response. The maximum is `10`; larger values are treated as `10`. If this value is empty or invalid, '$skip' typically defaults to `0` and '$limit' defaults to 10.\n\nThe default value for the maximum number of rows retrieved can be overridden at the method level.\n\nIf more rows are available, the response will include one of the following option for pagination \n\n## HATEOAS \n Array of 'Links' with `nextPage` element will be included in the response payload,   which contains a URL for requesting the next page, [refer](https://restfulapi.net/hateoas/) for more detail of using Links in the rest service.  \n\n    {  \n        \"Module\":[  \n          {  \n            \"ModuleIdentifier\": .......  \n            ......................  \n          }  \n        ],  \n        \"links\":[  \n            {  \n              \"href\": \"module?$skip=20&$limit=50\",  \n              \"rel\": \"nextpage\",  \n              \"type\" : \"GET\"  \n            }  \n          ]  \n       }  \n\n  \n\n client follow the link provided in 'nextpage' at their discretion.  Neither permissions, nor the capability to make a successful call to that link, is guaranteed solely by the existence of a relationship.     If this value is not provided, no more rows are available. No \"previous page\" element is explicitly provided; use the previous call instead. \n\n ### Pagination attribute in the main Body:  \n    {  \n        \"Module\":[  \n          {  \n            \"ModuleIdentifier\": .......  \n            ......................  \n          }  \n        ],  \n        \"_pagination\": \"true\",   \n        \"_count\": \"100\",   \n        \"_offset\": \"10\",   \n        \"_limit\": \"10\",   \n }  \n\n\n ### Pagination property in the main Body:  \n\n    {  \n        \"Modules\":{  \n          \"Module\":[  \n            {  \n              \"ModuleIdentifier\": .......  \n              ......................  \n            }  \n          ]  \n        },  \n        \"pagination\":[  \n            {  \n              \"pagination\": \"true\",   \n              \"count\": \"100\",   \n              \"offset\": \"10\",   \n              \"limit\": \"10\",   \n            }  \n          ]  \n       }  \n\n\n \n\n## Array Size\n\nFor data items that are not paginated, the REST API supports arrays of up to 50 rows.  \n\n# API Versions\n\nThe Academic REST  API are version controlled. Versioning ensures that UCL Academic REST API changes are backward compatible. This API uses a major and minor version nomenclature to manage changes. By specifying a version in a REST request, you can get expected responses regardless of future changes to the API.\n\n## Major Version\n\nThe major version number of the REST API appears in the REST URL. Currently, Academic API only supports the **v1** major version. For example, `POST https://TBC/v1`.\n\n## Minor Version\n\nAcademic API uses minor versions for the REST API to control small changes. For example, a field in a REST method is deprecated and a new field is used to replace it. \n\nSome fields in the REST methods are supported as of minor versions. If a field is not noted with a minor version, this field is available for all minor versions. If a field is noted with a minor version, this field is in version control. You must specify the supported minor version in the request header to process without an error. \n\nIf a field is in version control, it is either with a minimum minor version or a maximum minor version, or both of them. You can only use this field with the minor version between the minimum and the maximum minor versions.  \n\nIf you specify a version number in the request header that is not supported, API will use the minimum minor version of the REST API. In our REST API documentation, if a field or feature requires a minor version number, we note that in the field description.\n\nYou only need to specify the version number when you use the fields require a minor version. To specify the minor version, set the `minor-version` parameter to the minor version number in the request header for the request call. The `minor-version` parameter is case sensitive.\n\nFor all the REST API fields, by default, if the minor version is not specified in the request header, API will use the minimum minor version of the REST API to avoid breaking your integration. \n\n### Minor Version History\n\nThe supported minor versions are not serial. This section documents the changes made to each UCL Academic REST API minor version.\n\nThe following table lists the supported versions and the fields that have a UCL Academic REST API minor version.\n\n| Fields         | Minor Version      | REST Methods    | Description |\n|:--------|:--------|:--------|:--------|\n | TBC | TBC  | TBC|TBC|    \n\n\n# Academic Object Model\n\n### Module Catalogue Object Model \n\nThe following diagram presents a high-level view of the Module Catalogue objects. Click the image to open it in a new tab to resize it.\n\n<a href=\"https://wiki.ucl.ac.uk/download/attachments/112330630/Target%20Solution%20-%20Information%20Architecture.png?version=2&modificationDate=1553012583000&api=v2\" target=\"_blank\"><img src=\"https://wiki.ucl.ac.uk/download/attachments/112330630/Target%20Solution%20-%20Information%20Architecture.png?version=2&modificationDate=1553012583000&api=v2\" alt=\"Module Object Model Diagram\"></a>\n\nThe following table provides the API name of each Academic object:\n\n| Object                                        | API Name                                   |\n|-----------------------------------------------|--------------------------------------------|\n | Academic Module                                       | `Module`                  |\n |Academic Module Delivery                               | `ModuleDelivery` \n"
+  version: 1.0.20190328
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png
@@ -23,15 +23,15 @@ externalDocs:
   description: Find more info about interface design here
   url: 'https://liveuclac.sharepoint.com/sites/ampteam/Shared%20Documents/Module%20Catalogue/Interface%20Specification.docx?web=1'
 tags:
-  - name: ModuleCatalogue API
+  - name: Academic Module API
     description: Academic Module Catalogue API
 security:
-  - bearerAuth: []
+  - oauth2: []
 paths:
   /Module:
     get:
       tags:
-        - ModuleCatalogue API
+        - Academic Module API
       summary: /Module
       operationId: Module
       description: |
@@ -168,138 +168,151 @@ paths:
               schema:
                 type: object
                 properties:
-                  Module:
-                    type: array
-                    items:
-                      type: object
-                      title: Module Domain
-                      required:
-                        - ModuleIdentifier
-                        - ModuleTitle
-                        - ModuleCode
-                      properties:
-                        ModuleIdentifier:
-                          title: Unique system identifier of the module (Business Data object aka BDOid).
-                          type: string
-                          nullable: false
-                          minimum: 1
-                          maximum: 50
-                          readOnly: true
-                          pattern: '^([A-Z]|\d)*$'
-                        ModuleTitle:
-                          title: Title of the module.
-                          type: string
-                          minLength: 0
-                          maxLength: 120
-                          nullable: false
-                        ModuleSearchKeywords:
-                          title: Keywords used to search this module.
-                          type: string
-                          minLength: 0
-                          maxLength: 100
-                          nullable: true
-                        ModuleCode:
-                          title: Module code that is unique in UCL that is in the human readable format.
-                          type: string
-                          minLength: 1
-                          maxLength: 12
-                          nullable: false
-                        ModuleLearningHours:
-                          title: 'Learning hours of the module, this is indicative only.'
-                          type: integer
-                          minimum: 0
-                          maximum: 9999
-                          format: int32
-                        ModuleStudyHours:
-                          title: 'Learning hours of the module, this is indicative only.'
-                          type: integer
-                          minimum: 0
-                          maximum: 9999
-                          format: int32
-                        ModuleSuperGroup:
-                          title: Super module grouping such as Meets with Spanish Level 1 and 2
-                          type: string
-                          minLength: 0
-                          maxLength: 50
-                          nullable: true
-                        CEFRLevel:
-                          title: Language Modules Only CEFR level
-                          type: string
-                          minLength: 0
-                          maxLength: 50
-                          pattern: '^([A-Z]{1}\d{1}\/?)*$'
-                        AcademicUnit:
-                          type: object
-                          required:
-                            - Faculty
-                            - Department
-                          properties:
-                            Faculty:
+                  Response:
+                    type: object
+                    properties:
+                      ModuleCollection:
+                        type: object
+                        properties:
+                          Module:
+                            type: array
+                            items:
                               type: object
+                              title: Module Domain
                               required:
-                                - FacultyName
-                                - FacultyCode
+                                - ModuleIdentifier
+                                - ModuleTitle
+                                - ModuleCode
                               properties:
-                                FacultyCode:
-                                  title: Code of the teaching faculty code to which madule belongs to.
+                                ModuleIdentifier:
+                                  title: Unique system identifier of the module (Business Data object aka BDOid).
                                   type: string
-                                  minLength: 3
-                                  maxLength: 3
                                   nullable: false
-                                  pattern: '^([A-Z]){3}$'
-                                FacultyName:
-                                  title: Name of the teaching faculty to which madule belongs to.
+                                  minimum: 1
+                                  maximum: 50
+                                  readOnly: true
+                                  pattern: '^([A-Z]|\d)*$'
+                                ModuleTitle:
+                                  title: Title of the module.
+                                  type: string
+                                  minLength: 0
+                                  maxLength: 120
+                                  nullable: false
+                                ModuleSearchKeywords:
+                                  title: Keywords used to search this module.
+                                  type: string
+                                  minLength: 0
+                                  maxLength: 100
+                                  nullable: true
+                                ModuleCode:
+                                  title: Module code that is unique in UCL that is in the human readable format.
                                   type: string
                                   minLength: 1
-                                  maxLength: 150
+                                  maxLength: 12
                                   nullable: false
-                            Department:
-                              type: object
-                              required:
-                                - DepartmentName
-                                - DepartmentCode
-                              properties:
-                                DepartmentCode:
-                                  title: Teaching department code in UCL.
+                                ModuleLearningHours:
+                                  title: 'Learning hours of the module, this is indicative only.'
+                                  type: integer
+                                  minimum: 0
+                                  maximum: 9999
+                                  format: int32
+                                ModuleStudyHours:
+                                  title: 'Learning hours of the module, this is indicative only.'
+                                  type: integer
+                                  minimum: 0
+                                  maximum: 9999
+                                  format: int32
+                                ModuleSuperGroup:
+                                  title: Super module grouping such as Meets with Spanish Level 1 and 2
                                   type: string
-                                  minLength: 3
-                                  maxLength: 3
-                                  nullable: false
-                                  pattern: '^([A-Z]|_|\d|-)*$'
-                                DepartmentName:
-                                  title: Teaching department name in UCL.
+                                  minLength: 0
+                                  maxLength: 50
+                                  nullable: true
+                                CEFRLevel:
+                                  title: Language Modules Only CEFR level
                                   type: string
-                                  minLength: 1
-                                  maxLength: 150
-                                  nullable: false
-                        ModuleContactInformation:
-                          type: object
-                          description: domain model that represents contact detail of a UCL person
-                          required:
-                            - name
-                          properties:
-                            PersonIdentifier:
-                              type: string
-                              title: Unique identifier of the person in UCL
-                            name:
-                              type: string
-                              title: UCL person full name
-                            email:
-                              type: string
-                              format: email
-                              title: UCL person email address
-                        ModuleValue:
-                          type: number
-                          format: float
-                          title: Credit value awarded to student on the successfull completion of the module.
+                                  minLength: 0
+                                  maxLength: 50
+                                  pattern: '^([A-Z]{1}\d{1}\/?)*$'
+                                ModuleContact:
+                                  type: object
+                                  required:
+                                    - Faculty
+                                    - Department
+                                  properties:
+                                    Faculty:
+                                      type: object
+                                      required:
+                                        - FacultyName
+                                        - FacultyCode
+                                      properties:
+                                        FacultyCode:
+                                          title: Code of the teaching faculty code to which madule belongs to.
+                                          type: string
+                                          minLength: 3
+                                          maxLength: 3
+                                          nullable: false
+                                          pattern: '^([A-Z]){3}$'
+                                        FacultyName:
+                                          title: Name of the teaching faculty to which madule belongs to.
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 150
+                                          nullable: false
+                                    Department:
+                                      type: object
+                                      required:
+                                        - DepartmentName
+                                        - DepartmentCode
+                                      properties:
+                                        DepartmentCode:
+                                          title: Teaching department code in UCL.
+                                          type: string
+                                          minLength: 3
+                                          maxLength: 3
+                                          nullable: false
+                                          pattern: '^([A-Z]|_|\d|-)*$'
+                                        DepartmentName:
+                                          title: Teaching department name in UCL.
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 150
+                                          nullable: false
+                                    Person:
+                                      type: object
+                                      description: domain model that represents contact detail of a UCL person
+                                      required:
+                                        - Name
+                                      properties:
+                                        PersonIdentifier:
+                                          type: string
+                                          title: Unique identifier of the person in UCL
+                                        Name:
+                                          type: string
+                                          title: UCL person full name
+                                        Email:
+                                          type: string
+                                          format: email
+                                          title: UCL person email address
+                                ModuleValue:
+                                  type: number
+                                  format: float
+                                  title: Credit value awarded to student on the successfull completion of the module.
             application/xml:
-              schema:
-                type: object
-                properties:
-                  Module:
-                    type: array
-                    items:
-                      $ref: '#/paths/~1Module/get/responses/200/content/application~1json/schema/properties/Module/items'
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Response:
+                      type: object
+                      properties:
+                        ModuleCollection:
+                          type: object
+                          properties:
+                            Module:
+                              type: array
+                              items:
+                                $ref: '#/paths/~1Module/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleCollection/properties/Module/items'
           headers:
             X-RateLimit-Limit:
               description: Request limit per time window
@@ -374,19 +387,13 @@ paths:
                             Human readable message; intended for being displayed. 
                             The message should not be longer than 254 characters.
                             A message can occur multiple times, but only once for each language. It is a mandatory parameter.
-                        Language:
+                        _Lang:
                           type: string
                           format: lang
                           example: en
                           description: |
                             Indicates the language in which the error name is provided. 
                             It is an optional parameter, when not provided default is english 'en'
-                        BackendResponse:
-                          type: string
-                          description: |
-                            This is an optional field that could contain any error messages from the backend system such as 
-                            e.g. a stacktrace.The use of this field is restricted to communication between two backend-systems.
-                            It is an optional parameter.
             application/xml:
               schema:
                 $ref: '#/paths/~1Module/get/responses/400/content/application~1json/schema'
@@ -407,7 +414,7 @@ paths:
   '/Module/{ModuleIdentifier}':
     get:
       tags:
-        - ModuleCatalogue API
+        - Academic Module API
       summary: '/Module/{ModuleIdentifier}'
       operationId: ModuleById
       description: |
@@ -440,129 +447,136 @@ paths:
             application/json:
               schema:
                 type: object
-                title: Module Domain
-                required:
-                  - ModuleIdentifier
-                  - ModuleTitle
-                  - ModuleCode
                 properties:
-                  ModuleIdentifier:
-                    title: Unique system identifier of the module (Business Data object aka BDOid).
-                    type: string
-                    nullable: false
-                    minimum: 1
-                    maximum: 50
-                    readOnly: true
-                    pattern: '^([A-Z]|\d)*$'
-                  ModuleTitle:
-                    title: Title of the module.
-                    type: string
-                    minLength: 0
-                    maxLength: 120
-                    nullable: false
-                  ModuleSearchKeywords:
-                    title: Keywords used to search this module.
-                    type: string
-                    minLength: 0
-                    maxLength: 100
-                    nullable: true
-                  ModuleCode:
-                    title: Module code that is unique in UCL that is in the human readable format.
-                    type: string
-                    minLength: 1
-                    maxLength: 12
-                    nullable: false
-                  ModuleLearningHours:
-                    title: 'Learning hours of the module, this is indicative only.'
-                    type: integer
-                    minimum: 0
-                    maximum: 9999
-                    format: int32
-                  ModuleStudyHours:
-                    title: 'Learning hours of the module, this is indicative only.'
-                    type: integer
-                    minimum: 0
-                    maximum: 9999
-                    format: int32
-                  ModuleSuperGroup:
-                    title: Super module grouping such as Meets with Spanish Level 1 and 2
-                    type: string
-                    minLength: 0
-                    maxLength: 50
-                    nullable: true
-                  CEFRLevel:
-                    title: Language Modules Only CEFR level
-                    type: string
-                    minLength: 0
-                    maxLength: 50
-                    pattern: '^([A-Z]{1}\d{1}\/?)*$'
-                  AcademicUnit:
+                  Module:
                     type: object
+                    title: Module Domain
                     required:
-                      - Faculty
-                      - Department
+                      - ModuleIdentifier
+                      - ModuleTitle
+                      - ModuleCode
                     properties:
-                      Faculty:
+                      ModuleIdentifier:
+                        title: Unique system identifier of the module (Business Data object aka BDOid).
+                        type: string
+                        nullable: false
+                        minimum: 1
+                        maximum: 50
+                        readOnly: true
+                        pattern: '^([A-Z]|\d)*$'
+                      ModuleTitle:
+                        title: Title of the module.
+                        type: string
+                        minLength: 0
+                        maxLength: 120
+                        nullable: false
+                      ModuleSearchKeywords:
+                        title: Keywords used to search this module.
+                        type: string
+                        minLength: 0
+                        maxLength: 100
+                        nullable: true
+                      ModuleCode:
+                        title: Module code that is unique in UCL that is in the human readable format.
+                        type: string
+                        minLength: 1
+                        maxLength: 12
+                        nullable: false
+                      ModuleLearningHours:
+                        title: 'Learning hours of the module, this is indicative only.'
+                        type: integer
+                        minimum: 0
+                        maximum: 9999
+                        format: int32
+                      ModuleStudyHours:
+                        title: 'Learning hours of the module, this is indicative only.'
+                        type: integer
+                        minimum: 0
+                        maximum: 9999
+                        format: int32
+                      ModuleSuperGroup:
+                        title: Super module grouping such as Meets with Spanish Level 1 and 2
+                        type: string
+                        minLength: 0
+                        maxLength: 50
+                        nullable: true
+                      CEFRLevel:
+                        title: Language Modules Only CEFR level
+                        type: string
+                        minLength: 0
+                        maxLength: 50
+                        pattern: '^([A-Z]{1}\d{1}\/?)*$'
+                      ModuleContact:
                         type: object
                         required:
-                          - FacultyName
-                          - FacultyCode
+                          - Faculty
+                          - Department
                         properties:
-                          FacultyCode:
-                            title: Code of the teaching faculty code to which madule belongs to.
-                            type: string
-                            minLength: 3
-                            maxLength: 3
-                            nullable: false
-                            pattern: '^([A-Z]){3}$'
-                          FacultyName:
-                            title: Name of the teaching faculty to which madule belongs to.
-                            type: string
-                            minLength: 1
-                            maxLength: 150
-                            nullable: false
-                      Department:
-                        type: object
-                        required:
-                          - DepartmentName
-                          - DepartmentCode
-                        properties:
-                          DepartmentCode:
-                            title: Teaching department code in UCL.
-                            type: string
-                            minLength: 3
-                            maxLength: 3
-                            nullable: false
-                            pattern: '^([A-Z]|_|\d|-)*$'
-                          DepartmentName:
-                            title: Teaching department name in UCL.
-                            type: string
-                            minLength: 1
-                            maxLength: 150
-                            nullable: false
-                  ModuleContactInformation:
-                    type: object
-                    description: domain model that represents contact detail of a UCL person
-                    required:
-                      - name
-                    properties:
-                      PersonIdentifier:
-                        type: string
-                        title: Unique identifier of the person in UCL
-                      name:
-                        type: string
-                        title: UCL person full name
-                      email:
-                        type: string
-                        format: email
-                        title: UCL person email address
-                  ModuleValue:
-                    type: number
-                    format: float
-                    title: Credit value awarded to student on the successfull completion of the module.
+                          Faculty:
+                            type: object
+                            required:
+                              - FacultyName
+                              - FacultyCode
+                            properties:
+                              FacultyCode:
+                                title: Code of the teaching faculty code to which madule belongs to.
+                                type: string
+                                minLength: 3
+                                maxLength: 3
+                                nullable: false
+                                pattern: '^([A-Z]){3}$'
+                              FacultyName:
+                                title: Name of the teaching faculty to which madule belongs to.
+                                type: string
+                                minLength: 1
+                                maxLength: 150
+                                nullable: false
+                          Department:
+                            type: object
+                            required:
+                              - DepartmentName
+                              - DepartmentCode
+                            properties:
+                              DepartmentCode:
+                                title: Teaching department code in UCL.
+                                type: string
+                                minLength: 3
+                                maxLength: 3
+                                nullable: false
+                                pattern: '^([A-Z]|_|\d|-)*$'
+                              DepartmentName:
+                                title: Teaching department name in UCL.
+                                type: string
+                                minLength: 1
+                                maxLength: 150
+                                nullable: false
+                          Person:
+                            type: object
+                            description: domain model that represents contact detail of a UCL person
+                            required:
+                              - Name
+                            properties:
+                              PersonIdentifier:
+                                type: string
+                                title: Unique identifier of the person in UCL
+                              Name:
+                                type: string
+                                title: UCL person full name
+                              Email:
+                                type: string
+                                format: email
+                                title: UCL person email address
+                      ModuleValue:
+                        type: number
+                        format: float
+                        title: Credit value awarded to student on the successfull completion of the module.
             application/xml:
-              schema:
-                $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D/get/responses/200/content/application~1json/schema'
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Module:
+                      $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D/get/responses/200/content/application~1json/schema/properties/Module'
           headers:
             '<<':
               X-RateLimit-Limit:
@@ -612,7 +626,7 @@ paths:
   '/Module/{ModuleIdentifier}/ModuleInstance':
     get:
       tags:
-        - ModuleCatalogue API
+        - Academic Module API
       summary: '/Module/{ModuleIdentifier}/ModuleInstance'
       operationId: ModuleInstanceFilterByModuelID
       description: |
@@ -640,958 +654,10 @@ paths:
               schema:
                 type: object
                 properties:
-                  Module:
+                  Response:
                     type: object
-                    title: Module Domain
-                    required:
-                      - ModuleIdentifier
-                      - ModuleTitle
-                      - ModuleCode
                     properties:
-                      ModuleIdentifier:
-                        title: Unique system identifier of the module (Business Data object aka BDOid).
-                        type: string
-                        nullable: false
-                        minimum: 1
-                        maximum: 50
-                        readOnly: true
-                        pattern: '^([A-Z]|\d)*$'
-                      ModuleTitle:
-                        title: Title of the module.
-                        type: string
-                        minLength: 0
-                        maxLength: 120
-                        nullable: false
-                      ModuleSearchKeywords:
-                        title: Keywords used to search this module.
-                        type: string
-                        minLength: 0
-                        maxLength: 100
-                        nullable: true
-                      ModuleCode:
-                        title: Module code that is unique in UCL that is in the human readable format.
-                        type: string
-                        minLength: 1
-                        maxLength: 12
-                        nullable: false
-                      ModuleLearningHours:
-                        title: 'Learning hours of the module, this is indicative only.'
-                        type: integer
-                        minimum: 0
-                        maximum: 9999
-                        format: int32
-                      ModuleStudyHours:
-                        title: 'Learning hours of the module, this is indicative only.'
-                        type: integer
-                        minimum: 0
-                        maximum: 9999
-                        format: int32
-                      ModuleSuperGroup:
-                        title: Super module grouping such as Meets with Spanish Level 1 and 2
-                        type: string
-                        minLength: 0
-                        maxLength: 50
-                        nullable: true
-                      CEFRLevel:
-                        title: Language Modules Only CEFR level
-                        type: string
-                        minLength: 0
-                        maxLength: 50
-                        pattern: '^([A-Z]{1}\d{1}\/?)*$'
-                      AcademicUnit:
-                        type: object
-                        required:
-                          - Faculty
-                          - Department
-                        properties:
-                          Faculty:
-                            type: object
-                            required:
-                              - FacultyName
-                              - FacultyCode
-                            properties:
-                              FacultyCode:
-                                title: Code of the teaching faculty code to which madule belongs to.
-                                type: string
-                                minLength: 3
-                                maxLength: 3
-                                nullable: false
-                                pattern: '^([A-Z]){3}$'
-                              FacultyName:
-                                title: Name of the teaching faculty to which madule belongs to.
-                                type: string
-                                minLength: 1
-                                maxLength: 150
-                                nullable: false
-                          Department:
-                            type: object
-                            required:
-                              - DepartmentName
-                              - DepartmentCode
-                            properties:
-                              DepartmentCode:
-                                title: Teaching department code in UCL.
-                                type: string
-                                minLength: 3
-                                maxLength: 3
-                                nullable: false
-                                pattern: '^([A-Z]|_|\d|-)*$'
-                              DepartmentName:
-                                title: Teaching department name in UCL.
-                                type: string
-                                minLength: 1
-                                maxLength: 150
-                                nullable: false
-                      ModuleContactInformation:
-                        type: object
-                        description: domain model that represents contact detail of a UCL person
-                        required:
-                          - name
-                        properties:
-                          PersonIdentifier:
-                            type: string
-                            title: Unique identifier of the person in UCL
-                          name:
-                            type: string
-                            title: UCL person full name
-                          email:
-                            type: string
-                            format: email
-                            title: UCL person email address
-                      ModuleValue:
-                        type: number
-                        format: float
-                        title: Credit value awarded to student on the successfull completion of the module.
-                  ModuleInstances:
-                    type: array
-                    items:
-                      type: object
-                      required:
-                        - AcademicYearCode
-                        - AcademicYearDescription
-                        - ModuleDescription
-                        - ModuleSubjects
-                        - ModuleIdentifier
-                      title: Module for given academic year.
-                      properties:
-                        ModuleIdentifier:
-                          title: Unique system identifier of the module (Business Data object aka BDOid).
-                          type: string
-                          nullable: false
-                          minimum: 1
-                          maximum: 50
-                          readOnly: true
-                          pattern: '^([A-Z]|\d)*$'
-                        AcademicYearCode:
-                          title: The module is applicable to the academic year.
-                          type: string
-                          format: date
-                          minLength: 1
-                          maxLength: 50
-                          nullable: false
-                        AcademicYearDescription:
-                          title: Description of the academic year.
-                          type: string
-                          minLength: 1
-                          maxLength: 100
-                          nullable: false
-                        ModuleDescription:
-                          title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
-                          type: string
-                          minLength: 100
-                          maxLength: 4000000000
-                          nullable: true
-                        ModuleRestriction:
-                          title: A restriction applicable on module
-                          type: string
-                          minLength: 0
-                          maxLength: 1000
-                          nullable: true
-                        ModuleSubjects:
-                          title: The subject this module teaches.
-                          type: array
-                          items:
-                            type: string
-                            minLength: 1
-                            maxLength: 150
-                          nullable: true
-            application/xml:
-              schema:
-                type: object
-                properties:
-                  Module:
-                    $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Module'
-                  ModuleInstances:
-                    type: array
-                    items:
-                      $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/ModuleInstances/items'
-          headers:
-            '<<':
-              X-RateLimit-Limit:
-                description: Request limit per time window
-                schema:
-                  type: integer
-                  format: int32
-                example: 100
-                required: true
-              X-RateLimit-Remaining:
-                description: Remaining requests for the current time window
-                schema:
-                  type: integer
-                  format: int32
-                example: 94
-                required: true
-              X-Rate-Limit-Reset:
-                description: 'Time to the current window ends, in seconds from the current time.'
-                schema:
-                  type: integer
-                  format: int32
-                example: 1553528925
-                required: true
-              Retry-After:
-                description: |
-                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
-                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
-                  and this response header indicate the remaining time window before the rate limit resets, 
-                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
-                schema:
-                  type: integer
-                  format: int32
-                required: false
-                example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
-        '204': *ref_0
-        '400':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '401': *ref_1
-        '403': *ref_2
-        '404': *ref_3
-        '409':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '429': *ref_4
-        '500':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '502': *ref_5
-  '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}':
-    get:
-      tags:
-        - ModuleCatalogue API
-      summary: '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}'
-      operationId: ModuleInstanceByModuleIDAndYear
-      description: |
-        Get single module instances for the given {moduleidentifier} and {academic year} in UCL
-        ```
-        [Module] -(ModuleIdentifier,Academicyear)-> [Module Instance]
-        ```
-      parameters:
-        - name: AcademicYearCode
-          in: path
-          required: true
-          description: Academic year.
-          style: simple
-          schema:
-            type: integer
-            format: int32
-            minimum: 2017
-            maximum: 2050
-            nullable: false
-          example: 2019
-        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D/get/parameters/0'
-      responses:
-        '200':
-          description: |
-            Successfull response includes single module instanc and header information 
-            ```
-            [Module] -(moduleidentifier , academicyear)-> [Module Instance]
-            ```
-            and pagination detail if more than allowed number of modules is found
-            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - type: object
-                    title: Module Domain
-                    required:
-                      - ModuleIdentifier
-                      - ModuleTitle
-                      - ModuleCode
-                    properties:
-                      ModuleIdentifier:
-                        title: Unique system identifier of the module (Business Data object aka BDOid).
-                        type: string
-                        nullable: false
-                        minimum: 1
-                        maximum: 50
-                        readOnly: true
-                        pattern: '^([A-Z]|\d)*$'
-                      ModuleTitle:
-                        title: Title of the module.
-                        type: string
-                        minLength: 0
-                        maxLength: 120
-                        nullable: false
-                      ModuleSearchKeywords:
-                        title: Keywords used to search this module.
-                        type: string
-                        minLength: 0
-                        maxLength: 100
-                        nullable: true
-                      ModuleCode:
-                        title: Module code that is unique in UCL that is in the human readable format.
-                        type: string
-                        minLength: 1
-                        maxLength: 12
-                        nullable: false
-                      ModuleLearningHours:
-                        title: 'Learning hours of the module, this is indicative only.'
-                        type: integer
-                        minimum: 0
-                        maximum: 9999
-                        format: int32
-                      ModuleStudyHours:
-                        title: 'Learning hours of the module, this is indicative only.'
-                        type: integer
-                        minimum: 0
-                        maximum: 9999
-                        format: int32
-                      ModuleSuperGroup:
-                        title: Super module grouping such as Meets with Spanish Level 1 and 2
-                        type: string
-                        minLength: 0
-                        maxLength: 50
-                        nullable: true
-                      CEFRLevel:
-                        title: Language Modules Only CEFR level
-                        type: string
-                        minLength: 0
-                        maxLength: 50
-                        pattern: '^([A-Z]{1}\d{1}\/?)*$'
-                      AcademicUnit:
-                        type: object
-                        required:
-                          - Faculty
-                          - Department
-                        properties:
-                          Faculty:
-                            type: object
-                            required:
-                              - FacultyName
-                              - FacultyCode
-                            properties:
-                              FacultyCode:
-                                title: Code of the teaching faculty code to which madule belongs to.
-                                type: string
-                                minLength: 3
-                                maxLength: 3
-                                nullable: false
-                                pattern: '^([A-Z]){3}$'
-                              FacultyName:
-                                title: Name of the teaching faculty to which madule belongs to.
-                                type: string
-                                minLength: 1
-                                maxLength: 150
-                                nullable: false
-                          Department:
-                            type: object
-                            required:
-                              - DepartmentName
-                              - DepartmentCode
-                            properties:
-                              DepartmentCode:
-                                title: Teaching department code in UCL.
-                                type: string
-                                minLength: 3
-                                maxLength: 3
-                                nullable: false
-                                pattern: '^([A-Z]|_|\d|-)*$'
-                              DepartmentName:
-                                title: Teaching department name in UCL.
-                                type: string
-                                minLength: 1
-                                maxLength: 150
-                                nullable: false
-                      ModuleContactInformation:
-                        type: object
-                        description: domain model that represents contact detail of a UCL person
-                        required:
-                          - name
-                        properties:
-                          PersonIdentifier:
-                            type: string
-                            title: Unique identifier of the person in UCL
-                          name:
-                            type: string
-                            title: UCL person full name
-                          email:
-                            type: string
-                            format: email
-                            title: UCL person email address
-                      ModuleValue:
-                        type: number
-                        format: float
-                        title: Credit value awarded to student on the successfull completion of the module.
-                  - type: object
-                    required:
-                      - AcademicYearCode
-                      - AcademicYearDescription
-                      - ModuleDescription
-                      - ModuleSubjects
-                      - ModuleIdentifier
-                    title: Module for given academic year.
-                    properties:
-                      ModuleIdentifier:
-                        title: Unique system identifier of the module (Business Data object aka BDOid).
-                        type: string
-                        nullable: false
-                        minimum: 1
-                        maximum: 50
-                        readOnly: true
-                        pattern: '^([A-Z]|\d)*$'
-                      AcademicYearCode:
-                        title: The module is applicable to the academic year.
-                        type: string
-                        format: date
-                        minLength: 1
-                        maxLength: 50
-                        nullable: false
-                      AcademicYearDescription:
-                        title: Description of the academic year.
-                        type: string
-                        minLength: 1
-                        maxLength: 100
-                        nullable: false
-                      ModuleDescription:
-                        title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
-                        type: string
-                        minLength: 100
-                        maxLength: 4000000000
-                        nullable: true
-                      ModuleRestriction:
-                        title: A restriction applicable on module
-                        type: string
-                        minLength: 0
-                        maxLength: 1000
-                        nullable: true
-                      ModuleSubjects:
-                        title: The subject this module teaches.
-                        type: array
-                        items:
-                          type: string
-                          minLength: 1
-                          maxLength: 150
-                        nullable: true
-            application/xml:
-              '<<':
-                schema:
-                  $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/responses/200/content/application~1json/schema'
-          headers:
-            X-RateLimit-Limit:
-              description: Request limit per time window
-              schema:
-                type: integer
-                format: int32
-              example: 100
-              required: true
-            X-RateLimit-Remaining:
-              description: Remaining requests for the current time window
-              schema:
-                type: integer
-                format: int32
-              example: 94
-              required: true
-            X-Rate-Limit-Reset:
-              description: 'Time to the current window ends, in seconds from the current time.'
-              schema:
-                type: integer
-                format: int32
-              example: 1553528925
-              required: true
-            Retry-After:
-              description: |
-                When an application exceeds the rate limit for a given API endpoint, the API will return a 
-                [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
-                and this response header indicate the remaining time window before the rate limit resets, 
-                in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
-              schema:
-                type: integer
-                format: int32
-              required: false
-              example: 1553528925
-        '204': *ref_0
-        '400':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '401': *ref_1
-        '403': *ref_2
-        '404': *ref_3
-        '409':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '429': *ref_4
-        '500':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '502': *ref_5
-  '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}/ModuleDelivery':
-    get:
-      tags:
-        - ModuleCatalogue API
-      summary: '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}/ModuleDelivery'
-      operationId: ModuleDeliveryByModuleIdAndYear
-      description: |
-        Get the list of module delivery for given {moduleidentifier} and {academic year} in UCL
-        ```
-        [Module] -(academicyear)-> *[Module Instance] -(academicyear, moduleidentifier)-> *[ModuleDelivery] -> *[ModuleDeliveryAssessment]
-        ```
-      parameters:
-        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/parameters/0'
-        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D/get/parameters/0'
-      responses:
-        '200':
-          description: |
-            Successfull response includes list of module deliveries, instance and header information for the given moduleidentifier and academicyear
-            ```
-            [Module] -(moduleidentifier, academicyear)-> [Module Instance] -(moduleidentifier, academicyear)-> *[ModuleDelivery] -(ModuleDeliveryIdentifier)->*[ModuleDeliveryAssessment]
-            ```
-            and pagination detail if more than allowed number of moduledeliveries found
-            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  Module:
-                    type: object
-                    allOf:
-                      - type: object
-                        title: Module Domain
-                        required:
-                          - ModuleIdentifier
-                          - ModuleTitle
-                          - ModuleCode
-                        properties:
-                          ModuleIdentifier:
-                            title: Unique system identifier of the module (Business Data object aka BDOid).
-                            type: string
-                            nullable: false
-                            minimum: 1
-                            maximum: 50
-                            readOnly: true
-                            pattern: '^([A-Z]|\d)*$'
-                          ModuleTitle:
-                            title: Title of the module.
-                            type: string
-                            minLength: 0
-                            maxLength: 120
-                            nullable: false
-                          ModuleSearchKeywords:
-                            title: Keywords used to search this module.
-                            type: string
-                            minLength: 0
-                            maxLength: 100
-                            nullable: true
-                          ModuleCode:
-                            title: Module code that is unique in UCL that is in the human readable format.
-                            type: string
-                            minLength: 1
-                            maxLength: 12
-                            nullable: false
-                          ModuleLearningHours:
-                            title: 'Learning hours of the module, this is indicative only.'
-                            type: integer
-                            minimum: 0
-                            maximum: 9999
-                            format: int32
-                          ModuleStudyHours:
-                            title: 'Learning hours of the module, this is indicative only.'
-                            type: integer
-                            minimum: 0
-                            maximum: 9999
-                            format: int32
-                          ModuleSuperGroup:
-                            title: Super module grouping such as Meets with Spanish Level 1 and 2
-                            type: string
-                            minLength: 0
-                            maxLength: 50
-                            nullable: true
-                          CEFRLevel:
-                            title: Language Modules Only CEFR level
-                            type: string
-                            minLength: 0
-                            maxLength: 50
-                            pattern: '^([A-Z]{1}\d{1}\/?)*$'
-                          AcademicUnit:
-                            type: object
-                            required:
-                              - Faculty
-                              - Department
-                            properties:
-                              Faculty:
-                                type: object
-                                required:
-                                  - FacultyName
-                                  - FacultyCode
-                                properties:
-                                  FacultyCode:
-                                    title: Code of the teaching faculty code to which madule belongs to.
-                                    type: string
-                                    minLength: 3
-                                    maxLength: 3
-                                    nullable: false
-                                    pattern: '^([A-Z]){3}$'
-                                  FacultyName:
-                                    title: Name of the teaching faculty to which madule belongs to.
-                                    type: string
-                                    minLength: 1
-                                    maxLength: 150
-                                    nullable: false
-                              Department:
-                                type: object
-                                required:
-                                  - DepartmentName
-                                  - DepartmentCode
-                                properties:
-                                  DepartmentCode:
-                                    title: Teaching department code in UCL.
-                                    type: string
-                                    minLength: 3
-                                    maxLength: 3
-                                    nullable: false
-                                    pattern: '^([A-Z]|_|\d|-)*$'
-                                  DepartmentName:
-                                    title: Teaching department name in UCL.
-                                    type: string
-                                    minLength: 1
-                                    maxLength: 150
-                                    nullable: false
-                          ModuleContactInformation:
-                            $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/ModuleDeliveries/items/properties/ModuleDeliveryContact'
-                          ModuleValue:
-                            type: number
-                            format: float
-                            title: Credit value awarded to student on the successfull completion of the module.
-                      - type: object
-                        required:
-                          - AcademicYearCode
-                          - AcademicYearDescription
-                          - ModuleDescription
-                          - ModuleSubjects
-                          - ModuleIdentifier
-                        title: Module for given academic year.
-                        properties:
-                          ModuleIdentifier:
-                            title: Unique system identifier of the module (Business Data object aka BDOid).
-                            type: string
-                            nullable: false
-                            minimum: 1
-                            maximum: 50
-                            readOnly: true
-                            pattern: '^([A-Z]|\d)*$'
-                          AcademicYearCode:
-                            title: The module is applicable to the academic year.
-                            type: string
-                            format: date
-                            minLength: 1
-                            maxLength: 50
-                            nullable: false
-                          AcademicYearDescription:
-                            title: Description of the academic year.
-                            type: string
-                            minLength: 1
-                            maxLength: 100
-                            nullable: false
-                          ModuleDescription:
-                            title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
-                            type: string
-                            minLength: 100
-                            maxLength: 4000000000
-                            nullable: true
-                          ModuleRestriction:
-                            title: A restriction applicable on module
-                            type: string
-                            minLength: 0
-                            maxLength: 1000
-                            nullable: true
-                          ModuleSubjects:
-                            title: The subject this module teaches.
-                            type: array
-                            items:
-                              type: string
-                              minLength: 1
-                              maxLength: 150
-                            nullable: true
-                  ModuleDeliveries:
-                    type: array
-                    items:
-                      type: object
-                      required:
-                        - ModuleDeliveryIdentifier
-                        - ModuleDeliveryPeriod
-                        - ModuleDeliveryLevel
-                        - ModeOfStudy
-                        - ModuleDeliveryTypes
-                        - NumberOfStudents
-                        - ModuleDeliveryLocation
-                        - ModuleDeliveryContact
-                        - ModuleDeliveryAssessments
-                      title: 'An instance of the module, this domain contains year specific module detail i.e. Detail stored in this domain is subject to change each year for a given module.'
-                      properties:
-                        ModuleDeliveryIdentifier:
-                          title: Unique identifier for this module delivery
-                          type: string
-                          minimum: 1
-                          maximum: 50
-                          nullable: false
-                        ModuleDeliveryPeriod:
-                          type: object
-                          title: object to represents the period detail of the module delivery.
-                          required:
-                            - PeriodTitle
-                          properties:
-                            PeriodCode:
-                              title: module delivery period code.
-                              type: string
-                              minLength: 1
-                              maxLength: 6
-                            PeriodTitle:
-                              title: module delivery period title.
-                              type: string
-                              minLength: 1
-                              maxLength: 50
-                        AcademicLevel:
-                          type: object
-                          required:
-                            - AcademicLevelCode
-                            - AcademicLevelTitle
-                          properties:
-                            AcademicLevelCode:
-                              title: module delivery level code.
-                              type: string
-                              minimum: 1
-                              maximum: 6
-                              nullable: false
-                            AcademicLevelTitle:
-                              title: module delivery level title.
-                              type: string
-                              minimum: 1
-                              maximum: 50
-                              nullable: false
-                        Programme:
-                          type: object
-                          required:
-                            - ProgrammeCode
-                            - ProgrammeTitle
-                          description: |
-                            Assessment for the module is different depends on which programme student 
-                            is enrolled to. possible programme levels in UCL is 
-                            * U - Undergraduate 
-                            * P - Postgraduate
-                          properties:
-                            ProgrammeIdentifier:
-                              title: Programme unique identifier.
-                              type: string
-                              nullable: false
-                            ProgrammeLevel:
-                              title: module delivery level title.
-                              type: string
-                              minLength: 1
-                              maxLength: 50
-                              nullable: false
-                        ModeOfStudy:
-                          title: Applicable mode of study for this module such as face-face.
-                          type: string
-                          minLength: 1
-                          maxLength: 15
-                          nullable: false
-                        ModuleDeliveryType:
-                          title: Delivery included in the module such as Field trips and Placements
-                          type: array
-                          items:
-                            type: string
-                            enum:
-                              - Field Trips
-                              - Lab Work
-                              - Work Placements
-                              - 'Field Trips, Lab Work and Work Placements'
-                              - Field Trips and Lab Work
-                              - Field Trips and Work Placements
-                              - Lab Work and Work Placements
-                        PreviousYearStudentCount:
-                          title: Number of students enrolled on module in previous year.
-                          type: number
-                          minimum: 1
-                          format: int32
-                          maximum: 999
-                          nullable: false
-                        NumberOfStudents:
-                          title: 'Number of students on module for an acdemic year, if the selected year is the current academic year then this number is an indicative student count.'
-                          type: number
-                          minimum: 1
-                          format: int32
-                          maximum: 999
-                          nullable: false
-                        ModuleDeliveryLocation:
-                          type: object
-                          required:
-                            - LocationName
-                            - LocationIdentifier
-                          properties:
-                            LocationIdentifier:
-                              title: Unique identifier of the UCL location.
-                              type: string
-                              minLength: 1
-                              maxLength: 12
-                              nullable: false
-                            LocationName:
-                              title: Name of the teaching location to which madule belongs to.
-                              type: string
-                              minLength: 0
-                              maxLength: 50
-                              nullable: false
-                        ModuleDeliveryContact:
-                          type: object
-                          description: domain model that represents contact detail of a UCL person
-                          required:
-                            - name
-                          properties:
-                            PersonIdentifier:
-                              type: string
-                              title: Unique identifier of the person in UCL
-                            name:
-                              type: string
-                              title: UCL person full name
-                            email:
-                              type: string
-                              format: email
-                              title: UCL person email address
-                        ModuleDeliveryAssessments:
-                          title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                          type: object
-                          required:
-                            - AssessmentWeightPercentage
-                            - AssessmentTitle
-                          properties:
-                            AssessmentBodySequence:
-                              type: string
-                              minLength: 0
-                              maxLength: 3
-                              pattern: '^(\d){3}$'
-                            AssessmentGroup:
-                              type: string
-                              minLength: 0
-                              maxLength: 2
-                            AssessmentTitle:
-                              type: string
-                              minLength: 1
-                              maxLength: 120
-                            AssessmentWeightPercentage:
-                              type: integer
-                              minimum: 0
-                              maximum: 100
-                              format: int32
-            application/xml:
-              '<<':
-                schema:
-                  type: object
-                  properties:
-                    Module:
-                      $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/Module'
-                    ModuleDeliveries:
-                      type: array
-                      items:
-                        $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/ModuleDeliveries/items'
-          headers:
-            '<<':
-              X-RateLimit-Limit:
-                description: Request limit per time window
-                schema:
-                  type: integer
-                  format: int32
-                example: 100
-                required: true
-              X-RateLimit-Remaining:
-                description: Remaining requests for the current time window
-                schema:
-                  type: integer
-                  format: int32
-                example: 94
-                required: true
-              X-Rate-Limit-Reset:
-                description: 'Time to the current window ends, in seconds from the current time.'
-                schema:
-                  type: integer
-                  format: int32
-                example: 1553528925
-                required: true
-              Retry-After:
-                description: |
-                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
-                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
-                  and this response header indicate the remaining time window before the rate limit resets, 
-                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
-                schema:
-                  type: integer
-                  format: int32
-                required: false
-                example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
-        '204': *ref_0
-        '400':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '401': *ref_1
-        '403': *ref_2
-        '404': *ref_3
-        '409':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '429': *ref_4
-        '500':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '502': *ref_5
-  '/ModuleInstance/{AcademicYearCode}':
-    get:
-      tags:
-        - ModuleCatalogue API
-      summary: '/ModuleInstance/{AcademicYearCode}'
-      operationId: ModuleCatalogueFilterByYear
-      description: |
-        Get the list of module instances for given {moduleidentifier} and {academic year} in UCL
-        ```
-        [Module] -(academicyear)-> *[Module Instance]
-        ```
-        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
-      parameters:
-        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/parameters/0'
-      responses:
-        '200':
-          description: |
-            Successfull response includes list of module instances for the given academic year 
-            ```
-            *[Module Instance]
-            ```
-            and pagination detail if more than allowed number of modules is found
-            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ModuleInstance:
-                    type: array
-                    items:
-                      - type: object
+                      Module:
                         allOf:
                           - type: object
                             title: Module Domain
@@ -1650,7 +716,7 @@ paths:
                                 minLength: 0
                                 maxLength: 50
                                 pattern: '^([A-Z]{1}\d{1}\/?)*$'
-                              AcademicUnit:
+                              ModuleContact:
                                 type: object
                                 required:
                                   - Faculty
@@ -1694,76 +760,141 @@ paths:
                                         minLength: 1
                                         maxLength: 150
                                         nullable: false
-                              ModuleContactInformation:
-                                type: object
-                                description: domain model that represents contact detail of a UCL person
-                                required:
-                                  - name
-                                properties:
-                                  PersonIdentifier:
-                                    type: string
-                                    title: Unique identifier of the person in UCL
-                                  name:
-                                    type: string
-                                    title: UCL person full name
-                                  email:
-                                    type: string
-                                    format: email
-                                    title: UCL person email address
+                                  Person:
+                                    type: object
+                                    description: domain model that represents contact detail of a UCL person
+                                    required:
+                                      - Name
+                                    properties:
+                                      PersonIdentifier:
+                                        type: string
+                                        title: Unique identifier of the person in UCL
+                                      Name:
+                                        type: string
+                                        title: UCL person full name
+                                      Email:
+                                        type: string
+                                        format: email
+                                        title: UCL person email address
                               ModuleValue:
                                 type: number
                                 format: float
                                 title: Credit value awarded to student on the successfull completion of the module.
                           - type: object
-                            required:
-                              - AcademicYearCode
-                              - AcademicYearDescription
-                              - ModuleDescription
-                              - ModuleSubjects
-                              - ModuleIdentifier
-                            title: Module for given academic year.
                             properties:
-                              ModuleIdentifier:
-                                title: Unique system identifier of the module (Business Data object aka BDOid).
-                                type: string
-                                nullable: false
-                                minimum: 1
-                                maximum: 50
-                                readOnly: true
-                                pattern: '^([A-Z]|\d)*$'
-                              AcademicYearCode:
-                                title: The module is applicable to the academic year.
-                                type: string
-                                format: date
-                                minLength: 1
-                                maxLength: 50
-                                nullable: false
-                              AcademicYearDescription:
-                                title: Description of the academic year.
-                                type: string
-                                minLength: 1
-                                maxLength: 100
-                                nullable: false
-                              ModuleDescription:
-                                title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
-                                type: string
-                                minLength: 100
-                                maxLength: 4000000000
-                                nullable: true
-                              ModuleRestriction:
-                                title: A restriction applicable on module
-                                type: string
-                                minLength: 0
-                                maxLength: 1000
-                                nullable: true
-                              ModuleSubjects:
-                                title: The subject this module teaches.
-                                type: array
-                                items:
-                                  type: string
-                                  minLength: 1
-                                  maxLength: 150
-                                nullable: true
+                              ModuleInstanceCollection:
+                                type: object
+                                properties:
+                                  ModuleInstance:
+                                    type: array
+                                    items:
+                                      type: object
+                                      required:
+                                        - AcademicYearCode
+                                        - AcademicYearDescription
+                                        - ModuleInstanceDescription
+                                        - ModuleInstanceSubjectCollection
+                                      title: Module for given academic year.
+                                      properties:
+                                        AcademicYearCode:
+                                          title: The module is applicable to the academic year.
+                                          type: string
+                                          format: int32
+                                          minLength: 1
+                                          maxLength: 4
+                                          pattern: ^(\d)(4)$
+                                          nullable: false
+                                        AcademicYearDescription:
+                                          title: Description of the academic year.
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 100
+                                          nullable: false
+                                        ModuleInstanceDescription:
+                                          title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
+                                          type: string
+                                          minLength: 100
+                                          maxLength: 4000000000
+                                          nullable: true
+                                        ModuleInstanceRestriction:
+                                          title: A restriction applicable on module
+                                          type: string
+                                          minLength: 0
+                                          maxLength: 1000
+                                          nullable: true
+                                        ModuleInstanceSubjectCollection:
+                                          type: object
+                                          properties:
+                                            ModuleInstanceSubject:
+                                              title: The subject this module teaches.
+                                              type: array
+                                              items:
+                                                type: string
+                                                minLength: 1
+                                                maxLength: 150
+                                              nullable: true
+            application/xml:
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Response:
+                      type: object
+                      properties:
+                        Module:
+                          allOf:
+                            - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/0'
+                            - type: object
+                              properties:
+                                ModuleInstanceCollection:
+                                  type: object
+                                  properties:
+                                    ModuleInstance:
+                                      type: array
+                                      items:
+                                        $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/1/properties/ModuleInstanceCollection/properties/ModuleInstance/items'
+          headers:
+            '<<':
+              X-RateLimit-Limit:
+                description: Request limit per time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 100
+                required: true
+              X-RateLimit-Remaining:
+                description: Remaining requests for the current time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 94
+                required: true
+              X-Rate-Limit-Reset:
+                description: 'Time to the current window ends, in seconds from the current time.'
+                schema:
+                  type: integer
+                  format: int32
+                example: 1553528925
+                required: true
+              Retry-After:
+                description: |
+                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
+                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
+                  and this response header indicate the remaining time window before the rate limit resets, 
+                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
+                schema:
+                  type: integer
+                  format: int32
+                required: false
+                example: 1553528925
+          links:
+            '<<':
+              nextpage:
+                description: Link to get next page.
+                operationId: nextpage
+                parameters:
+                  $skipParam: $request.query.$skip
+                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
@@ -1776,11 +907,994 @@ paths:
         '500':
           $ref: '#/paths/~1Module/get/responses/400'
         '502': *ref_5
+  '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}':
+    get:
+      tags:
+        - Academic Module API
+      summary: '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}'
+      operationId: ModuleInstanceByModuleIDAndYear
+      description: |
+        Get single module instances for the given {moduleidentifier} and {academic year} in UCL
+        ```
+        [Module] -(ModuleIdentifier,Academicyear)-> [Module Instance]
+        ```
+      parameters:
+        - name: AcademicYearCode
+          in: path
+          required: true
+          description: Academic year.
+          style: simple
+          schema:
+            type: integer
+            format: int32
+            minimum: 2017
+            maximum: 2050
+            nullable: false
+          example: 2019
+        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D/get/parameters/0'
+      responses:
+        '200':
+          description: |
+            Successfull response includes single module instanc and header information 
+            ```
+            [Module] -(moduleidentifier , academicyear)-> [Module Instance]
+            ```
+            and pagination detail if more than allowed number of modules is found
+            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Response:
+                    type: object
+                    properties:
+                      Module:
+                        type: object
+                        allOf:
+                          - type: object
+                            title: Module Domain
+                            required:
+                              - ModuleIdentifier
+                              - ModuleTitle
+                              - ModuleCode
+                            properties:
+                              ModuleIdentifier:
+                                title: Unique system identifier of the module (Business Data object aka BDOid).
+                                type: string
+                                nullable: false
+                                minimum: 1
+                                maximum: 50
+                                readOnly: true
+                                pattern: '^([A-Z]|\d)*$'
+                              ModuleTitle:
+                                title: Title of the module.
+                                type: string
+                                minLength: 0
+                                maxLength: 120
+                                nullable: false
+                              ModuleSearchKeywords:
+                                title: Keywords used to search this module.
+                                type: string
+                                minLength: 0
+                                maxLength: 100
+                                nullable: true
+                              ModuleCode:
+                                title: Module code that is unique in UCL that is in the human readable format.
+                                type: string
+                                minLength: 1
+                                maxLength: 12
+                                nullable: false
+                              ModuleLearningHours:
+                                title: 'Learning hours of the module, this is indicative only.'
+                                type: integer
+                                minimum: 0
+                                maximum: 9999
+                                format: int32
+                              ModuleStudyHours:
+                                title: 'Learning hours of the module, this is indicative only.'
+                                type: integer
+                                minimum: 0
+                                maximum: 9999
+                                format: int32
+                              ModuleSuperGroup:
+                                title: Super module grouping such as Meets with Spanish Level 1 and 2
+                                type: string
+                                minLength: 0
+                                maxLength: 50
+                                nullable: true
+                              CEFRLevel:
+                                title: Language Modules Only CEFR level
+                                type: string
+                                minLength: 0
+                                maxLength: 50
+                                pattern: '^([A-Z]{1}\d{1}\/?)*$'
+                              ModuleContact:
+                                type: object
+                                required:
+                                  - Faculty
+                                  - Department
+                                properties:
+                                  Faculty:
+                                    type: object
+                                    required:
+                                      - FacultyName
+                                      - FacultyCode
+                                    properties:
+                                      FacultyCode:
+                                        title: Code of the teaching faculty code to which madule belongs to.
+                                        type: string
+                                        minLength: 3
+                                        maxLength: 3
+                                        nullable: false
+                                        pattern: '^([A-Z]){3}$'
+                                      FacultyName:
+                                        title: Name of the teaching faculty to which madule belongs to.
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 150
+                                        nullable: false
+                                  Department:
+                                    type: object
+                                    required:
+                                      - DepartmentName
+                                      - DepartmentCode
+                                    properties:
+                                      DepartmentCode:
+                                        title: Teaching department code in UCL.
+                                        type: string
+                                        minLength: 3
+                                        maxLength: 3
+                                        nullable: false
+                                        pattern: '^([A-Z]|_|\d|-)*$'
+                                      DepartmentName:
+                                        title: Teaching department name in UCL.
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 150
+                                        nullable: false
+                                  Person:
+                                    type: object
+                                    description: domain model that represents contact detail of a UCL person
+                                    required:
+                                      - Name
+                                    properties:
+                                      PersonIdentifier:
+                                        type: string
+                                        title: Unique identifier of the person in UCL
+                                      Name:
+                                        type: string
+                                        title: UCL person full name
+                                      Email:
+                                        type: string
+                                        format: email
+                                        title: UCL person email address
+                              ModuleValue:
+                                type: number
+                                format: float
+                                title: Credit value awarded to student on the successfull completion of the module.
+                          - type: object
+                            properties:
+                              ModuleInstance:
+                                type: object
+                                required:
+                                  - AcademicYearCode
+                                  - AcademicYearDescription
+                                  - ModuleInstanceDescription
+                                  - ModuleInstanceSubjectCollection
+                                title: Module for given academic year.
+                                properties:
+                                  AcademicYearCode:
+                                    title: The module is applicable to the academic year.
+                                    type: string
+                                    format: int32
+                                    minLength: 1
+                                    maxLength: 4
+                                    pattern: ^(\d)(4)$
+                                    nullable: false
+                                  AcademicYearDescription:
+                                    title: Description of the academic year.
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 100
+                                    nullable: false
+                                  ModuleInstanceDescription:
+                                    title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
+                                    type: string
+                                    minLength: 100
+                                    maxLength: 4000000000
+                                    nullable: true
+                                  ModuleInstanceRestriction:
+                                    title: A restriction applicable on module
+                                    type: string
+                                    minLength: 0
+                                    maxLength: 1000
+                                    nullable: true
+                                  ModuleInstanceSubjectCollection:
+                                    type: object
+                                    properties:
+                                      ModuleInstanceSubject:
+                                        title: The subject this module teaches.
+                                        type: array
+                                        items:
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 150
+                                        nullable: true
+            application/xml:
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Response:
+                      type: object
+                      properties:
+                        Module:
+                          type: object
+                          allOf:
+                            - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/0'
+                            - type: object
+                              properties:
+                                ModuleInstance:
+                                  $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/1/properties/ModuleInstance'
+          headers:
+            '<<':
+              X-RateLimit-Limit:
+                description: Request limit per time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 100
+                required: true
+              X-RateLimit-Remaining:
+                description: Remaining requests for the current time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 94
+                required: true
+              X-Rate-Limit-Reset:
+                description: 'Time to the current window ends, in seconds from the current time.'
+                schema:
+                  type: integer
+                  format: int32
+                example: 1553528925
+                required: true
+              Retry-After:
+                description: |
+                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
+                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
+                  and this response header indicate the remaining time window before the rate limit resets, 
+                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
+                schema:
+                  type: integer
+                  format: int32
+                required: false
+                example: 1553528925
+        '204': *ref_0
+        '400':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '401': *ref_1
+        '403': *ref_2
+        '404': *ref_3
+        '409':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '429': *ref_4
+        '500':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '502': *ref_5
+  '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}/ModuleDelivery':
+    get:
+      tags:
+        - Academic Module API
+      summary: '/Module/{ModuleIdentifier}/ModuleInstance/{AcademicYearCode}/ModuleDelivery'
+      operationId: ModuleDeliveryByModuleIdAndYear
+      description: |
+        Get the list of module delivery for given {moduleidentifier} and {academic year} in UCL
+        ```
+        [Module] -(academicyear)-> *[Module Instance] -(academicyear, moduleidentifier)-> *[ModuleDelivery] -> *[ModuleDeliveryAssessment]
+        ```
+      parameters:
+        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/parameters/0'
+        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D/get/parameters/0'
+      responses:
+        '200':
+          description: |
+            Successfull response includes list of module deliveries, instance and header information for the given moduleidentifier and academicyear
+            ```
+            [Module] -(moduleidentifier, academicyear)-> [Module Instance] -(moduleidentifier, academicyear)-> *[ModuleDelivery] -(ModuleDeliveryIdentifier)->*[ModuleDeliveryAssessment]
+            ```
+            and pagination detail if more than allowed number of moduledeliveries found
+            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Response:
+                    type: object
+                    properties:
+                      Module:
+                        allOf:
+                          - type: object
+                            title: Module Domain
+                            required:
+                              - ModuleIdentifier
+                              - ModuleTitle
+                              - ModuleCode
+                            properties:
+                              ModuleIdentifier:
+                                title: Unique system identifier of the module (Business Data object aka BDOid).
+                                type: string
+                                nullable: false
+                                minimum: 1
+                                maximum: 50
+                                readOnly: true
+                                pattern: '^([A-Z]|\d)*$'
+                              ModuleTitle:
+                                title: Title of the module.
+                                type: string
+                                minLength: 0
+                                maxLength: 120
+                                nullable: false
+                              ModuleSearchKeywords:
+                                title: Keywords used to search this module.
+                                type: string
+                                minLength: 0
+                                maxLength: 100
+                                nullable: true
+                              ModuleCode:
+                                title: Module code that is unique in UCL that is in the human readable format.
+                                type: string
+                                minLength: 1
+                                maxLength: 12
+                                nullable: false
+                              ModuleLearningHours:
+                                title: 'Learning hours of the module, this is indicative only.'
+                                type: integer
+                                minimum: 0
+                                maximum: 9999
+                                format: int32
+                              ModuleStudyHours:
+                                title: 'Learning hours of the module, this is indicative only.'
+                                type: integer
+                                minimum: 0
+                                maximum: 9999
+                                format: int32
+                              ModuleSuperGroup:
+                                title: Super module grouping such as Meets with Spanish Level 1 and 2
+                                type: string
+                                minLength: 0
+                                maxLength: 50
+                                nullable: true
+                              CEFRLevel:
+                                title: Language Modules Only CEFR level
+                                type: string
+                                minLength: 0
+                                maxLength: 50
+                                pattern: '^([A-Z]{1}\d{1}\/?)*$'
+                              ModuleContact:
+                                type: object
+                                required:
+                                  - Faculty
+                                  - Department
+                                properties:
+                                  Faculty:
+                                    type: object
+                                    required:
+                                      - FacultyName
+                                      - FacultyCode
+                                    properties:
+                                      FacultyCode:
+                                        title: Code of the teaching faculty code to which madule belongs to.
+                                        type: string
+                                        minLength: 3
+                                        maxLength: 3
+                                        nullable: false
+                                        pattern: '^([A-Z]){3}$'
+                                      FacultyName:
+                                        title: Name of the teaching faculty to which madule belongs to.
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 150
+                                        nullable: false
+                                  Department:
+                                    type: object
+                                    required:
+                                      - DepartmentName
+                                      - DepartmentCode
+                                    properties:
+                                      DepartmentCode:
+                                        title: Teaching department code in UCL.
+                                        type: string
+                                        minLength: 3
+                                        maxLength: 3
+                                        nullable: false
+                                        pattern: '^([A-Z]|_|\d|-)*$'
+                                      DepartmentName:
+                                        title: Teaching department name in UCL.
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 150
+                                        nullable: false
+                                  Person:
+                                    $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/1/properties/ModuleInstance/allOf/1/properties/ModuleDeliveryCollection/properties/ModuleDelivery/items/properties/ModuleDeliveryContact'
+                              ModuleValue:
+                                type: number
+                                format: float
+                                title: Credit value awarded to student on the successfull completion of the module.
+                          - type: object
+                            properties:
+                              ModuleInstance:
+                                allOf:
+                                  - type: object
+                                    required:
+                                      - AcademicYearCode
+                                      - AcademicYearDescription
+                                      - ModuleInstanceDescription
+                                      - ModuleInstanceSubjectCollection
+                                    title: Module for given academic year.
+                                    properties:
+                                      AcademicYearCode:
+                                        title: The module is applicable to the academic year.
+                                        type: string
+                                        format: int32
+                                        minLength: 1
+                                        maxLength: 4
+                                        pattern: ^(\d)(4)$
+                                        nullable: false
+                                      AcademicYearDescription:
+                                        title: Description of the academic year.
+                                        type: string
+                                        minLength: 1
+                                        maxLength: 100
+                                        nullable: false
+                                      ModuleInstanceDescription:
+                                        title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
+                                        type: string
+                                        minLength: 100
+                                        maxLength: 4000000000
+                                        nullable: true
+                                      ModuleInstanceRestriction:
+                                        title: A restriction applicable on module
+                                        type: string
+                                        minLength: 0
+                                        maxLength: 1000
+                                        nullable: true
+                                      ModuleInstanceSubjectCollection:
+                                        type: object
+                                        properties:
+                                          ModuleInstanceSubject:
+                                            title: The subject this module teaches.
+                                            type: array
+                                            items:
+                                              type: string
+                                              minLength: 1
+                                              maxLength: 150
+                                            nullable: true
+                                  - type: object
+                                    properties:
+                                      ModuleDeliveryCollection:
+                                        type: object
+                                        properties:
+                                          ModuleDelivery:
+                                            type: array
+                                            items:
+                                              type: object
+                                              required:
+                                                - ModuleDeliveryIdentifier
+                                                - ModuleDeliveryPeriod
+                                                - ModuleDeliveryLevel
+                                                - ModeOfStudy
+                                                - ModuleDeliveryTypes
+                                                - NumberOfStudents
+                                                - ModuleDeliveryLocation
+                                                - ModuleDeliveryContact
+                                                - ModuleDeliveryAssessment
+                                              title: 'An instance of the module, this domain contains year specific module detail i.e. Detail stored in this domain is subject to change each year for a given module.'
+                                              properties:
+                                                ModuleDeliveryIdentifier:
+                                                  title: Unique identifier for this module delivery
+                                                  type: string
+                                                  minimum: 1
+                                                  maximum: 50
+                                                  nullable: false
+                                                ModuleDeliveryPeriod:
+                                                  type: object
+                                                  title: object to represents the period detail of the module delivery.
+                                                  required:
+                                                    - PeriodTitle
+                                                  properties:
+                                                    PeriodCode:
+                                                      title: module delivery period code.
+                                                      type: string
+                                                      minLength: 1
+                                                      maxLength: 6
+                                                    PeriodTitle:
+                                                      title: module delivery period title.
+                                                      type: string
+                                                      minLength: 1
+                                                      maxLength: 50
+                                                AcademicLevel:
+                                                  type: object
+                                                  required:
+                                                    - AcademicLevelCode
+                                                    - AcademicLevelTitle
+                                                  properties:
+                                                    AcademicLevelCode:
+                                                      title: module delivery level code.
+                                                      type: string
+                                                      minimum: 1
+                                                      maximum: 6
+                                                      nullable: false
+                                                    AcademicLevelTitle:
+                                                      title: module delivery level title.
+                                                      type: string
+                                                      minimum: 1
+                                                      maximum: 50
+                                                      nullable: false
+                                                LevelOfStudy:
+                                                  title: module delivery level title.
+                                                  description: |
+                                                    Assessment for the module is different depends on which programme student 
+                                                    is enrolled to. possible programme levels in UCL is 
+                                                    * U - Undergraduate 
+                                                    * P - Postgraduate
+                                                  type: string
+                                                  minLength: 1
+                                                  maxLength: 50
+                                                  nullable: false
+                                                ModeOfStudy:
+                                                  title: Applicable mode of study for this module such as face-face.
+                                                  type: string
+                                                  minLength: 1
+                                                  maxLength: 15
+                                                  nullable: false
+                                                ModuleDeliveryType:
+                                                  title: Delivery included in the module such as Field trips and Placements
+                                                  type: array
+                                                  items:
+                                                    type: string
+                                                    enum:
+                                                      - Field Trips
+                                                      - Lab Work
+                                                      - Work Placements
+                                                      - 'Field Trips, Lab Work and Work Placements'
+                                                      - Field Trips and Lab Work
+                                                      - Field Trips and Work Placements
+                                                      - Lab Work and Work Placements
+                                                PreviousYearStudentCount:
+                                                  title: Number of students enrolled on module in previous year.
+                                                  type: number
+                                                  minimum: 1
+                                                  format: int32
+                                                  maximum: 999
+                                                  nullable: false
+                                                NumberOfStudents:
+                                                  title: 'Number of students on module for an acdemic year, if the selected year is the current academic year then this number is an indicative student count.'
+                                                  type: number
+                                                  minimum: 1
+                                                  format: int32
+                                                  maximum: 999
+                                                  nullable: false
+                                                ModuleDeliveryLocation:
+                                                  type: object
+                                                  required:
+                                                    - LocationName
+                                                    - LocationIdentifier
+                                                  properties:
+                                                    LocationIdentifier:
+                                                      title: Unique identifier of the UCL location.
+                                                      type: string
+                                                      minLength: 1
+                                                      maxLength: 12
+                                                      nullable: false
+                                                    LocationName:
+                                                      title: Name of the teaching location to which madule belongs to.
+                                                      type: string
+                                                      minLength: 0
+                                                      maxLength: 50
+                                                      nullable: false
+                                                ModuleDeliveryContact:
+                                                  type: object
+                                                  description: domain model that represents contact detail of a UCL person
+                                                  required:
+                                                    - Name
+                                                  properties:
+                                                    PersonIdentifier:
+                                                      type: string
+                                                      title: Unique identifier of the person in UCL
+                                                    Name:
+                                                      type: string
+                                                      title: UCL person full name
+                                                    Email:
+                                                      type: string
+                                                      format: email
+                                                      title: UCL person email address
+                                                ModuleDeliveryAssessment:
+                                                  title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                                  type: object
+                                                  required:
+                                                    - AssessmentWeightPercentage
+                                                    - AssessmentTitle
+                                                  properties:
+                                                    AssessmentBodySequence:
+                                                      type: string
+                                                      minLength: 0
+                                                      maxLength: 3
+                                                      pattern: '^(\d){3}$'
+                                                    AssessmentGroup:
+                                                      type: string
+                                                      minLength: 0
+                                                      maxLength: 2
+                                                    AssessmentTitle:
+                                                      type: string
+                                                      minLength: 1
+                                                      maxLength: 120
+                                                    AssessmentWeightPercentage:
+                                                      type: integer
+                                                      minimum: 0
+                                                      maximum: 100
+                                                      format: int32
+            application/xml:
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Response:
+                      type: object
+                      properties:
+                        Module:
+                          allOf:
+                            - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/0'
+                            - type: object
+                              properties:
+                                ModuleInstance:
+                                  allOf:
+                                    - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/1/properties/ModuleInstance/allOf/0'
+                                    - type: object
+                                      properties:
+                                        ModuleDeliveryCollection:
+                                          type: object
+                                          properties:
+                                            ModuleDelivery:
+                                              type: array
+                                              items:
+                                                $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D~1ModuleDelivery/get/responses/200/content/application~1json/schema/properties/Response/properties/Module/allOf/1/properties/ModuleInstance/allOf/1/properties/ModuleDeliveryCollection/properties/ModuleDelivery/items'
+          headers:
+            '<<':
+              X-RateLimit-Limit:
+                description: Request limit per time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 100
+                required: true
+              X-RateLimit-Remaining:
+                description: Remaining requests for the current time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 94
+                required: true
+              X-Rate-Limit-Reset:
+                description: 'Time to the current window ends, in seconds from the current time.'
+                schema:
+                  type: integer
+                  format: int32
+                example: 1553528925
+                required: true
+              Retry-After:
+                description: |
+                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
+                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
+                  and this response header indicate the remaining time window before the rate limit resets, 
+                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
+                schema:
+                  type: integer
+                  format: int32
+                required: false
+                example: 1553528925
+          links:
+            '<<':
+              nextpage:
+                description: Link to get next page.
+                operationId: nextpage
+                parameters:
+                  $skipParam: $request.query.$skip
+                  $limit: $request.query.$limit
+        '204': *ref_0
+        '400':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '401': *ref_1
+        '403': *ref_2
+        '404': *ref_3
+        '409':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '429': *ref_4
+        '500':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '502': *ref_5
+  /ModuleInstance:
+    get:
+      tags: &ref_6
+        - Academic Module API
+      summary: /ModuleInstance
+      operationId: ModuleCatalogue
+      description: |
+        Get the all module instances in UCL, response include module instances in current year and all the past years.
+        ```
+        *[Module Instance (FullDetail)]
+        ```
+        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+      responses: &ref_7
+        '200':
+          description: |
+            Successfull response includes list of module instances that matches the passed criteria
+            ```
+            *[Module Instance]
+            ```
+            and pagination detail if more than allowed number of modules is found
+            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Response:
+                    type: object
+                    properties:
+                      ModuleInstanceCollection:
+                        type: object
+                        properties:
+                          ModuleInstance:
+                            type: array
+                            items:
+                              type: object
+                              allOf:
+                                - type: object
+                                  properties:
+                                    ModuleIdentifier:
+                                      title: Title of the module.
+                                      type: string
+                                      minLength: 0
+                                      maxLength: 120
+                                      nullable: false
+                                    ModuleInstanceTitle:
+                                      $ref: '#/paths/~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleInstanceCollection/properties/ModuleInstance/items/allOf/0/properties/ModuleIdentifier'
+                                    ModuleInstanceSearchKeywords:
+                                      title: Keywords used to search this module.
+                                      type: string
+                                      minLength: 0
+                                      maxLength: 100
+                                      nullable: true
+                                    ModuleInstanceCode:
+                                      title: Module code that is unique in UCL that is in the human readable format.
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 12
+                                      nullable: false
+                                    ModuleInstanceLearningHours:
+                                      title: 'Learning hours of the module, this is indicative only.'
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 9999
+                                      format: int32
+                                    ModuleInstanceStudyHours:
+                                      title: 'Learning hours of the module, this is indicative only.'
+                                      type: integer
+                                      minimum: 0
+                                      maximum: 9999
+                                      format: int32
+                                    ModuleInstanceSuperGroup:
+                                      title: Super module grouping such as Meets with Spanish Level 1 and 2
+                                      type: string
+                                      minLength: 0
+                                      maxLength: 50
+                                      nullable: true
+                                    CEFRLevel:
+                                      title: Language Modules Only CEFR level
+                                      type: string
+                                      minLength: 0
+                                      maxLength: 50
+                                      pattern: '^([A-Z]{1}\d{1}\/?)*$'
+                                    ModuleInstanceContact:
+                                      type: object
+                                      required:
+                                        - Faculty
+                                        - Department
+                                      properties:
+                                        Faculty:
+                                          type: object
+                                          required:
+                                            - FacultyName
+                                            - FacultyCode
+                                          properties:
+                                            FacultyCode:
+                                              title: Code of the teaching faculty code to which madule belongs to.
+                                              type: string
+                                              minLength: 3
+                                              maxLength: 3
+                                              nullable: false
+                                              pattern: '^([A-Z]){3}$'
+                                            FacultyName:
+                                              title: Name of the teaching faculty to which madule belongs to.
+                                              type: string
+                                              minLength: 1
+                                              maxLength: 150
+                                              nullable: false
+                                        Department:
+                                          type: object
+                                          required:
+                                            - DepartmentName
+                                            - DepartmentCode
+                                          properties:
+                                            DepartmentCode:
+                                              title: Teaching department code in UCL.
+                                              type: string
+                                              minLength: 3
+                                              maxLength: 3
+                                              nullable: false
+                                              pattern: '^([A-Z]|_|\d|-)*$'
+                                            DepartmentName:
+                                              title: Teaching department name in UCL.
+                                              type: string
+                                              minLength: 1
+                                              maxLength: 150
+                                              nullable: false
+                                        Person:
+                                          type: object
+                                          description: domain model that represents contact detail of a UCL person
+                                          required:
+                                            - Name
+                                          properties:
+                                            PersonIdentifier:
+                                              type: string
+                                              title: Unique identifier of the person in UCL
+                                            Name:
+                                              type: string
+                                              title: UCL person full name
+                                            Email:
+                                              type: string
+                                              format: email
+                                              title: UCL person email address
+                                    ModuleInstanceValue:
+                                      type: number
+                                      format: float
+                                      title: Credit value awarded to student on the successfull completion of the module.
+                                - type: object
+                                  required:
+                                    - AcademicYearCode
+                                    - AcademicYearDescription
+                                    - ModuleInstanceDescription
+                                    - ModuleInstanceSubjectCollection
+                                  title: Module for given academic year.
+                                  properties:
+                                    AcademicYearCode:
+                                      title: The module is applicable to the academic year.
+                                      type: string
+                                      format: int32
+                                      minLength: 1
+                                      maxLength: 4
+                                      pattern: ^(\d)(4)$
+                                      nullable: false
+                                    AcademicYearDescription:
+                                      title: Description of the academic year.
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 100
+                                      nullable: false
+                                    ModuleInstanceDescription:
+                                      title: 'Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.'
+                                      type: string
+                                      minLength: 100
+                                      maxLength: 4000000000
+                                      nullable: true
+                                    ModuleInstanceRestriction:
+                                      title: A restriction applicable on module
+                                      type: string
+                                      minLength: 0
+                                      maxLength: 1000
+                                      nullable: true
+                                    ModuleInstanceSubjectCollection:
+                                      type: object
+                                      properties:
+                                        ModuleInstanceSubject:
+                                          title: The subject this module teaches.
+                                          type: array
+                                          items:
+                                            type: string
+                                            minLength: 1
+                                            maxLength: 150
+                                          nullable: true
+            application/xml:
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Response:
+                      type: object
+                      properties:
+                        ModuleInstanceCollection:
+                          type: object
+                          properties:
+                            ModuleInstance:
+                              type: array
+                              items:
+                                $ref: '#/paths/~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleInstanceCollection/properties/ModuleInstance/items'
+          headers:
+            '<<':
+              X-RateLimit-Limit:
+                description: Request limit per time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 100
+                required: true
+              X-RateLimit-Remaining:
+                description: Remaining requests for the current time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 94
+                required: true
+              X-Rate-Limit-Reset:
+                description: 'Time to the current window ends, in seconds from the current time.'
+                schema:
+                  type: integer
+                  format: int32
+                example: 1553528925
+                required: true
+              Retry-After:
+                description: |
+                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
+                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
+                  and this response header indicate the remaining time window before the rate limit resets, 
+                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
+                schema:
+                  type: integer
+                  format: int32
+                required: false
+                example: 1553528925
+          links:
+            '<<':
+              nextpage:
+                description: Link to get next page.
+                operationId: nextpage
+                parameters:
+                  $skipParam: $request.query.$skip
+                  $limit: $request.query.$limit
+        '204': *ref_0
+        '400':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '401': *ref_1
+        '403': *ref_2
+        '404': *ref_3
+        '409':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '429': *ref_4
+        '500':
+          $ref: '#/paths/~1Module/get/responses/400'
+        '502': *ref_5
+  '/ModuleInstance/{AcademicYearCode}':
+    get:
+      tags: *ref_6
+      summary: '/ModuleInstance/{AcademicYearCode}'
+      operationId: ModuleCatalogueFilterByYear
+      description: |
+        Get the list of module instances for the given {academic year} in UCL
+        ```
+        *[Module Instance (FullDetail)]
+        ```
+        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+      responses: *ref_7
+      parameters:
+        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/parameters/0'
   '/ModuleDelivery/{ModuleDeliveryIdentifier}':
     get:
       tags:
-        - ModuleCatalogue API
-      summary: /ModuleDelivery/DeliveryIdentifier
+        - Academic Module API
+      summary: '/ModuleDelivery/{ModuleDeliveryIdentifier}'
       operationId: ModuleDeliveryById
       description: |
         Get the single module delivery by unqiue module delivery identifier in UCL
@@ -1801,212 +1915,256 @@ paths:
             example: 123E4567E89b12D3A456426655440000
       responses:
         '200':
-          description: Get module delivery.
+          description: |
+            Successfull response includes single module deliverie delivery information for the given moduledeliveryidentifier
+            ```
+            [ModuleDelivery] -(ModuleDeliveryIdentifier)->*[ModuleDeliveryAssessment]
+            ```
+            and pagination detail if more than allowed number of moduledeliveries found
+            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
           content:
             application/json:
               schema:
                 type: object
-                required:
-                  - ModuleDeliveryIdentifier
-                  - ModuleDeliveryPeriod
-                  - ModuleDeliveryLevel
-                  - ModeOfStudy
-                  - ModuleDeliveryTypes
-                  - NumberOfStudents
-                  - ModuleDeliveryLocation
-                  - ModuleDeliveryContact
-                  - ModuleDeliveryAssessments
-                title: 'An instance of the module, this domain contains year specific module detail i.e. Detail stored in this domain is subject to change each year for a given module.'
                 properties:
-                  ModuleDeliveryIdentifier:
-                    title: Unique identifier for this module delivery
-                    type: string
-                    minimum: 1
-                    maximum: 50
-                    nullable: false
-                  ModuleDeliveryPeriod:
+                  Response:
                     type: object
-                    title: object to represents the period detail of the module delivery.
-                    required:
-                      - PeriodTitle
                     properties:
-                      PeriodCode:
-                        title: module delivery period code.
-                        type: string
-                        minLength: 1
-                        maxLength: 6
-                      PeriodTitle:
-                        title: module delivery period title.
-                        type: string
-                        minLength: 1
-                        maxLength: 50
-                  AcademicLevel:
-                    type: object
-                    required:
-                      - AcademicLevelCode
-                      - AcademicLevelTitle
-                    properties:
-                      AcademicLevelCode:
-                        title: module delivery level code.
-                        type: string
-                        minimum: 1
-                        maximum: 6
-                        nullable: false
-                      AcademicLevelTitle:
-                        title: module delivery level title.
-                        type: string
-                        minimum: 1
-                        maximum: 50
-                        nullable: false
-                  Programme:
-                    type: object
-                    required:
-                      - ProgrammeCode
-                      - ProgrammeTitle
-                    description: |
-                      Assessment for the module is different depends on which programme student 
-                      is enrolled to. possible programme levels in UCL is 
-                      * U - Undergraduate 
-                      * P - Postgraduate
-                    properties:
-                      ProgrammeIdentifier:
-                        title: Programme unique identifier.
-                        type: string
-                        nullable: false
-                      ProgrammeLevel:
-                        title: module delivery level title.
-                        type: string
-                        minLength: 1
-                        maxLength: 50
-                        nullable: false
-                  ModeOfStudy:
-                    title: Applicable mode of study for this module such as face-face.
-                    type: string
-                    minLength: 1
-                    maxLength: 15
-                    nullable: false
-                  ModuleDeliveryType:
-                    title: Delivery included in the module such as Field trips and Placements
-                    type: array
-                    items:
-                      type: string
-                      enum:
-                        - Field Trips
-                        - Lab Work
-                        - Work Placements
-                        - 'Field Trips, Lab Work and Work Placements'
-                        - Field Trips and Lab Work
-                        - Field Trips and Work Placements
-                        - Lab Work and Work Placements
-                  PreviousYearStudentCount:
-                    title: Number of students enrolled on module in previous year.
-                    type: number
-                    minimum: 1
-                    format: int32
-                    maximum: 999
-                    nullable: false
-                  NumberOfStudents:
-                    title: 'Number of students on module for an acdemic year, if the selected year is the current academic year then this number is an indicative student count.'
-                    type: number
-                    minimum: 1
-                    format: int32
-                    maximum: 999
-                    nullable: false
-                  ModuleDeliveryLocation:
-                    type: object
-                    required:
-                      - LocationName
-                      - LocationIdentifier
-                    properties:
-                      LocationIdentifier:
-                        title: Unique identifier of the UCL location.
-                        type: string
-                        minLength: 1
-                        maxLength: 12
-                        nullable: false
-                      LocationName:
-                        title: Name of the teaching location to which madule belongs to.
-                        type: string
-                        minLength: 0
-                        maxLength: 50
-                        nullable: false
-                  ModuleDeliveryContact:
-                    type: object
-                    description: domain model that represents contact detail of a UCL person
-                    required:
-                      - name
-                    properties:
-                      PersonIdentifier:
-                        type: string
-                        title: Unique identifier of the person in UCL
-                      name:
-                        type: string
-                        title: UCL person full name
-                      email:
-                        type: string
-                        format: email
-                        title: UCL person email address
-                  ModuleDeliveryAssessments:
-                    title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                    type: object
-                    required:
-                      - AssessmentWeightPercentage
-                      - AssessmentTitle
-                    properties:
-                      AssessmentBodySequence:
-                        type: string
-                        minLength: 0
-                        maxLength: 3
-                        pattern: '^(\d){3}$'
-                      AssessmentGroup:
-                        type: string
-                        minLength: 0
-                        maxLength: 2
-                      AssessmentTitle:
-                        type: string
-                        minLength: 1
-                        maxLength: 120
-                      AssessmentWeightPercentage:
-                        type: integer
-                        minimum: 0
-                        maximum: 100
-                        format: int32
+                      ModuleDeliveryCollection:
+                        type: object
+                        properties:
+                          ModuleDelivery:
+                            type: array
+                            items:
+                              allOf:
+                                - type: object
+                                  properties:
+                                    ModuleIdentifier:
+                                      title: Unique system identifier of the module (Business Data object aka BDOid).
+                                      type: string
+                                      nullable: false
+                                      minimum: 1
+                                      maximum: 50
+                                      readOnly: true
+                                      pattern: '^([A-Z]|\d)*$'
+                                - type: object
+                                  required:
+                                    - ModuleDeliveryIdentifier
+                                    - ModuleDeliveryPeriod
+                                    - ModuleDeliveryLevel
+                                    - ModeOfStudy
+                                    - ModuleDeliveryTypes
+                                    - NumberOfStudents
+                                    - ModuleDeliveryLocation
+                                    - ModuleDeliveryContact
+                                    - ModuleDeliveryAssessment
+                                  title: 'An instance of the module, this domain contains year specific module detail i.e. Detail stored in this domain is subject to change each year for a given module.'
+                                  properties:
+                                    ModuleDeliveryIdentifier:
+                                      title: Unique identifier for this module delivery
+                                      type: string
+                                      minimum: 1
+                                      maximum: 50
+                                      nullable: false
+                                    ModuleDeliveryPeriod:
+                                      type: object
+                                      title: object to represents the period detail of the module delivery.
+                                      required:
+                                        - PeriodTitle
+                                      properties:
+                                        PeriodCode:
+                                          title: module delivery period code.
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 6
+                                        PeriodTitle:
+                                          title: module delivery period title.
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 50
+                                    AcademicLevel:
+                                      type: object
+                                      required:
+                                        - AcademicLevelCode
+                                        - AcademicLevelTitle
+                                      properties:
+                                        AcademicLevelCode:
+                                          title: module delivery level code.
+                                          type: string
+                                          minimum: 1
+                                          maximum: 6
+                                          nullable: false
+                                        AcademicLevelTitle:
+                                          title: module delivery level title.
+                                          type: string
+                                          minimum: 1
+                                          maximum: 50
+                                          nullable: false
+                                    LevelOfStudy:
+                                      title: module delivery level title.
+                                      description: |
+                                        Assessment for the module is different depends on which programme student 
+                                        is enrolled to. possible programme levels in UCL is 
+                                        * U - Undergraduate 
+                                        * P - Postgraduate
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 50
+                                      nullable: false
+                                    ModeOfStudy:
+                                      title: Applicable mode of study for this module such as face-face.
+                                      type: string
+                                      minLength: 1
+                                      maxLength: 15
+                                      nullable: false
+                                    ModuleDeliveryType:
+                                      title: Delivery included in the module such as Field trips and Placements
+                                      type: array
+                                      items:
+                                        type: string
+                                        enum:
+                                          - Field Trips
+                                          - Lab Work
+                                          - Work Placements
+                                          - 'Field Trips, Lab Work and Work Placements'
+                                          - Field Trips and Lab Work
+                                          - Field Trips and Work Placements
+                                          - Lab Work and Work Placements
+                                    PreviousYearStudentCount:
+                                      title: Number of students enrolled on module in previous year.
+                                      type: number
+                                      minimum: 1
+                                      format: int32
+                                      maximum: 999
+                                      nullable: false
+                                    NumberOfStudents:
+                                      title: 'Number of students on module for an acdemic year, if the selected year is the current academic year then this number is an indicative student count.'
+                                      type: number
+                                      minimum: 1
+                                      format: int32
+                                      maximum: 999
+                                      nullable: false
+                                    ModuleDeliveryLocation:
+                                      type: object
+                                      required:
+                                        - LocationName
+                                        - LocationIdentifier
+                                      properties:
+                                        LocationIdentifier:
+                                          title: Unique identifier of the UCL location.
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 12
+                                          nullable: false
+                                        LocationName:
+                                          title: Name of the teaching location to which madule belongs to.
+                                          type: string
+                                          minLength: 0
+                                          maxLength: 50
+                                          nullable: false
+                                    ModuleDeliveryContact:
+                                      type: object
+                                      description: domain model that represents contact detail of a UCL person
+                                      required:
+                                        - Name
+                                      properties:
+                                        PersonIdentifier:
+                                          type: string
+                                          title: Unique identifier of the person in UCL
+                                        Name:
+                                          type: string
+                                          title: UCL person full name
+                                        Email:
+                                          type: string
+                                          format: email
+                                          title: UCL person email address
+                                    ModuleDeliveryAssessment:
+                                      title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                      type: object
+                                      required:
+                                        - AssessmentWeightPercentage
+                                        - AssessmentTitle
+                                      properties:
+                                        AssessmentBodySequence:
+                                          type: string
+                                          minLength: 0
+                                          maxLength: 3
+                                          pattern: '^(\d){3}$'
+                                        AssessmentGroup:
+                                          type: string
+                                          minLength: 0
+                                          maxLength: 2
+                                        AssessmentTitle:
+                                          type: string
+                                          minLength: 1
+                                          maxLength: 120
+                                        AssessmentWeightPercentage:
+                                          type: integer
+                                          minimum: 0
+                                          maximum: 100
+                                          format: int32
             application/xml:
-              schema:
-                $ref: '#/paths/~1ModuleDelivery~1%7BModuleDeliveryIdentifier%7D/get/responses/200/content/application~1json/schema'
+              '<<':
+                schema:
+                  type: object
+                  properties:
+                    Response:
+                      type: object
+                      properties:
+                        ModuleDeliveryCollection:
+                          type: object
+                          properties:
+                            ModuleDelivery:
+                              type: array
+                              items:
+                                allOf:
+                                  - type: object
+                                    properties:
+                                      ModuleIdentifier:
+                                        $ref: '#/paths/~1ModuleDelivery~1%7BModuleDeliveryIdentifier%7D/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleDeliveryCollection/properties/ModuleDelivery/items/allOf/0/properties/ModuleIdentifier'
+                                  - $ref: '#/paths/~1ModuleDelivery~1%7BModuleDeliveryIdentifier%7D/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleDeliveryCollection/properties/ModuleDelivery/items/allOf/1'
           headers:
-            X-RateLimit-Limit:
-              description: Request limit per time window
-              schema:
-                type: integer
-                format: int32
-              example: 100
-              required: true
-            X-RateLimit-Remaining:
-              description: Remaining requests for the current time window
-              schema:
-                type: integer
-                format: int32
-              example: 94
-              required: true
-            X-Rate-Limit-Reset:
-              description: 'Time to the current window ends, in seconds from the current time.'
-              schema:
-                type: integer
-                format: int32
-              example: 1553528925
-              required: true
-            Retry-After:
-              description: |
-                When an application exceeds the rate limit for a given API endpoint, the API will return a 
-                [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
-                and this response header indicate the remaining time window before the rate limit resets, 
-                in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
-              schema:
-                type: integer
-                format: int32
-              required: false
-              example: 1553528925
+            '<<':
+              X-RateLimit-Limit:
+                description: Request limit per time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 100
+                required: true
+              X-RateLimit-Remaining:
+                description: Remaining requests for the current time window
+                schema:
+                  type: integer
+                  format: int32
+                example: 94
+                required: true
+              X-Rate-Limit-Reset:
+                description: 'Time to the current window ends, in seconds from the current time.'
+                schema:
+                  type: integer
+                  format: int32
+                example: 1553528925
+                required: true
+              Retry-After:
+                description: |
+                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
+                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
+                  and this response header indicate the remaining time window before the rate limit resets, 
+                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
+                schema:
+                  type: integer
+                  format: int32
+                required: false
+                example: 1553528925
+          links:
+            '<<':
+              nextpage:
+                description: Link to get next page.
+                operationId: nextpage
+                parameters:
+                  $skipParam: $request.query.$skip
+                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
@@ -2021,7 +2179,81 @@ paths:
         '502': *ref_5
 components:
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    oauth2:
+      type: oauth2
+      description: |
+        [OAuth 2 (Open Authorization)](https://tools.ietf.org/html/rfc6749) is an open standard for access delegation. It is used for token-based authentication and authorization. 
+        This standard is used by many technology providers, such as Google, Facebook, and Twitter. By using OAuth 2, it is possible to grant access to a secured resource (with an access token) for a specific period of time. Once the lifetime of that access token expires, the consumer has to refresh the token to obtain a new token.
+
+        <img src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=CiAgICBVc2VyLT5DbGllbnQ6IEdFVCAvcGVlawpwYXJ0aWNpcGFudCBBdXRoU2VydmVyCgphY3RpdmF0ZQA0BQAECgA7BgoKAEMGLT5Vc2VyOiAzMDI6IGxvY2F0aW9uPWF1dGgvYXV0aG9yaXplCmRlAD4OAAULAEYIAIEXBgB1CgCBGgcAOgoAdxcAgSYLAIEyCgCBDQh7bWVzc2FnZXM6ICJEbyB5b3UgYXBwcm92ZT8ifQB6HACBewwAgQgSAD0HAF41AIIaDmMAgwgFL2hhbmRsZV9jb2RlP2NvZGU9ZGtzaGZqZwB1LgCDTQ0AOhkAgy8nAIJ-DFBPU1Q6IC90b2tlbgA2FwCCcBcAhGUIMjAwOiB7YWNjZXNzXwBDBTpDTk1CVkNYS1ZZAIJ9DQCEdQwAhFoIUmVzb3VyY2UAhA0NcgAOBygASgwpAIUrCgAnDgoANg4AgQsPcmVzcG9ucwCFHA0AMQ8AhWAPAC8IdWx0AIU7EwCFYBA" alt="OAuth2 Flow">
+
+
+        After [subscribing to an API](http://usermanual-not-exist) using self service portal in the api platform, consumers need to generate an access token to invoke the API. This is an OAuth2 access token. The validity period of this access token can be specified when generating it.
+
+        Authenticating via OAuth requires the following steps:
+        1. Create a Client
+        2. Generate a Token
+        3. Make Authenticated Requests
+
+        ### Create a Client
+        You must first register your applicaion using slef service API platform, contact API platform team for more detail. This is a one-time operation. You will be provided with a Client ID and a Client Secret key. Please note this information down, as it will be required for the next step.
+
+        **Note:** The OAuth client will be owned by a user account used to login to create client id in first place. If you want to perform PUT, POST, or DELETE operations using the OAuth client, the owner of the OAuth client must have a Platform role that includes the "API Write Access" permission.
+
+        ### Generate a Token
+        To obtain a token, an app sends the client ID and client secret associated with it to token api. If these parameters (i.e. client ID and client secret) are valid, an access token will be returned back. 
+
+        Token api requires the following parameters:
+        - `client_id` - obtain from the previous step
+        - `client_secret` - obtain from the previous step
+        - `grant_type` - must be set to `client_credentials`
+
+        For example, the following cURL command can be used to access the Token API.
+
+               curl -k -d "grant_type=client_credentials" -H "Authorization: Basic cEJ6dUlaaEdwaGZRbWRjVVgwbG5lRmlpdXh3YTo0U0pnV19qTU56aGpIU284OGJuZVhtTnFNMjRh" -H "Content-Type: application/x-www-form-urlencoded" https://localhost:8243/token -v
+
+        NOTE: Combine the consumer key and consumer secret keys in the format consumer-key:consumer-secret and encode the combined string using [base64](http://base64encode.org).
+
+        You receive a response similar to the following:
+
+              {
+                "access_token":"4c27f899-6f9c-3217-b974-3ceb5a409ac3",
+                "scope":"am_application_scope default",
+                "token_type":"Bearer",
+                "expires_in":723
+              }
+
+
+        ### Make Authenticated Requests
+        Every API requests must include a valid authentication token in an HTTP header:
+        `Authorization: Bearer {bearer_token}`
+
+        ### Refresh Token
+        An access token is issued with a limited lifetime, An hour most of the time. Therefore, when the lifetime is over, the token will expire. Afterward, users/client apps need a new token to consume the secured services. This can be addressed using token api with the following parameters.
+
+        - `client_id` - obtain from the previous step
+        - `client_secret` - obtain from the previous step
+        - `grant_type` - must be set to `refresh_token`
+        - 'refresh_token' - retoken obtain from the previous access token api call
+
+        For example, the following cURL command can be used to refresh the token.
+
+              curl -k -d "grant_type=refresh_token&refresh_token=<retoken>" -H "Authorization: Basic SVpzSWk2SERiQjVlOFZLZFpBblVpX2ZaM2Y4YTpHbTBiSjZvV1Y4ZkM1T1FMTGxDNmpzbEFDVzhh" -H "Content-Type: application/x-www-form-urlencoded" https://localhost:8243/token
+         
+        NOTE: Combine the consumer key and consumer secret keys in the format consumer-key:consumer-secret and encode the combined string using [base64](http://base64encode.org).
+
+        You receive a response similar to the following:
+
+              {
+                  "scope":"default",
+                  "token_type":"Bearer",
+                  "expires_in":3600,
+                  "refresh_token":"7ed6bae2b1d36c041787e8c8e2d6cbf8",
+                  "access_token":"b7882d23f1f8257f4bc6cf4a20633ab1"
+              }
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://tbc/token'
+          refreshUrl: 'https://tbc/token'
+          scopes:
+            read-AcademicModule: read academic modules
