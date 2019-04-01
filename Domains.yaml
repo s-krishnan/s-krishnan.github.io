@@ -8,7 +8,7 @@ openapi: 3.0.0
 
 info:
   description: "This is a collection of domain models for module catalogue in UCL"
-  version: '1.0.0'
+  version: '2.0.0'
   title:  Domain models
 
 components:
@@ -30,20 +30,19 @@ components:
       type: "object"
       description: domain model that represents contact detail of a UCL person
       required:
-        - name
+        - Name
       properties:
         PersonIdentifier:
           type: string
           title:  Unique identifier of the person in UCL 
-        name:
+        Name:
           type: "string"
           title: UCL person full name 
-        email:
+        Email:
           type: "string"
           format: "email"
           title: UCL person email address
-
-   
+  
     Period:
       type: "object"
       title: object to represents the period detail of the module delivery.
@@ -109,12 +108,12 @@ components:
         - AssessmentWeightPercentage
         - AssessmentTitle
       properties:
-        AssessmentBodySequence:
-          type: string
-          minLength:  0
-          maxLength:  3
-          pattern:  ^(\d){3}$          
-        AssessmentGroup:
+        # AssessmentBodySequence:
+        #   type: string
+        #   minLength:  0
+        #   maxLength:  3
+        #   pattern:  ^(\d){3}$
+        _AssessmentGroupName:
           type: string
           minLength:  0
           maxLength:  2
@@ -135,13 +134,14 @@ components:
         - ModuleDeliveryPeriod
         - ModuleDeliveryLevel
         - ModeOfStudy
-        - ModuleDeliveryTypes
+        - ModuleDeliveryType
         - NumberOfStudents
         - ModuleDeliveryLocation
         - ModuleDeliveryContact
-        - ModuleDeliveryAssessments
+        - ModuleDeliveryAssessment
       title:  An instance of the module, this domain contains year specific module detail i.e. Detail stored in this domain is subject to change each year for a given module.
       properties:
+     
         ModuleDeliveryIdentifier:
           title:  Unique identifier for this module delivery
           type: string
@@ -153,27 +153,43 @@ components:
           $ref: "#/components/schemas/Period"
         AcademicLevel:
           $ref: "#/components/schemas/AcademicLevel"
-        Programme:
-          $ref: "#/components/schemas/AcademicProgramme"
+        LevelOfStudy:
+          title:  module delivery level title.
+          description: |
+            Assessment for the module is different depends on which programme student 
+            is enrolled to. possible programme levels in UCL is 
+            * U - Undergraduate 
+            * P - Postgraduate
+          type: string
+          minLength:  1
+          maxLength:  50
+          nullable: false
+
         ModeOfStudy:
           title: Applicable mode of study for this module such as face-face.
           type: string
           minLength: 1
           maxLength: 15
           nullable: false
-        ModuleDeliveryType:
-          title: Delivery included in the module such as Field trips and Placements
-          type: array
-          items:
-            type: string
-            enum:
-              - Field Trips 
-              - Lab Work
-              - Work Placements
-              - Field Trips, Lab Work and Work Placements
-              - Field Trips and Lab Work
-              - Field Trips and Work Placements 
-              - Lab Work and Work Placements
+        ModuleDeliveryTypeCollection:
+          type: object
+          properties:
+            ModuleDeliveryType:
+              title: Delivery included in the module such as Field trips and Placements
+              type: array
+              items:
+              - type: object
+                properties:
+                  _Name:
+                    type: string
+                    enum:
+                      - Field Trips 
+                      - Lab Work
+                      - Work Placements
+                      - Field Trips, Lab Work and Work Placements
+                      - Field Trips and Lab Work
+                      - Field Trips and Work Placements 
+                      - Lab Work and Work Placements
         PreviousYearStudentCount:
           title: Number of students enrolled on module in previous year.  
           type: number
@@ -194,33 +210,58 @@ components:
         ModuleDeliveryContact:
           title: Contact Information,
           $ref: '#/components/schemas/Person'
-        ModuleDeliveryAssessments:
-          $ref: '#/components/schemas/ModuleDeliveryAssessment'
-    
+        ModuleDeliveryAssessmentList:
+          type: object
+          description:  |
+            List of delivery assessment for this module delivery. This list is ordered by its sequence hence consumer application should honour list order, ignoring the order will not give the desired result.  
+          properties:
+            ModuleDeliveryAssessment:
+              type: array
+              items:
+                $ref: '#/components/schemas/ModuleDeliveryAssessment'
+    ModuleInstanceFull:
+      type: object
+      allOf:
+        - type: object
+          properties:
+            ModuleIdentifier:
+              $ref: '#/components/schemas/Module/properties/ModuleTitle'
+            ModuleInstanceTitle:
+              $ref: '#/components/schemas/Module/properties/ModuleTitle'
+            ModuleInstanceSearchKeywords:
+              $ref: '#/components/schemas/Module/properties/ModuleSearchKeywords'
+            ModuleInstanceCode:
+              $ref: '#/components/schemas/Module/properties/ModuleCode'
+            ModuleInstanceLearningHours:
+              $ref: '#/components/schemas/Module/properties/ModuleLearningHours'
+            ModuleInstanceStudyHours:
+              $ref: '#/components/schemas/Module/properties/ModuleStudyHours'
+            ModuleInstanceSuperGroup:
+              $ref: '#/components/schemas/Module/properties/ModuleSuperGroup'
+            CEFRLevel:
+              $ref: '#/components/schemas/Module/properties/CEFRLevel'
+            ModuleInstanceContact:
+              $ref: '#/components/schemas/Module/properties/ModuleContact'
+            ModuleInstanceValue:
+              $ref: '#/components/schemas/Module/properties/ModuleValue'
+        - $ref: '#/components/schemas/ModuleInstance'
+
     ModuleInstance:
       type: object
       required:
         - AcademicYearCode
         - AcademicYearDescription
-        - ModuleDescription
-        - ModuleSubjects
-        - ModuleIdentifier
+        - ModuleInstanceDescription
+        - ModuleInstanceSubjectCollection
       title:  Module for given academic year.
       properties:
-        ModuleIdentifier:
-            title: Unique system identifier of the module (Business Data object aka BDOid).
-            type: string
-            nullable: false
-            minimum: 1
-            maximum: 50
-            readOnly: true    # Returned by GET, not used in POST/PUT/PATCH
-            pattern: ^([A-Z]|\d)*$
         AcademicYearCode:
           title: The module is applicable to the academic year.
           type: string
-          format: date
+          format: int32
           minLength: 1
-          maxLength: 50
+          maxLength: 4
+          pattern: ^(\d)(4)$
           nullable: false
         AcademicYearDescription:
           title: Description of the academic year.
@@ -228,26 +269,29 @@ components:
           minLength: 1
           maxLength: 100
           nullable: false
-        ModuleDescription:
+        ModuleInstanceDescription:
           title: Detail of the module, this will contain special character and format instruction on how detail sould be rented in the digital platform.
           type: string
           minLength: 100
           maxLength: 4000000000
           nullable: true
-        ModuleRestriction:
+        ModuleInstanceRestriction:
           title: A restriction applicable on module
           type: string
           minLength: 0
           maxLength: 1000
           nullable: true
-        ModuleSubjects:
-          title: The subject this module teaches.
-          type: array
-          items:
-            type: string
-            minLength: 1
-            maxLength: 150
-          nullable: true
+        ModuleInstanceSubjectCollection:
+          type: object
+          properties:
+            ModuleInstanceSubject:
+              title: The subject this module teaches.
+              type: array
+              items:
+                type: string
+                minLength: 1
+                maxLength: 150
+              nullable: true
   
     Location:
       type: object
@@ -267,6 +311,7 @@ components:
           minLength: 0
           maxLength: 50
           nullable: false
+    
     Faculty:
       type: object
       required:
@@ -317,6 +362,8 @@ components:
           $ref: "#/components/schemas/Faculty"
         Department:
           $ref: "#/components/schemas/Department"
+        Person:
+          $ref: "#/components/schemas/Person"
 
     Module:
       type: "object"
@@ -376,24 +423,17 @@ components:
           minLength: 0
           maxLength: 50
           pattern: ^([A-Z]{1}\d{1}\/?)*$
-        AcademicUnit:
+        ModuleContact:
           title: Detail of the academicUnit in UCL that owns the module.
           $ref: '#/components/schemas/AcademicUnit'
-        ModuleContactInformation:
-          title: Contact Information,
-          $ref: '#/components/schemas/Person'
+        # ModuleContactInformation:
+        #   title: Contact Information,
+        #   $ref: '#/components/schemas/Person'
         ModuleValue:
           type: number
           format:  float
           title:  Credit value awarded to student on the successfull completion of the module.
-    
-    ModuleCatalogueItem:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/Module'
-        - $ref: '#/components/schemas/ModuleInstance'
-    
-    
+
     GeneralError:
       type: object 
       title:  General Error
@@ -422,19 +462,19 @@ components:
                   Human readable message; intended for being displayed. 
                   The message should not be longer than 254 characters.
                   A message can occur multiple times, but only once for each language. It is a mandatory parameter.
-              Language:
+              _Lang:
                 type: string
                 format: lang
                 example:  en
                 description:  |
                   Indicates the language in which the error name is provided. 
                   It is an optional parameter, when not provided default is english 'en'
-              BackendResponse:
-                type: string
-                description:  |
-                  This is an optional field that could contain any error messages from the backend system such as 
-                  e.g. a stacktrace.The use of this field is restricted to communication between two backend-systems.
-                  It is an optional parameter.
+        # BackendResponse:
+        #   type: string
+        #   description:  |
+        #     This is an optional field that could contain any error messages from the backend system such as 
+        #     e.g. a stacktrace.The use of this field is restricted to communication between two backend-systems.
+        #     It is an optional parameter.
 
   parameters:
     skipParam:
@@ -613,26 +653,33 @@ components:
   # (Referencing from Domain.yaml is not working )
   # -----------------------------------------------------
   responses:
-    module:
-      description: Module catalogue response
+    modules_200_status:
+      description: |
+        Successfull response includes list of module (Header Infomation only, No module detail that subject to change 
+        each year is not added.) 
+        ```
+        *[Module]
+        ```
+        and pagination detail if more than allowed number of modules is found
+        [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
       content:
-        application/json:
+        application/json: &modules_200_status_structure
           schema:
             type: object
             properties:
-              Module:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Module'
+              Response:
+                type: object
+                properties:
+                  ModuleCollection:
+                    type: object
+                    properties:
+                      Module:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Module'
         application/xml:
-          schema:
-            type: object
-            properties:
-              Module:
-                type: array
-                items:
-                   $ref: '#/components/schemas/Module'
-      headers:
+          <<: *modules_200_status_structure
+      headers: &RateLimitHeader
         X-RateLimit-Limit:
           $ref: '#/components/headers/X-RateLimit-Limit'
         X-RateLimit-Remaining:
@@ -644,7 +691,7 @@ components:
       # -----------------------------------------------------
       # Links
       # -----------------------------------------------------
-      links:
+      links:  &CommonLinks
         nextpage:
         #nextpage: # <---- arbitrary name for the link
           description: Link to get next page.
@@ -654,49 +701,197 @@ components:
           parameters:
             $skipParam: $request.query.$skip
             $limit: $request.query.$limit
-
-    moduleinstance:
-      description: Module catalogue response
+    
+    module_200_status:
+      description: |
+        Successfull response includes single module (Header Infomation only, No module detail that subject to change 
+        each year is not added.) for the given moduleidentifier
+        ```
+        (**)[Module]
+        ```
       content:
-        application/json:
+        application/json: &module_200_status_structure
           schema:
-            type: object
+            type: "object"
             properties:
               Module:
-                type: array
-                items:
-                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+                $ref: '#/components/schemas/Module'
         application/xml:
+          << : *module_200_status_structure
+      headers:
+        <<: *RateLimitHeader
+
+    moduleinstances_200_status:
+      description: |
+        Successfull response includes list of module instance and header information 
+        ```
+        [Module] -(moduleidentifier)-> *[Module Instance]
+        ```
+        and pagination detail if more than allowed number of modules is found
+        [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+      content:
+        application/json: &moduleinstances_200_status_structure
           schema:
             type: object
             properties:
-              Module:
-                type: array
-                items:
-                  $ref: 'Domains.yaml#/components/schemas/ModuleCatalogueItem'
+              Response:
+                type: object
+                properties:
+                    Module:
+                      allOf:
+                      - $ref: '#/components/schemas/Module'
+                      - type: object
+                        properties:  
+                          ModuleInstanceCollection:
+                            type: object
+                            properties:
+                              ModuleInstance:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/ModuleInstance'
+        application/xml:
+          << : *moduleinstances_200_status_structure
       headers:
-        X-RateLimit-Limit:
-          $ref: '#/components/headers/X-RateLimit-Limit'
-        X-RateLimit-Remaining:
-          $ref: '#/components/headers/X-RateLimit-Remaining'
-        X-Rate-Limit-Reset:
-          $ref: '#/components/headers/X-RateLimit-Reset'
-        Retry-After:
-          $ref: '#/components/headers/Retry-After'
-      # -----------------------------------------------------
-      # Links
-      # -----------------------------------------------------
+        <<: *RateLimitHeader
       links:
-        nextpage:
-        #nextpage: # <---- arbitrary name for the link
-          description: Link to get next page.
-          operationId: nextpage
-          # or
-          # operationRef: '#/paths/Module/get'
-          parameters:
-            $skipParam: $request.query.$skip
-            $limit: $request.query.$limit
+        <<: *CommonLinks
 
+    moduleinstance_200_status:
+      description: |
+        Successfull response includes single module instanc and header information 
+        ```
+        [Module] -(moduleidentifier , academicyear)-> [Module Instance]
+        ```
+        and pagination detail if more than allowed number of modules is found
+        [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+      content:
+        application/json: &moduleinstance_200_status_schema
+          schema:
+            type: object
+            properties:
+              Response:
+                type: object
+                properties:
+                  Module:
+                    type: object
+                    allOf:
+                      - $ref: '#/components/schemas/Module'
+                      - type: object
+                        properties:
+                          ModuleInstance:
+                            $ref: '#/components/schemas/ModuleInstance'
+        application/xml:
+          <<: *moduleinstance_200_status_schema
+      headers:
+        <<: *RateLimitHeader
+
+    moduleinstancesfull_200_status:
+      description: |
+            Successfull response includes list of module instances that matches the passed criteria
+            ```
+            *[Module Instance]
+            ```
+            and pagination detail if more than allowed number of modules is found
+            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+      content:
+        application/json: &moduleinstancesfull_200_status_structure
+          schema:
+            type: object
+            properties:
+              Response:
+                type: object
+                properties:
+                  ModuleInstanceCollection:
+                    type: object
+                    properties:
+                      ModuleInstance:
+                        type: array
+                        items:
+                          $ref: Domains.yaml#/components/schemas/ModuleInstanceFull
+        application/xml:
+          << : *moduleinstancesfull_200_status_structure
+      headers:
+        <<: *RateLimitHeader
+      links:
+        <<: *CommonLinks
+
+    moduledeliveries_200_status:
+      description: |
+        Successfull response includes list of module deliveries, instance and header information for the given moduleidentifier and academicyear
+        ```
+        [Module] -(moduleidentifier, academicyear)-> [Module Instance] -(moduleidentifier, academicyear)-> *[ModuleDelivery] -(ModuleDeliveryIdentifier)->*[ModuleDeliveryAssessment]
+        ```
+        and pagination detail if more than allowed number of moduledeliveries found
+        [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+      content:
+        application/json: &moduledeliveries_200_status
+          schema:
+            type: object
+            properties:
+              Response:
+                type: object
+                properties:
+                  Module:
+                    allOf:
+                      - $ref: '#/components/schemas/Module'
+                      - type: object
+                        properties:
+                          ModuleInstance:
+                            allOf:
+                            - $ref: '#/components/schemas/ModuleInstance'
+                            - type: object
+                              properties:
+                                ModuleDeliveryCollection:
+                                  type: object
+                                  properties:
+                                    ModuleDelivery:
+                                      type: array
+                                      items:
+                                        $ref: '#/components/schemas/ModuleDelivery'
+                          
+                            
+                        
+        application/xml:
+          << : *moduledeliveries_200_status
+      headers:
+        <<: *RateLimitHeader
+      links:
+        <<: *CommonLinks
+
+    moduledelivery_200_status:
+      description: |
+        Successfull response includes single module deliverie delivery information for the given moduledeliveryidentifier
+        ```
+        [ModuleDelivery] -(ModuleDeliveryIdentifier)->*[ModuleDeliveryAssessment]
+        ```
+        and pagination detail if more than allowed number of moduledeliveries found
+        [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+      content:
+        application/json: &moduledelivery_200_status
+          schema:
+            type: object
+            properties:
+              Response:
+                type: object
+                properties:
+                  ModuleDeliveryCollection:
+                    type: object
+                    properties:
+                      ModuleDelivery:
+                        type: array
+                        items:
+                          allOf:
+                          - type: object
+                            properties:
+                              ModuleIdentifier:
+                                $ref: "#/components/schemas/Module/properties/ModuleIdentifier"
+                          - $ref: '#/components/schemas/ModuleDelivery'
+        application/xml:
+          << : *moduledelivery_200_status
+      headers:
+        <<: *RateLimitHeader
+      links:
+        <<: *CommonLinks
   # -----------------------------------------------------
   # Common Error
   # (Referencing from Domain.yaml is not working )
