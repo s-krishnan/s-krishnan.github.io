@@ -8,7 +8,7 @@ servers:
     url: 'http://localhost:8002'
 info:
   description: "# Introduction\nWelcome to the reference for the UCL Academic REST API!\n<a href=\"http://en.wikipedia.org/wiki/REST_API\" target=\"_blank\">REST</a> is a web-service protocol that lends itself to rapid development by using everyday HTTP and JSON, XML technology.\n\nThe UCL Academic REST API provides a broad set of operations and resources that:\n\n  * Enable Web integration from the website.\n  * Support self-service subscriber sign-ups and account management (future).\n  * Enable manipulation of most objects in the Academic Object Model.\n\nWant to share your opinion on how our API works for you? <a href=\"_self\" target=\"_blank\">Tell us how you feel </a>about using our API and what we can do to make it better.\n\n## Access to the API\n\n  You can access the UCL Academic REST API via one of the following endpoints:\n\n| Environment              | Base URL for REST Endpoints |\n|-------------------------|-------------------------|\n|Production | TBC   |\n|UAT    | TBC|\n|Performance Test | TBC |\n\nThe Production endpoint provides access to the live data. UAT tenants are a good place to test code without affecting real-world data. If you would like UCL to provision an UAT tenant for you, contact API service owner for assistance.\n\n\n# API Changelog\nYou can find the <a href=\"_self\" target=\"_blank\">Changelog</a> of the API Reference in the API wiki page.\n\n# Authentication\n\n Authentication detail \n\n# Requests and Responses\n\n## BDO IDs \nAs a general rule, pass BDOid to select / update / delete single resource in academic REST APIs   \n\n## HTTP Request Body\n\nMost of the parameters and data accompanying your requests will be contained in the body of the HTTP request. \n\nThe UCL Academic REST API accepts JSON, XML in the HTTP request body. No other data format (e.g., SOAP, RSS, TEXT) is supported.\n\n## Testing a Request\n\nUse a third party client, such as [curl](https://curl.haxx.se \"curl\"), [Postman](https://www.getpostman.com \"Postman\"), or [Advanced REST Client](https://advancedrestclient.com \"Advanced REST Client\"), to test the UCL Academic REST API.\n\nYou can test the UCL Academic REST API for any enviornment as long as you have sufficient access. If connecting to Production, bear in mind that you are working with your live production data, not sample data or test data.\n\n  Timeout Limit\n\nIf a request does not complete within 120 seconds, the request times out and API platform returns a Gateway Timeout error.\n\n## Error Handling\n\nResponses and error codes are detailed in [Responses and errors](https://wiki.ucl.ac.uk/display/IA/API+Integration+Patterns?preview=/111477057/112333232/API%20Design%20Principles%20Standards.docx). \n\n# API Rate Limits\n\nAPI platform enforces client-level, Rate limiting of the standard API is primarily on a  per-user basis — or more accurately described, per user access token. If a method allows for X requests per rate limit   window, then it allows X requests per window per access token.  \n See below for more information.\n ##  HTTP Headers and Response Codes \n Use the HTTP headers in order to understand where the application is at for a given rate limit,  on the method that was just utilized. \n  *\t`x-rate-limit-limit:`  the rate limit ceiling for that given endpoint, indicates how many calls  your application may make per time window. This time window is currently 60 seconds for most the resources,  but for the most reliable code you should not assume this is the case - use the X-Rate-Limit-Reset header instead. \n  *   `x-rate-limit-remaining:`  the number of requests left for the current time window \n  *   `x-rate-limit-reset:`  the remaining window before the rate limit resets, in UTC \n  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time) \n  When an application exceeds the rate limit for a given API endpoint, the API will return a   [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code,    and the following error will be returned in the response body \n  '{ \"errors\": [ { \"code\": 88, \"message\": \"Rate limit exceeded\" } ] }' \n  and the following response header  `Retry-After: `the remaining window before the rate limit resets, in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)  \n\n ##  Concurrent Request Limits \n\n ### ModuleCatalogue API  \n Number of simultaneous request accepted by API from single clinet for the selected resource at any given time in ms. /  \n\n| Tenant              | GET| PUT | DELETE | POST | \n  |-------------------------|----| ----| -------| -----| \n  |Drupal                   | 1  | N/A | N/A | N/A |\n  \n\n ##  Request Limits \n\n ### ModuleCatalogue API  \n Total number of request accepted by API from single clinet for the selected resource in 24 Hours.  \n\n| Tenant              | GET| PUT | DELETE | POST | \n  |-------------------------|----| ----| -------| -----| \n  |Drupal                   | 20,000  | N/A | N/A | N/A |\n  \n\n# Pagination\n\nWhen retrieving information (using GET methods), the optional `$skip` and '$limit' query parameters sets the stating record and maximum number of record to return in a response. The maximum is `10`; larger values are treated as `10`. If this value is empty or invalid, '$skip' typically defaults to `0` and '$limit' defaults to 10.\n\nThe default value for the maximum number of rows retrieved can be overridden at the method level.\n\nIf more rows are available, the response will include one of the following option for pagination \n\n## HATEOAS \n Array of 'Links' with `nextPage` element will be included in the response payload,   which contains a URL for requesting the next page, [refer](https://restfulapi.net/hateoas/) for more detail of using Links in the rest service.  \n\n    {  \n        \"Module\":[  \n          {  \n            \"ModuleIdentifier\": .......  \n            ......................  \n          }  \n        ],  \n        \"links\":[  \n            {  \n              \"href\": \"module?$skip=20&$limit=50\",  \n              \"rel\": \"nextpage\",  \n              \"type\" : \"GET\"  \n            }  \n          ]  \n       }  \n\n  \n\n client follow the link provided in 'nextpage' at their discretion.  Neither permissions, nor the capability to make a successful call to that link, is guaranteed solely by the existence of a relationship.     If this value is not provided, no more rows are available. No \"previous page\" element is explicitly provided; use the previous call instead. \n\n ### Pagination attribute in the main Body:  \n    {  \n        \"Module\":[  \n          {  \n            \"ModuleIdentifier\": .......  \n            ......................  \n          }  \n        ],  \n        \"_pagination\": \"true\",   \n        \"_count\": \"100\",   \n        \"_offset\": \"10\",   \n        \"_limit\": \"10\",   \n }  \n\n\n ### Pagination property in the main Body:  \n\n    {  \n        \"Modules\":{  \n          \"Module\":[  \n            {  \n              \"ModuleIdentifier\": .......  \n              ......................  \n            }  \n          ]  \n        },  \n        \"pagination\":[  \n            {  \n              \"pagination\": \"true\",   \n              \"count\": \"100\",   \n              \"offset\": \"10\",   \n              \"limit\": \"10\",   \n            }  \n          ]  \n       }  \n\n\n \n\n## Array Size\n\nFor data items that are not paginated, the REST API supports arrays of up to 50 rows.  \n\n# API Versions\n\nThe Academic REST  API are version controlled. Versioning ensures that UCL Academic REST API changes are backward compatible. This API uses a major and minor version nomenclature to manage changes. By specifying a version in a REST request, you can get expected responses regardless of future changes to the API.\n\n## Major Version\n\nThe major version number of the REST API appears in the REST URL. Currently, Academic API only supports the **v1** major version. For example, `POST https://TBC/v1`.\n\n## Minor Version\n\nAcademic API uses minor versions for the REST API to control small changes. For example, a field in a REST method is deprecated and a new field is used to replace it. \n\nSome fields in the REST methods are supported as of minor versions. If a field is not noted with a minor version, this field is available for all minor versions. If a field is noted with a minor version, this field is in version control. You must specify the supported minor version in the request header to process without an error. \n\nIf a field is in version control, it is either with a minimum minor version or a maximum minor version, or both of them. You can only use this field with the minor version between the minimum and the maximum minor versions.  \n\nIf you specify a version number in the request header that is not supported, API will use the minimum minor version of the REST API. In our REST API documentation, if a field or feature requires a minor version number, we note that in the field description.\n\nYou only need to specify the version number when you use the fields require a minor version. To specify the minor version, set the `minor-version` parameter to the minor version number in the request header for the request call. The `minor-version` parameter is case sensitive.\n\nFor all the REST API fields, by default, if the minor version is not specified in the request header, API will use the minimum minor version of the REST API to avoid breaking your integration. \n\n### Minor Version History\n\nThe supported minor versions are not serial. This section documents the changes made to each UCL Academic REST API minor version.\n\nThe following table lists the supported versions and the fields that have a UCL Academic REST API minor version.\n\n| Fields         | Minor Version      | REST Methods    | Description |\n|:--------|:--------|:--------|:--------|\n | TBC | TBC  | TBC|TBC|    \n\n\n# Academic Object Model\n\n### Module Catalogue Object Model \n\nThe following diagram presents a high-level view of the Module Catalogue objects. Click the image to open it in a new tab to resize it.\n\n<a href=\"https://wiki.ucl.ac.uk/download/attachments/112330630/Target%20Solution%20-%20Information%20Architecture.png?version=2&modificationDate=1553012583000&api=v2\" target=\"_blank\"><img src=\"https://wiki.ucl.ac.uk/download/attachments/112330630/Target%20Solution%20-%20Information%20Architecture.png?version=2&modificationDate=1553012583000&api=v2\" alt=\"Module Object Model Diagram\"></a>\n\nThe following table provides the API name of each Academic object:\n\n| Object                                        | API Name                                   |\n|-----------------------------------------------|--------------------------------------------|\n | Academic Module                                       | `Module`                  |\n |Academic Module Delivery                               | `ModuleDelivery` \n"
-  version: 3.0.20190401
+  version: 4.0.20190401
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png
@@ -1525,25 +1525,33 @@ paths:
                                                     ModuleDeliveryAssessment:
                                                       type: array
                                                       items:
-                                                        title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                                                        type: object
-                                                        required:
-                                                          - AssessmentWeightPercentage
-                                                          - AssessmentTitle
-                                                        properties:
-                                                          _AssessmentGroupName:
-                                                            type: string
-                                                            minLength: 0
-                                                            maxLength: 2
-                                                          AssessmentTitle:
-                                                            type: string
-                                                            minLength: 1
-                                                            maxLength: 120
-                                                          AssessmentWeightPercentage:
-                                                            type: integer
-                                                            minimum: 0
-                                                            maximum: 100
-                                                            format: int32
+                                                        - type: object
+                                                          properties:
+                                                            _AssessmentComponentGroup:
+                                                              type: string
+                                                              minLength: 0
+                                                              maxLength: 10
+                                                            AssessmentComponentList:
+                                                              title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                                              type: object
+                                                              properties:
+                                                                AssessmentComponent:
+                                                                  type: array
+                                                                  items:
+                                                                    - type: object
+                                                                      required:
+                                                                        - AssessmentWeightPercentage
+                                                                        - AssessmentTitle
+                                                                      properties:
+                                                                        AssessmentComponentTitle:
+                                                                          type: string
+                                                                          minLength: 1
+                                                                          maxLength: 120
+                                                                        AssessmentComponentWeightPercentage:
+                                                                          type: integer
+                                                                          minimum: 0
+                                                                          maximum: 100
+                                                                          format: int32
             application/xml:
               '<<':
                 schema:
@@ -2100,25 +2108,33 @@ paths:
                                         ModuleDeliveryAssessment:
                                           type: array
                                           items:
-                                            title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                                            type: object
-                                            required:
-                                              - AssessmentWeightPercentage
-                                              - AssessmentTitle
-                                            properties:
-                                              _AssessmentGroupName:
-                                                type: string
-                                                minLength: 0
-                                                maxLength: 2
-                                              AssessmentTitle:
-                                                type: string
-                                                minLength: 1
-                                                maxLength: 120
-                                              AssessmentWeightPercentage:
-                                                type: integer
-                                                minimum: 0
-                                                maximum: 100
-                                                format: int32
+                                            - type: object
+                                              properties:
+                                                _AssessmentComponentGroup:
+                                                  type: string
+                                                  minLength: 0
+                                                  maxLength: 10
+                                                AssessmentComponentList:
+                                                  title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                                  type: object
+                                                  properties:
+                                                    AssessmentComponent:
+                                                      type: array
+                                                      items:
+                                                        - type: object
+                                                          required:
+                                                            - AssessmentWeightPercentage
+                                                            - AssessmentTitle
+                                                          properties:
+                                                            AssessmentComponentTitle:
+                                                              type: string
+                                                              minLength: 1
+                                                              maxLength: 120
+                                                            AssessmentComponentWeightPercentage:
+                                                              type: integer
+                                                              minimum: 0
+                                                              maximum: 100
+                                                              format: int32
             application/xml:
               '<<':
                 schema:

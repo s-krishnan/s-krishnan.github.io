@@ -8,7 +8,7 @@ openapi: 3.0.0
 
 info:
   description: "This is a collection of domain models for module catalogue in UCL"
-  version: '2.0.0'
+  version: '3.0.0'
   title:  Domain models
 
 components:
@@ -101,32 +101,50 @@ components:
           maximum:  50
           nullable: false
     
-    ModuleDeliveryAssessment:
+    AssessmentComponent:
       title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
       type: object
-      required:
-        - AssessmentWeightPercentage
-        - AssessmentTitle
       properties:
-        # AssessmentBodySequence:
-        #   type: string
-        #   minLength:  0
-        #   maxLength:  3
-        #   pattern:  ^(\d){3}$
-        _AssessmentGroupName:
-          type: string
-          minLength:  0
-          maxLength:  2
-        AssessmentTitle:
-          type: string
-          minLength:  1
-          maxLength:  120
-        AssessmentWeightPercentage:
-          type: integer
-          minimum:  0
-          maximum:  100 
-          format: int32
+        AssessmentComponent:
+          type: array
+          items:
+          - type: object
+            required:
+              - AssessmentWeightPercentage
+              - AssessmentTitle
+            properties:
+              AssessmentComponentTitle:
+                type: string
+                minLength:  1
+                maxLength:  120
+              AssessmentComponentWeightPercentage:
+                type: integer
+                minimum:  0
+                maximum:  100 
+                format: int32
     
+    AssessmentPatternList:
+          type: object
+          description:  |
+            List of delivery assessment for this module delivery. This list is ordered by its sequence hence consumer application should honour list order, ignoring the order will not give the desired result.  
+          properties:
+            # AssessmentBodySequence:
+            #   type: string
+            #   minLength:  0
+            #   maxLength:  3
+            #   pattern:  ^(\d){3}$
+            ModuleDeliveryAssessment:
+              type: array
+              items:
+              - type: object
+                properties:
+                  _AssessmentComponentGroup:
+                    type: string
+                    minLength:  0
+                    maxLength:  10
+                  AssessmentComponentList:
+                    $ref: '#/components/schemas/AssessmentComponent'
+
     ModuleDelivery:
       type: "object"
       required:
@@ -211,14 +229,9 @@ components:
           title: Contact Information,
           $ref: '#/components/schemas/Person'
         ModuleDeliveryAssessmentList:
-          type: object
-          description:  |
-            List of delivery assessment for this module delivery. This list is ordered by its sequence hence consumer application should honour list order, ignoring the order will not give the desired result.  
-          properties:
-            ModuleDeliveryAssessment:
-              type: array
-              items:
-                $ref: '#/components/schemas/ModuleDeliveryAssessment'
+          $ref: '#/components/schemas/AssessmentPatternList'
+
+
     ModuleInstanceFull:
       type: object
       allOf:
