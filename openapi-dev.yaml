@@ -3,11 +3,11 @@ openapi: 3.0.2
 # Added by API Auto Mocking Plugin
 servers:
   - description:  Production
-    url: http://localhost:8002
-  - description:  UAT
-    url: http://localhost:8002
-  - description:   Performance Test
-    url: http://localhost:8002 
+    url: https://api.ucl.ac.uk/AcademicModule/v1
+  # - description:  UAT
+  #   url: https://api.ucl.ac.uk/
+  # - description:   Performance Test
+  #   url: http://api.ucl.ac.uk/
 info:
   #description: This is a UCL enterprise api for module catalogue
   description: "# Introduction\nWelcome to the reference for the UCL Academic REST API!\
@@ -184,7 +184,7 @@ info:
     \ | Academic Module                                       | `Module`                  |\n\
     \ |Academic Module Delivery                               | `ModuleDelivery`\
     \ \n"
-  version: "4.0.20190401"
+  version: "5.0.20190401"
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png  
@@ -284,7 +284,7 @@ paths:
         [Module] -(ModuleIdentifier)-> *[Module Instance]
         ```
         [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
-      parameters:
+      parameters: 
         - $ref: Domains.yaml#/components/parameters/skipParam
         - $ref: Domains.yaml#/components/parameters/limitParam
         # - $ref: Domains.yaml#/components/parameters/selectParam
@@ -335,7 +335,7 @@ paths:
         <<: *CommonResponse
         # Successfull request
         "200":
-          $ref: 'Domains.yaml#/components/responses/moduledeliveries_200_status'
+          $ref: 'Domains.yaml#/components/responses/fullmoduledeliveries_200_status'
   
   /ModuleInstance:
     get:  &ModuleInstancesGetResponse
@@ -349,6 +349,11 @@ paths:
         *[Module Instance (FullDetail)]
         ```
         [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+      parameters:
+        - $ref: Domains.yaml#/components/parameters/skipParam
+        - $ref: Domains.yaml#/components/parameters/limitParam
+        # - $ref: Domains.yaml#/components/parameters/selectParam
+        - $ref: Domains.yaml#/components/parameters/filterParam
       responses:
         <<: *CommonResponse
         # Successfull request
@@ -369,6 +374,28 @@ paths:
       parameters:
         - $ref: Domains.yaml#/components/parameters/AcademicYearCode
   
+  /ModuleDelivery:
+    get:
+      tags:
+        - Academic Module API
+      summary: /ModuleDelivery
+      operationId: ModuleDeliveryById
+      description: |
+        Get the single module delivery by unqiue module delivery identifier in UCL
+        ```
+        *[ModuleDelivery] -> *[ModuleDeliveryAssessment]
+        ```
+      parameters:
+      - $ref: Domains.yaml#/components/parameters/skipParam
+      - $ref: Domains.yaml#/components/parameters/limitParam
+      # - $ref: Domains.yaml#/components/parameters/selectParam
+      - $ref: Domains.yaml#/components/parameters/filterParam
+      responses:
+        <<: *CommonResponse
+        # Successfull request
+        "200":
+          $ref: 'Domains.yaml#/components/responses/moduledeliveries_200_status'
+
   /ModuleDelivery/{ModuleDeliveryIdentifier}:
     get:
       tags:

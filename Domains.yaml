@@ -1,6 +1,6 @@
 ---
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
-openapi: 3.0.0
+openapi: 4.0.0
 
 #######################
 # Optional info section
@@ -568,6 +568,7 @@ components:
         NOTE: API only supports following property in the expression language in this version of the API.
         * ModuleCode
         * ModuleSuperGroup
+        * ModuleIdentifier
 
         ### Literal
         Possible literal values 
@@ -725,10 +726,13 @@ components:
       content:
         application/json: &module_200_status_structure
           schema:
-            type: "object"
+            type: object
             properties:
-              Module:
-                $ref: '#/components/schemas/Module'
+              Response:
+                type: object
+                properties:
+                  Module:
+                    $ref: '#/components/schemas/Module'
         application/xml:
           << : *module_200_status_structure
       headers:
@@ -828,7 +832,7 @@ components:
       links:
         <<: *CommonLinks
 
-    moduledeliveries_200_status:
+    fullmoduledeliveries_200_status:
       description: |
         Successfull response includes list of module deliveries, instance and header information for the given moduleidentifier and academicyear
         ```
@@ -871,7 +875,7 @@ components:
       links:
         <<: *CommonLinks
 
-    moduledelivery_200_status:
+    moduledeliveries_200_status:
       description: |
         Successfull response includes single module deliverie delivery information for the given moduledeliveryidentifier
         ```
@@ -880,7 +884,7 @@ components:
         and pagination detail if more than allowed number of moduledeliveries found
         [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
       content:
-        application/json: &moduledelivery_200_status
+        application/json: &moduledeliveries_200_status
           schema:
             type: object
             properties:
@@ -900,11 +904,43 @@ components:
                                 $ref: "#/components/schemas/Module/properties/ModuleIdentifier"
                           - $ref: '#/components/schemas/ModuleDelivery'
         application/xml:
+          << : *moduledeliveries_200_status
+      headers:
+        <<: *RateLimitHeader
+      links:
+        <<: *CommonLinks
+  
+    moduledelivery_200_status:
+      description: |
+        Successfull response includes single module deliverie delivery information for the given moduledeliveryidentifier
+        ```
+        [ModuleDelivery] -(ModuleDeliveryIdentifier)->*[ModuleDeliveryAssessment]
+        ```
+        and pagination detail if more than allowed number of moduledeliveries found
+        [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
+      content:
+        application/json: &moduledelivery_200_status
+          schema:
+            type: object
+            properties:
+              Response:
+                type: object
+                properties:
+                  ModuleDelivery:
+                    type: object
+                    allOf:
+                    - type: object
+                      properties:
+                        ModuleIdentifier:
+                          $ref: "#/components/schemas/Module/properties/ModuleIdentifier"
+                    - $ref: '#/components/schemas/ModuleDelivery'
+        application/xml:
           << : *moduledelivery_200_status
       headers:
         <<: *RateLimitHeader
       links:
         <<: *CommonLinks
+  
   # -----------------------------------------------------
   # Common Error
   # (Referencing from Domain.yaml is not working )
