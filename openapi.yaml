@@ -1501,43 +1501,50 @@ paths:
                                                   description: |
                                                     List of delivery assessment for this module delivery. This list is ordered by its sequence hence consumer application should honour list order, ignoring the order will not give the desired result.  
                                                   properties:
-                                                    AssessmentGroupList:
+                                                    AssessmentGroupCollection:
                                                       type: object
                                                       properties:
+                                                        _DefaultAssessmentGroup:
+                                                          type: string
+                                                          minLength: 0
+                                                          maxLength: 10
                                                         AssessmentGroup:
                                                           type: array
                                                           items:
-                                                            - type: object
-                                                              properties:
-                                                                AssementGroupCode:
-                                                                  type: string
-                                                                  minLength: 0
-                                                                  maxLength: 10
-                                                                AssementGroupDescription:
-                                                                  type: string
-                                                                  minLength: 0
-                                                                  maxLength: 10
-                                                                AssessmentComponentList:
-                                                                  title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                                                                  type: object
+                                                            - allOf:
+                                                                - type: object
                                                                   properties:
-                                                                    AssessmentComponent:
-                                                                      type: array
-                                                                      items:
-                                                                        - type: object
-                                                                          required:
-                                                                            - AssessmentWeightPercentage
-                                                                            - AssessmentTitle
-                                                                          properties:
-                                                                            AssessmentComponentTitle:
-                                                                              type: string
-                                                                              minLength: 1
-                                                                              maxLength: 120
-                                                                            AssessmentComponentWeightPercentage:
-                                                                              type: integer
-                                                                              minimum: 0
-                                                                              maximum: 100
-                                                                              format: int32
+                                                                    AssessmentGroupCode:
+                                                                      type: string
+                                                                      minLength: 0
+                                                                      maxLength: 10
+                                                                    AssessmentGroupName:
+                                                                      type: string
+                                                                      minLength: 0
+                                                                      maxLength: 10
+                                                                - type: object
+                                                                  properties:
+                                                                    AssessmentComponentList:
+                                                                      title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                                                      type: object
+                                                                      properties:
+                                                                        AssessmentComponent:
+                                                                          type: array
+                                                                          items:
+                                                                            - type: object
+                                                                              required:
+                                                                                - AssessmentWeightPercentage
+                                                                                - AssessmentTitle
+                                                                              properties:
+                                                                                AssessmentComponentTitle:
+                                                                                  type: string
+                                                                                  minLength: 1
+                                                                                  maxLength: 120
+                                                                                AssessmentComponentWeightPercentage:
+                                                                                  type: integer
+                                                                                  minimum: 0
+                                                                                  maximum: 100
+                                                                                  format: int32
             application/xml:
               '<<':
                 schema:
@@ -2213,43 +2220,50 @@ paths:
                                       description: |
                                         List of delivery assessment for this module delivery. This list is ordered by its sequence hence consumer application should honour list order, ignoring the order will not give the desired result.  
                                       properties:
-                                        AssessmentGroupList:
+                                        AssessmentGroupCollection:
                                           type: object
                                           properties:
+                                            _DefaultAssessmentGroup:
+                                              type: string
+                                              minLength: 0
+                                              maxLength: 10
                                             AssessmentGroup:
                                               type: array
                                               items:
-                                                - type: object
-                                                  properties:
-                                                    AssementGroupCode:
-                                                      type: string
-                                                      minLength: 0
-                                                      maxLength: 10
-                                                    AssementGroupDescription:
-                                                      type: string
-                                                      minLength: 0
-                                                      maxLength: 10
-                                                    AssessmentComponentList:
-                                                      title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                                                      type: object
+                                                - allOf:
+                                                    - type: object
                                                       properties:
-                                                        AssessmentComponent:
-                                                          type: array
-                                                          items:
-                                                            - type: object
-                                                              required:
-                                                                - AssessmentWeightPercentage
-                                                                - AssessmentTitle
-                                                              properties:
-                                                                AssessmentComponentTitle:
-                                                                  type: string
-                                                                  minLength: 1
-                                                                  maxLength: 120
-                                                                AssessmentComponentWeightPercentage:
-                                                                  type: integer
-                                                                  minimum: 0
-                                                                  maximum: 100
-                                                                  format: int32
+                                                        AssessmentGroupCode:
+                                                          type: string
+                                                          minLength: 0
+                                                          maxLength: 10
+                                                        AssessmentGroupName:
+                                                          type: string
+                                                          minLength: 0
+                                                          maxLength: 10
+                                                    - type: object
+                                                      properties:
+                                                        AssessmentComponentList:
+                                                          title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                                          type: object
+                                                          properties:
+                                                            AssessmentComponent:
+                                                              type: array
+                                                              items:
+                                                                - type: object
+                                                                  required:
+                                                                    - AssessmentWeightPercentage
+                                                                    - AssessmentTitle
+                                                                  properties:
+                                                                    AssessmentComponentTitle:
+                                                                      type: string
+                                                                      minLength: 1
+                                                                      maxLength: 120
+                                                                    AssessmentComponentWeightPercentage:
+                                                                      type: integer
+                                                                      minimum: 0
+                                                                      maximum: 100
+                                                                      format: int32
             application/xml:
               '<<':
                 schema:
@@ -2521,43 +2535,50 @@ paths:
                                 description: |
                                   List of delivery assessment for this module delivery. This list is ordered by its sequence hence consumer application should honour list order, ignoring the order will not give the desired result.  
                                 properties:
-                                  AssessmentGroupList:
+                                  AssessmentGroupCollection:
                                     type: object
                                     properties:
+                                      _DefaultAssessmentGroup:
+                                        type: string
+                                        minLength: 0
+                                        maxLength: 10
                                       AssessmentGroup:
                                         type: array
                                         items:
-                                          - type: object
-                                            properties:
-                                              AssementGroupCode:
-                                                type: string
-                                                minLength: 0
-                                                maxLength: 10
-                                              AssementGroupDescription:
-                                                type: string
-                                                minLength: 0
-                                                maxLength: 10
-                                              AssessmentComponentList:
-                                                title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
-                                                type: object
+                                          - allOf:
+                                              - type: object
                                                 properties:
-                                                  AssessmentComponent:
-                                                    type: array
-                                                    items:
-                                                      - type: object
-                                                        required:
-                                                          - AssessmentWeightPercentage
-                                                          - AssessmentTitle
-                                                        properties:
-                                                          AssessmentComponentTitle:
-                                                            type: string
-                                                            minLength: 1
-                                                            maxLength: 120
-                                                          AssessmentComponentWeightPercentage:
-                                                            type: integer
-                                                            minimum: 0
-                                                            maximum: 100
-                                                            format: int32
+                                                  AssessmentGroupCode:
+                                                    type: string
+                                                    minLength: 0
+                                                    maxLength: 10
+                                                  AssessmentGroupName:
+                                                    type: string
+                                                    minLength: 0
+                                                    maxLength: 10
+                                              - type: object
+                                                properties:
+                                                  AssessmentComponentList:
+                                                    title: 'Applicable methods used for assessing the student success on the module such as Essay, Project, Course Assessment'
+                                                    type: object
+                                                    properties:
+                                                      AssessmentComponent:
+                                                        type: array
+                                                        items:
+                                                          - type: object
+                                                            required:
+                                                              - AssessmentWeightPercentage
+                                                              - AssessmentTitle
+                                                            properties:
+                                                              AssessmentComponentTitle:
+                                                                type: string
+                                                                minLength: 1
+                                                                maxLength: 120
+                                                              AssessmentComponentWeightPercentage:
+                                                                type: integer
+                                                                minimum: 0
+                                                                maximum: 100
+                                                                format: int32
             application/xml:
               '<<':
                 schema:
