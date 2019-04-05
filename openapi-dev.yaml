@@ -78,45 +78,7 @@ info:
     \ of record to return in a response. The maximum is `10`; larger values are treated\
     \ as `10`. If this value is empty or invalid, '$skip' typically defaults to\
     \ `0` and '$limit' defaults to 10.\n\nThe default value for the maximum number of rows retrieved can be overridden\
-    \ at the method level.\n\nIf more rows are available, the response will include one of the following option for pagination\
-    \ \n\n## HATEOAS \n Array of 'Links' with `nextPage` element will be included in the response payload, 
-    \ which contains a URL for requesting the next page, [refer](https://restfulapi.net/hateoas/) for more detail of using Links in the rest service. \
-    \ \n\n    {
-    \ \n        \"Module\":[
-    \ \n          {
-    \ \n            \"ModuleIdentifier\": .......
-    \ \n            ......................
-    \ \n          }
-    \ \n        ],
-    \ \n        \"links\":[
-    \ \n            {
-    \ \n              \"href\": \"module?$skip=20&$limit=50\",
-    \ \n              \"rel\": \"nextpage\",
-    \ \n              \"type\" : \"GET\"
-    \ \n            }
-    \ \n          ]
-    \ \n       }
-    \ \n\n
-    \ \n\n client follow the link provided in 'nextpage' at their discretion. \
-    \ Neither permissions, nor the capability to make a successful call to that link, is guaranteed solely by the existence of a relationship.  \ 
-    \ If this value is not provided, no more rows are available. No \"previous page\"\
-    \ element is explicitly provided; use the previous call instead.\
-
-    \ \n\n ### Pagination attribute in the main Body:
-    \ \n    {
-    \ \n        \"Module\":[
-    \ \n          {
-    \ \n            \"ModuleIdentifier\": .......
-    \ \n            ......................
-    \ \n          }
-    \ \n        ],
-    \ \n        \"_pagination\": \"true\", 
-    \ \n        \"_count\": \"100\", 
-    \ \n        \"_offset\": \"10\", 
-    \ \n        \"_limit\": \"10\", 
-    \ \n }
-    \ \n\n
-    
+    \ at the method level.\n\nIf more rows are available, the response will the following pagination detail\
     \ ### Pagination property in the main Body:
     \ \n\n    {
     \ \n        \"Modules\":{
@@ -184,7 +146,7 @@ info:
     \ | Academic Module                                       | `Module`                  |\n\
     \ |Academic Module Delivery                               | `ModuleDelivery`\
     \ \n"
-  version: "5.0.20190401"
+  version: "6.0.20190401"
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png  
@@ -218,7 +180,7 @@ paths:
         ```
         *[Module]
         ```
-        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+        [Pagination](#section/Pagination) pagination option is used in this endpoint.
       parameters:
         - $ref: Domains.yaml#/components/parameters/skipParam
         - $ref: Domains.yaml#/components/parameters/limitParam
@@ -283,11 +245,8 @@ paths:
         ```
         [Module] -(ModuleIdentifier)-> *[Module Instance]
         ```
-        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+        [Pagination](#section/Pagination) pagination option is used in this endpoint.
       parameters: 
-        - $ref: Domains.yaml#/components/parameters/skipParam
-        - $ref: Domains.yaml#/components/parameters/limitParam
-        # - $ref: Domains.yaml#/components/parameters/selectParam
         - $ref: Domains.yaml#/components/parameters/filterParam
         - $ref: Domains.yaml#/components/parameters/ModuleIdentifier
       responses:
@@ -348,8 +307,9 @@ paths:
         ```
         *[Module Instance (FullDetail)]
         ```
-        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+        [Pagination](#section/Pagination) pagination option is used in this endpoint.
       parameters:
+        - $ref: Domains.yaml#/components/parameters/paginate
         - $ref: Domains.yaml#/components/parameters/skipParam
         - $ref: Domains.yaml#/components/parameters/limitParam
         # - $ref: Domains.yaml#/components/parameters/selectParam
@@ -362,7 +322,8 @@ paths:
   
   /ModuleInstance/{AcademicYearCode}: 
     get: 
-      <<: *ModuleInstancesGetResponse
+      tags:
+        - Academic Module API
       summary: /ModuleInstance/{AcademicYearCode}
       operationId: ModuleCatalogueFilterByYear
       description: |
@@ -370,9 +331,14 @@ paths:
         ```
         *[Module Instance (FullDetail)]
         ```
-        [HATEOAS](#section/Pagination/HATEOAS) pagination option is used in this endpoint.
+        [Pagination](#section/Pagination) pagination option is used in this endpoint.
       parameters:
         - $ref: Domains.yaml#/components/parameters/AcademicYearCode
+      responses:
+        <<: *CommonResponse
+        # Successfull request
+        "200":
+          $ref: 'Domains.yaml#/components/responses/moduleinstancefull_200_status'
   
   /ModuleDelivery:
     get:
@@ -386,6 +352,7 @@ paths:
         *[ModuleDelivery] -> *[ModuleDeliveryAssessment]
         ```
       parameters:
+      - $ref: Domains.yaml#/components/parameters/paginate
       - $ref: Domains.yaml#/components/parameters/skipParam
       - $ref: Domains.yaml#/components/parameters/limitParam
       # - $ref: Domains.yaml#/components/parameters/selectParam
