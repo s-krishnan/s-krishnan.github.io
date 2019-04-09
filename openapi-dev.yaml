@@ -146,7 +146,7 @@ info:
     \ | Academic Module                                       | `Module`                  |\n\
     \ |Academic Module Delivery                               | `ModuleDelivery`\
     \ \n"
-  version: "6.0.20190401"
+  version: "7.0.20190409"
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png  
