@@ -322,8 +322,9 @@ paths:
   
   /ModuleInstance/{AcademicYearCode}: 
     get: 
-      tags:
-        - Academic Module API
+      <<: *ModuleInstancesGetResponse
+      # tags:
+      #   - Academic Module API
       summary: /ModuleInstance/{AcademicYearCode}
       operationId: ModuleCatalogueFilterByYear
       description: |
@@ -333,12 +334,16 @@ paths:
         ```
         [Pagination](#section/Pagination) pagination option is used in this endpoint.
       parameters:
-        - $ref: Domains.yaml#/components/parameters/AcademicYearCode
-      responses:
-        <<: *CommonResponse
-        # Successfull request
-        "200":
-          $ref: 'Domains.yaml#/components/responses/moduleinstancefull_200_status'
+        - $ref: Domains.yaml#/components/parameters/paginate
+        - $ref: Domains.yaml#/components/parameters/skipParam
+        - $ref: Domains.yaml#/components/parameters/limitParam
+        # - $ref: Domains.yaml#/components/parameters/selectParam
+        - $ref: Domains.yaml#/components/parameters/filterParam
+      # responses:
+      #   <<: *CommonResponse
+      #   # Successfull request
+      #   "200":
+      #     $ref: 'Domains.yaml#/components/responses/moduleinstancefull_200_status'
   
   /ModuleDelivery:
     get:

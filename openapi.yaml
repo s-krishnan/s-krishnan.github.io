@@ -1626,7 +1626,7 @@ paths:
         '502': *ref_5
   /ModuleInstance:
     get:
-      tags:
+      tags: &ref_6
         - Academic Module API
       summary: /ModuleInstance
       operationId: ModuleCatalogue
@@ -1646,7 +1646,7 @@ paths:
         - $ref: '#/paths/~1Module/get/parameters/0'
         - $ref: '#/paths/~1Module/get/parameters/1'
         - $ref: '#/paths/~1Module/get/parameters/2'
-      responses:
+      responses: &ref_7
         '200':
           description: |
             Successfull response includes list of module instances that matches the passed criteria
@@ -1910,8 +1910,7 @@ paths:
         '502': *ref_5
   '/ModuleInstance/{AcademicYearCode}':
     get:
-      tags:
-        - Academic Module API
+      tags: *ref_6
       summary: '/ModuleInstance/{AcademicYearCode}'
       operationId: ModuleCatalogueFilterByYear
       description: |
@@ -1921,90 +1920,11 @@ paths:
         ```
         [Pagination](#section/Pagination) pagination option is used in this endpoint.
       parameters:
-        - $ref: '#/paths/~1Module~1%7BModuleIdentifier%7D~1ModuleInstance~1%7BAcademicYearCode%7D/get/parameters/0'
-      responses:
-        '200':
-          description: |
-            Successfull response includes module instance that matches the passed criteria
-            ```
-            *[Module Instance]
-            ```
-            and pagination detail if more than allowed number of modules is found
-            [HATEOAS](#section/Pagination/HATEOAS) for pagination option detail. 
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  Response:
-                    type: object
-                    properties:
-                      ModuleInstance:
-                        $ref: '#/paths/~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleInstanceCollection/properties/ModuleInstance/items'
-            application/xml:
-              '<<':
-                schema:
-                  type: object
-                  properties:
-                    Response:
-                      type: object
-                      properties:
-                        ModuleInstance:
-                          $ref: '#/paths/~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleInstanceCollection/properties/ModuleInstance/items'
-          headers:
-            '<<':
-              X-RateLimit-Limit:
-                description: Request limit per time window
-                schema:
-                  type: integer
-                  format: int32
-                example: 100
-                required: true
-              X-RateLimit-Remaining:
-                description: Remaining requests for the current time window
-                schema:
-                  type: integer
-                  format: int32
-                example: 94
-                required: true
-              X-Rate-Limit-Reset:
-                description: 'Time to the current window ends, in seconds from the current time.'
-                schema:
-                  type: integer
-                  format: int32
-                example: 1553528925
-                required: true
-              Retry-After:
-                description: |
-                  When an application exceeds the rate limit for a given API endpoint, the API will return a 
-                  [HTTP 429 “Too Many Requests”](http://tools.ietf.org/html/rfc6585)  response code, 
-                  and this response header indicate the remaining time window before the rate limit resets, 
-                  in UTC  [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
-                schema:
-                  type: integer
-                  format: int32
-                required: false
-                example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
-        '204': *ref_0
-        '400':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '401': *ref_1
-        '403': *ref_2
-        '404': *ref_3
-        '409':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '429': *ref_4
-        '500':
-          $ref: '#/paths/~1Module/get/responses/400'
-        '502': *ref_5
+        - $ref: '#/paths/~1ModuleInstance/get/parameters/0'
+        - $ref: '#/paths/~1Module/get/parameters/0'
+        - $ref: '#/paths/~1Module/get/parameters/1'
+        - $ref: '#/paths/~1Module/get/parameters/2'
+      responses: *ref_7
   /ModuleDelivery:
     get:
       tags:
