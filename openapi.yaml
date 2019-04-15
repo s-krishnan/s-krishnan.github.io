@@ -355,13 +355,6 @@ paths:
                 format: int32
               required: false
               example: 1553528925
-          links:
-            nextpage:
-              description: Link to get next page.
-              operationId: nextpage
-              parameters:
-                $skipParam: $request.query.$skip
-                $limit: $request.query.$limit
         '204': &ref_0
           description: No Content - Successful request but no response body. e.g requesting module filter by modulecode which doesn't exist.
         '400':
@@ -379,7 +372,7 @@ paths:
                     type: string
                     format: uri
                     description: 'It is the requested URL as it was received by API platform, It is an optional parameter.'
-                    example: /module/2019
+                    example: /moduleinstance/2019
                   Code:
                     type: string
                     description: Machine readable unique code for a specific error. It is a mandatory parameter.
@@ -876,14 +869,6 @@ paths:
                   format: int32
                 required: false
                 example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
@@ -1604,14 +1589,6 @@ paths:
                   format: int32
                 required: false
                 example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
@@ -1837,6 +1814,10 @@ paths:
                                             minLength: 1
                                             maxLength: 150
                                           nullable: true
+              examples:
+                forty-nine:  
+                  value: 
+                    $ref: 'examples/module/module_200_status_structure_50.json'
             application/xml:
               '<<':
                 schema:
@@ -1847,13 +1828,125 @@ paths:
                       properties:
                         Pagination:
                           $ref: '#/paths/~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/Pagination'
-                        ModuleInstanceCollection:
+                        ModuleCollection:
                           type: object
                           properties:
-                            ModuleInstance:
+                            Module:
                               type: array
                               items:
-                                $ref: '#/paths/~1ModuleInstance/get/responses/200/content/application~1json/schema/properties/Response/properties/ModuleInstanceCollection/properties/ModuleInstance/items'
+                                type: object
+                                title: Module Domain
+                                required:
+                                  - ModuleIdentifier
+                                  - ModuleTitle
+                                  - ModuleCode
+                                properties:
+                                  ModuleIdentifier:
+                                    title: Unique system identifier of the module (Business Data object aka BDOid).
+                                    type: string
+                                    nullable: false
+                                    minimum: 1
+                                    maximum: 50
+                                    readOnly: true
+                                    pattern: '^([A-Z]|\d)*$'
+                                  ModuleTitle:
+                                    title: Title of the module.
+                                    type: string
+                                    minLength: 0
+                                    maxLength: 120
+                                    nullable: false
+                                  ModuleSearchKeywords:
+                                    title: Keywords used to search this module.
+                                    type: string
+                                    minLength: 0
+                                    maxLength: 100
+                                    nullable: true
+                                  ModuleCode:
+                                    title: Module code that is unique in UCL that is in the human readable format.
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 12
+                                    nullable: false
+                                  ModuleLearningHours:
+                                    title: 'Learning hours of the module, this is indicative only.'
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 9999
+                                    format: int32
+                                  ModuleStudyHours:
+                                    title: 'Learning hours of the module, this is indicative only.'
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 9999
+                                    format: int32
+                                  ModuleSuperGroup:
+                                    title: Super module grouping such as Meets with Spanish Level 1 and 2
+                                    type: string
+                                    minLength: 0
+                                    maxLength: 50
+                                    nullable: true
+                                  CEFRLevel:
+                                    title: Language Modules Only CEFR level
+                                    type: string
+                                    minLength: 0
+                                    maxLength: 50
+                                    pattern: '^([A-Z]{1}\d{1}\/?)*$'
+                                  ModuleContact:
+                                    type: object
+                                    required:
+                                      - Faculty
+                                      - Department
+                                    properties:
+                                      Faculty:
+                                        type: object
+                                        required:
+                                          - FacultyName
+                                          - FacultyCode
+                                        properties:
+                                          FacultyCode:
+                                            title: Code of the teaching faculty code to which madule belongs to.
+                                            type: string
+                                            minLength: 3
+                                            maxLength: 3
+                                            nullable: false
+                                            pattern: '^([A-Z]){3}$'
+                                          FacultyName:
+                                            title: Name of the teaching faculty to which madule belongs to.
+                                            type: string
+                                            minLength: 1
+                                            maxLength: 150
+                                            nullable: false
+                                      Department:
+                                        type: object
+                                        required:
+                                          - DepartmentName
+                                          - DepartmentCode
+                                        properties:
+                                          DepartmentCode:
+                                            title: Teaching department code in UCL.
+                                            type: string
+                                            minLength: 3
+                                            maxLength: 3
+                                            nullable: false
+                                            pattern: '^([A-Z]|_|\d|-)*$'
+                                          DepartmentName:
+                                            title: Teaching department name in UCL.
+                                            type: string
+                                            minLength: 1
+                                            maxLength: 150
+                                            nullable: false
+                                      Email:
+                                        type: string
+                                        format: email
+                                        title: UCL person email address
+                                  ModuleValue:
+                                    type: number
+                                    format: float
+                                    title: Credit value awarded to student on the successfull completion of the module.
+                examples:
+                  forty-nine: 
+                    value:
+                      $ref: 'examples/module/module_200_status_structure_50.xml'
           headers:
             '<<':
               X-RateLimit-Limit:
@@ -1888,14 +1981,6 @@ paths:
                   format: int32
                 required: false
                 example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
@@ -2240,14 +2325,6 @@ paths:
                   format: int32
                 required: false
                 example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
@@ -2549,14 +2626,6 @@ paths:
                   format: int32
                 required: false
                 example: 1553528925
-          links:
-            '<<':
-              nextpage:
-                description: Link to get next page.
-                operationId: nextpage
-                parameters:
-                  $skipParam: $request.query.$skip
-                  $limit: $request.query.$limit
         '204': *ref_0
         '400':
           $ref: '#/paths/~1Module/get/responses/400'
