@@ -473,7 +473,7 @@ components:
           type: string
           format: uri
           description:  It is the requested URL as it was received by API platform, It is an optional parameter.
-          example:  /module/2019
+          example:  /moduleinstance/2019
         Code:
           type: string
           description:  Machine readable unique code for a specific error. It is a mandatory parameter.
@@ -743,8 +743,10 @@ components:
                         type: array
                         items:
                           $ref: '#/components/schemas/Module'
+
         application/xml:
           <<: *modules_200_status_structure
+
       headers: &RateLimitHeader
         X-RateLimit-Limit:
           $ref: '#/components/headers/X-RateLimit-Limit'
@@ -757,16 +759,16 @@ components:
       # -----------------------------------------------------
       # Links
       # -----------------------------------------------------
-      links:  &CommonLinks
-        nextpage:
-        #nextpage: # <---- arbitrary name for the link
-          description: Link to get next page.
-          operationId: nextpage
-          # or
-          # operationRef: '#/paths/Module/get'
-          parameters:
-            $skipParam: $request.query.$skip
-            $limit: $request.query.$limit
+      #links:  &CommonLinks
+        # nextpage:
+        # #nextpage: # <---- arbitrary name for the link
+        #   description: Link to get next page.
+        #   operationId: nextpage
+        #   # or
+        #   # operationRef: '#/paths/Module/get'
+        #   parameters:
+        #     $skipParam: $request.query.$skip
+        #     $limit: $request.query.$limit
     
     module_200_status:
       description: |
@@ -822,8 +824,8 @@ components:
           << : *moduleinstances_200_status_structure
       headers:
         <<: *RateLimitHeader
-      links:
-        <<: *CommonLinks
+      # links:
+      #   <<: *CommonLinks
 
     moduleinstance_200_status:
       description: |
@@ -879,12 +881,20 @@ components:
                         type: array
                         items:
                           $ref: Domains.yaml#/components/schemas/ModuleInstanceFull
+          examples:
+            forty-nine:  
+              value: 
+                $ref: 'examples/module/module_200_status_structure_50.json'
         application/xml:
-          << : *moduleinstancesfull_200_status_structure
+          <<: *modules_200_status_structure
+          examples:
+            forty-nine: 
+              value:
+                $ref: 'examples/module/module_200_status_structure_50.xml'
       headers:
         <<: *RateLimitHeader
-      links:
-        <<: *CommonLinks
+      # links:
+      #   <<: *CommonLinks
 
     moduleinstancefull_200_status:
       description: |
@@ -908,8 +918,8 @@ components:
           << : *moduleinstancefull_200_status_structure
       headers:
         <<: *RateLimitHeader
-      links:
-        <<: *CommonLinks
+      # links:
+      #   <<: *CommonLinks
 
     fullmoduledeliveries_200_status:
       description: |
@@ -951,8 +961,8 @@ components:
           << : *moduledeliveries_200_status
       headers:
         <<: *RateLimitHeader
-      links:
-        <<: *CommonLinks
+      # links:
+      #   <<: *CommonLinks
 
     moduledeliveries_200_status:
       description: |
@@ -988,8 +998,8 @@ components:
           << : *moduledeliveries_200_status
       headers:
         <<: *RateLimitHeader
-      links:
-        <<: *CommonLinks
+      # links:
+      #   <<: *CommonLinks
   
     moduledelivery_200_status:
       description: |
@@ -1019,8 +1029,8 @@ components:
           << : *moduledelivery_200_status
       headers:
         <<: *RateLimitHeader
-      links:
-        <<: *CommonLinks
+      # links:
+      #   <<: *CommonLinks
   
   # -----------------------------------------------------
   # Common Error
