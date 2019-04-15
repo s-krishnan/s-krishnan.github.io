@@ -1943,10 +1943,10 @@ paths:
                                     type: number
                                     format: float
                                     title: Credit value awarded to student on the successfull completion of the module.
-                examples:
-                  forty-nine: 
-                    value:
-                      $ref: 'examples/module/module_200_status_structure_50.xml'
+              examples:
+                forty-nine: 
+                  value:
+                    $ref: 'examples/module/module_200_status_structure_50.xml'
           headers:
             '<<':
               X-RateLimit-Limit:
