@@ -1,0 +1,187 @@
+{
+	"Response": {
+		"Module": {
+			"ModuleCode": "BIOL0005",
+			"ModuleIdentifier": "CF06F03873F311E89A86FAE8722E8321",
+			"ModuleTitle": "Fundamentals of Biology",
+			"ModuleContact": {
+				"Faculty": {
+					"FacultyCode": "LIF",
+					"FacultyName": "Faculty of Life Sciences"
+				},
+				"Department": {
+					"DepartmentCode": "BIOSC_LIF",
+					"DepartmentName": "Division of Biosciences"
+				}
+			},
+			"ModuleValue": "15",
+			"ModuleStudyHours": "150",
+			"ModuleLearningHours": "56",
+			"ModuleSearchKeywords": "CHEMISTRY, THERMODYNAMICS, BIOENERGETICS, SPECTROSCOPY, OCEAN ACIDIFICATION, AGEING, VISUAL ECOLOGY",
+			"Email": "hazel.smith@ucl.ac.uk",
+			"ModuleSuperGroup": "",
+			"CEFRLevel": "",
+			"ModuleInstance": {
+				"AcademicYearCode": "2019",
+				"AcademicYearDescription": "2019/20 academic  year",
+				"ModuleInstanceDescription": "<p>\n\t<strong>Module information</strong></p>\n<p>\n\t<em>Fundamentals of Biology</em> is designed to introduce students with a primary interest in whole organism biology (including Genetics, Human Genetics, Zoology, Biodiversity and Conservation) to fundamental chemical principles and experimental approaches to studying how they underpin living systems. If you have already completed A level Chemistry or equivalent, the module will provide you with the opportunity to apply your knowledge in a specifically biological framework. &nbsp;You will learn to assess and present evidence from a variety of sources through group projects, data analysis and presentations.&nbsp;</p>\n<p>\n\tEach section of the module will introduce you to a specific topic in biology before going on to explore the underlying chemical principles. As well as lectures you will attend workshops that will develop your ability to read research papers critically and tutorials to go through chemistry problems in small groups. Instead of an unseen examination in term 3, you will carry out either a field or lab-based research project, which will be written up in the form of a group poster presentation and short (individual) paper. If you choose to do a field project this will be carried out at 4-day field course at Blakeney Point, Norfolk.&nbsp;</p>\n<p>\n\t&nbsp;</p>\n<p>\n\t<strong>Indicative lecture topics </strong>&ndash; based on module content in 2018/19</p>\n<p>\n\t<em>Biology and water</em></p>\n<p>\n\tWater and biodiversity</p>\n<p>\n\tChemistry of Water</p>\n<p>\n\tExtremophiles</p>\n<p>\n\tThermodynamics of Water</p>\n<p>\n\tCoral reef biology and ocean acidification</p>\n<p>\n\tChemistry of ocean acidification</p>\n<p>\n\tThe role of mass spectrometry in biology</p>\n<p>\n\t&nbsp;</p>\n<p>\n\t<em>Biology and colour </em></p>\n<p>\n\tVisual signalling: sex, food and status</p>\n<p>\n\tPlant and animal pigments</p>\n<p>\n\tQuantum mechanics and the colour of atoms</p>\n<p>\n\tMolecular orbitals and UV-visible spectroscopy</p>\n<p>\n\tFluorescence and phosphorescence</p>\n<p>\n\tVibration and spin: IR and NMR spectroscopy</p>\n<p>\n\t&nbsp;</p>\n<p>\n\t<em>Biology and ageing</em></p>\n<p>\n\tComparative biology of ageing: model systems</p>\n<p>\n\tCellular ageing: damage and maintenance</p>\n<p>\n\tEntropy and enthalpy and free energy</p>\n<p>\n\tBioenergetics</p>\n<p>\n\tMetabolism and ageing</p>\n<p>\n\tMolecular damage and maintenance</p>\n<p>\n\t&nbsp;</p>\n<p>\n\tIntroduction to Blakeney Point and term 3 research projects</p>\n<p>\n\t&nbsp;</p>",
+				"ModuleInstanceRestriction": "Pre-requisites - A level Biology OR Chemistry or equivalent\nThis module is an option for first year Biological Sciences students and can be taken as an elective by students (including affiliate students) on other degree programmes.",
+				"ModuleInstanceSubjectCollection": {
+					"ModuleInstanceSubject": [
+						"General Chemistry",
+						"Biology",
+						"Cell Biology"
+					]
+				},
+				"ModuleDeliveryCollection": {
+					"ModuleDelivery": [
+						{
+							"ModuleDeliveryIdentifier": "CF1590D473F311E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L4",
+								"AcademicLevelTitle": "FHEQ Level 4"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "HKSMI95",
+								"Name": "Hazel Karen Smith",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "",
+							"NumberOfStudents": "",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "CF2A87F073F311E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1/3",
+								"PeriodTitle": "Term 1 and 3"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L4",
+								"AcademicLevelTitle": "FHEQ Level 4"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "HKSMI95",
+								"Name": "Hazel Karen Smith",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "56",
+							"NumberOfStudents": "56",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}

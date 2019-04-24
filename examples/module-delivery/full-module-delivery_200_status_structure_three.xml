@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Module>
+        <ModuleCode>HPSC0003</ModuleCode>
+        <ModuleIdentifier>27C5D50273F611E89A86FAE8722E8321</ModuleIdentifier>
+        <ModuleTitle>History of Science: Antiquity to Enlightenment</ModuleTitle>
+        <ModuleContact>
+            <Faculty>
+                <FacultyCode>MAP</FacultyCode>
+                <FacultyName>Faculty of Mathematical and Physical Sciences</FacultyName>
+            </Faculty>
+            <Department>
+                <DepartmentCode>SCITS_MAP</DepartmentCode>
+                <DepartmentName>Science and Technology Studies</DepartmentName>
+            </Department>
+        </ModuleContact>
+        <ModuleValue>15</ModuleValue>
+        <ModuleStudyHours>150</ModuleStudyHours>
+        <ModuleLearningHours>0</ModuleLearningHours>
+        <ModuleSearchKeywords>ANCIENT SCIENCE, MEDIEVAL SCIENCE, RENAISSANCE SCIENCE, SCIENTIFIC REVOLUTION, ENLIGHTENMENT.</ModuleSearchKeywords>
+        <Email>sts-aa@ucl.ac.uk</Email>
+        <ModuleSuperGroup></ModuleSuperGroup>
+        <CEFRLevel></CEFRLevel>
+        <ModuleInstance>
+            <AcademicYearCode>2019</AcademicYearCode>
+            <AcademicYearDescription>2019/20 academic  year</AcademicYearDescription>
+            <ModuleInstanceDescription>&lt;div style=&quot;left: 120.04px; top: 378.41px; font-size: 16.6px; font-family: sans-serif; transform: scaleX(1.00465);&quot;&gt;
+	&lt;p&gt;
+		Surveys the origins and development of science from the ancient Greeks to 1800. Main themes are the origins of science in the ancient world, the nature of the scientific revolution and the spread of science during the Enlightenment. Attend all lectures plus one tutorial per week.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+            </ModuleInstanceDescription>
+            <ModuleInstanceRestriction></ModuleInstanceRestriction>
+            <ModuleInstanceSubjectCollection>
+                <ModuleInstanceSubject>Ancient History</ModuleInstanceSubject>
+                <ModuleInstanceSubject>History</ModuleInstanceSubject>
+                <ModuleInstanceSubject>History of Science and Medicine</ModuleInstanceSubject>
+                <ModuleInstanceSubject>Medieval History</ModuleInstanceSubject>
+            </ModuleInstanceSubjectCollection>
+            <ModuleDeliveryCollection>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>27EBB33A73F611E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Undergraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T2</PeriodCode>
+                        <PeriodTitle>Term 2</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L4</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 4</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>ADGRE09</PersonIdentifier>
+                        <Name>Andrew David Gregory</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>0</PreviousYearStudentCount>
+                    <NumberOfStudents>0</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>27D459BA73F611E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Undergraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L4</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 4</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>ADGRE09</PersonIdentifier>
+                        <Name>Andrew David Gregory</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>40</PreviousYearStudentCount>
+                    <NumberOfStudents>40</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+            </ModuleDeliveryCollection>
+        </ModuleInstance>
+    </Module>
+</Response>

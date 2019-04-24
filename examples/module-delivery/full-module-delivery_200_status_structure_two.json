@@ -1,0 +1,189 @@
+{
+	"Response": {
+		"Module": {
+			"ModuleCode": "HPSC0022",
+			"ModuleIdentifier": "2BCF806C73F611E89A86FAE8722E8321",
+			"ModuleTitle": "Science and Religion",
+			"ModuleContact": {
+				"Faculty": {
+					"FacultyCode": "MAP",
+					"FacultyName": "Faculty of Mathematical and Physical Sciences"
+				},
+				"Department": {
+					"DepartmentCode": "SCITS_MAP",
+					"DepartmentName": "Science and Technology Studies"
+				}
+			},
+			"ModuleValue": "15",
+			"ModuleStudyHours": "150",
+			"ModuleLearningHours": "0",
+			"ModuleSearchKeywords": "HISTORY OF SCIENCE, RELIGION, EVOLUTION, COSMOLOGY, ATHEISM, CREATIONISM",
+			"Email": "sts-aa@ucl.ac.uk",
+			"ModuleSuperGroup": "",
+			"CEFRLevel": "",
+			"ModuleInstance": {
+				"AcademicYearCode": "2019",
+				"AcademicYearDescription": "2019/20 academic  year",
+				"ModuleInstanceDescription": "<p>\n\tThis module is designed to analyse and question the recurring argument in modern society which claims that science and religion are and have always been in conflict with one another. The belief that there are fundamental and irreconcilable differences between these two systems and the ways they view the world actually has a much more recent history than is generally assumed, arising primarily out of the late nineteenth and first half of the twentieth centuries. This module explores the ways in which people in different cultures and different time periods have attempted to navigate between naturalistic and faith-based understandings of the world we inhabit. We will look at several cultures including the Christian, Islamic and Chinese traditions, as well as various themes such as cosmology, Darwinism and medicine.</p>",
+				"ModuleInstanceRestriction": "",
+				"ModuleInstanceSubjectCollection": {
+					"ModuleInstanceSubject": [
+						"Ancient History",
+						"History",
+						"History of Science and Medicine",
+						"Philosophy of Science",
+						"Theology and Religion"
+					]
+				},
+				"ModuleDeliveryCollection": {
+					"ModuleDelivery": [
+						{
+							"ModuleDeliveryIdentifier": "2BF36A4073F611E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L5",
+								"AcademicLevelTitle": "FHEQ Level 5"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "WFMAC89",
+								"Name": "William Fleming Maclehose",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "0",
+							"NumberOfStudents": "0",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "2BDDE0F873F611E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L5",
+								"AcademicLevelTitle": "FHEQ Level 5"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "ADGRE09",
+								"Name": "Andrew David Gregory",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "25",
+							"NumberOfStudents": "25",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}

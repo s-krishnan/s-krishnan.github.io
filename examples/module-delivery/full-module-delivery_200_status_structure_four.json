@@ -1,0 +1,906 @@
+{
+	"Response": {
+		"Module": {
+			"ModuleCode": "CPAS0113",
+			"ModuleIdentifier": "9FBE8D9473F411E89A86FAE8722E8321",
+			"ModuleTitle": "Independent Study",
+			"ModuleContact": {
+				"Faculty": {
+					"FacultyCode": "IOE",
+					"FacultyName": "Institute of Education"
+				},
+				"Department": {
+					"DepartmentCode": "CURPA_IOE",
+					"DepartmentName": "Curriculum, Pedagogy and Assessment"
+				}
+			},
+			"ModuleValue": "30",
+			"ModuleStudyHours": "300",
+			"ModuleLearningHours": "30",
+			"ModuleSearchKeywords": "INDEPENDENT STUDY MODULE, ADVANCED EDUCATIONAL PRACTICE",
+			"Email": "ioe.aep@ucl.ac.uk",
+			"ModuleSuperGroup": "Independent Study",
+			"CEFRLevel": "",
+			"ModuleInstance": {
+				"AcademicYearCode": "2019",
+				"AcademicYearDescription": "2019/20 academic  year",
+				"ModuleInstanceDescription": "<p>\n\tThis module allows participants to considering the work they may have done in a recent non-accredited CPD or to study something of their own interest.<br />\n\tA series of ten activities supports participants in choosing and focusing engagement with an idea or concept. The module then moves on to think about each participant as a learner and what hinders learning, before returning to the investigation to support learners in finding their own readings in the field of study &ndash; the course team will also share some to start participants going!<br />\n\tThe module is taught online and can be taken in either the Autumn term, Spring term and Summer term in 2019-20.</p>",
+				"ModuleInstanceRestriction": "",
+				"ModuleInstanceSubjectCollection": {
+					"ModuleInstanceSubject": [
+						"Education",
+						"Educational Practice"
+					]
+				},
+				"ModuleDeliveryCollection": {
+					"ModuleDelivery": [
+						{
+							"ModuleDeliveryIdentifier": "31D9A2C9FA134BD5B5587910998B8553",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T3",
+								"PeriodTitle": "Term 3"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Online",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "EASTI41",
+								"Name": "Elizabeth Ann Stiasny",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "2",
+							"NumberOfStudents": "2",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "195B0094250D4F75B7071566E43D3068",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Online",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "EASTI41",
+								"Name": "Elizabeth Ann Stiasny",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "2",
+							"NumberOfStudents": "2",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "A4C5C891DD7F46F78562BB491BB9184F",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Online",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "EASTI41",
+								"Name": "Elizabeth Ann Stiasny",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "2",
+							"NumberOfStudents": "2",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "A03DFEDA73F411E89A86FAE8722E8321",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T3",
+								"PeriodTitle": "Term 3"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L7",
+								"AcademicLevelTitle": "FHEQ Level 7"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "20",
+							"NumberOfStudents": "20",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "A02706C673F411E89A86FAE8722E8321",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L7",
+								"AcademicLevelTitle": "FHEQ Level 7"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "20",
+							"NumberOfStudents": "20",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "A010181273F411E89A86FAE8722E8321",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L7",
+								"AcademicLevelTitle": "FHEQ Level 7"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "20",
+							"NumberOfStudents": "20",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "9FF8FA1A73F411E89A86FAE8722E8321",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T3",
+								"PeriodTitle": "Term 3"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "2",
+							"NumberOfStudents": "2",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "9FE1E44273F411E89A86FAE8722E8321",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "2",
+							"NumberOfStudents": "2",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "9FCCC15273F411E89A86FAE8722E8321",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "2",
+							"NumberOfStudents": "2",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "DDB5A4B2EB0F453287D8F17F2B7FD631",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T3",
+								"PeriodTitle": "Term 3"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L7",
+								"AcademicLevelTitle": "FHEQ Level 7"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Online",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "20",
+							"NumberOfStudents": "20",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "8CF4A69B585B4A3D8312BB6295601EEA",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L7",
+								"AcademicLevelTitle": "FHEQ Level 7"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Online",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "20",
+							"NumberOfStudents": "20",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "610DF6A88DE8405CB7642BA473CE3BE5",
+							"LevelOfStudy": "Postgraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L7",
+								"AcademicLevelTitle": "FHEQ Level 7"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Online",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "KEINS04",
+								"Name": "Kim Elizabeth Insley",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "20",
+							"NumberOfStudents": "20",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}

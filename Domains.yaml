@@ -203,25 +203,17 @@ components:
           minLength: 1
           maxLength: 15
           nullable: false
-        ModuleDeliveryTypeCollection:
-          type: object
-          properties:
-            ModuleDeliveryType:
-              title: Delivery included in the module such as Field trips and Placements
-              type: array
-              items:
-              - type: object
-                properties:
-                  _Name:
-                    type: string
-                    enum:
-                      - Field Trips 
-                      - Lab Work
-                      - Work Placements
-                      - Field Trips, Lab Work and Work Placements
-                      - Field Trips and Lab Work
-                      - Field Trips and Work Placements 
-                      - Lab Work and Work Placements
+        ModuleDeliveryType:
+          title: Delivery included in the module such as Field trips and Placements
+          type: string
+          enum:
+            - Field Trips 
+            - Lab Work
+            - Work Placements
+            - Field Trips, Lab Work and Work Placements
+            - Field Trips and Lab Work
+            - Field Trips and Work Placements 
+            - Lab Work and Work Placements
         PreviousYearStudentCount:
           title: Number of students enrolled on module in previous year.  
           type: number
@@ -598,7 +590,7 @@ components:
 
 
     filterParam:
-      name: "$filter"
+      name: "filter"
       in: "query"
       description:  |
         Query Option identifies a subset of the Entries from the Collection of Entries. 
@@ -882,15 +874,21 @@ components:
                         items:
                           $ref: Domains.yaml#/components/schemas/ModuleInstanceFull
           examples:
-            forty-nine:  
+            fifty_moduleinstances:
               value: 
                 $ref: 'examples/module/module_200_status_structure_50.json'
+            hundred_moduleinstances:
+              value: 
+                $ref: 'examples/module/module_200_status_structure_100.json'
         application/xml:
           <<: *modules_200_status_structure
           examples:
-            forty-nine: 
+            fifty_moduleinstances: 
               value:
                 $ref: 'examples/module/module_200_status_structure_50.xml'
+            hundred_moduleinstances: 
+              value:
+                $ref: 'examples/module/module_200_status_structure_100.xml'
       headers:
         <<: *RateLimitHeader
       # links:
@@ -954,11 +952,40 @@ components:
                                       type: array
                                       items:
                                         $ref: '#/components/schemas/ModuleDelivery'
-                          
-                            
-                        
+          examples:
+            BDOID_3460034673F611E89A86FAE8722E8321_JSON:  
+              value: 
+                $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_one.json'
+            BDOID_2BCF806C73F611E89A86FAE8722E8321_JSON:  
+              value: 
+                $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_two.json'
+            BDOID_27C5D50273F611E89A86FAE8722E8321_JSON: 
+              value: 
+                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_three.json'
+            BDOID_9FBE8D9473F411E89A86FAE8722E8321_JSON: 
+              value: 
+                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_four.json'
+            BDOID_CF06F03873F311E89A86FAE8722E8321_JSON: 
+              value: 
+                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_five.json'
         application/xml:
           << : *moduledeliveries_200_status
+          examples:
+            BDOID_3460034673F611E89A86FAE8722E8321_XML:  
+              value: 
+                $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_one.xml'
+            BDOID_2BCF806C73F611E89A86FAE8722E8321_XML:
+              value: 
+                $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_two.xml'
+            BDOID_27C5D50273F611E89A86FAE8722E8321_XML:
+              value: 
+                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_three.xml'
+            BDOID_9FBE8D9473F411E89A86FAE8722E8321_XML:
+              value: 
+                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_four.xml'
+            BDOID_CF06F03873F311E89A86FAE8722E8321_XML:
+              value: 
+                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_five.xml'
       headers:
         <<: *RateLimitHeader
       # links:

@@ -43,8 +43,18 @@ info:
     \ bear in mind that you are working with your live production data, not sample\
     \ data or test data.\n\n
     \ Timeout Limit\n\nIf a request does not complete within 120 seconds, the request\
-    \ times out and API platform returns a Gateway Timeout error.\n\n## Error Handling\n\n\
-    Responses and error codes are detailed in [Responses and errors](https://wiki.ucl.ac.uk/display/IA/API+Integration+Patterns?preview=/111477057/112333232/API%20Design%20Principles%20Standards.docx).\
+    \ times out and API platform returns a Gateway Timeout error.\n\n## Response codes and errors\n\n\
+    \ Response codes indicate success or failure of data processing. Status codes from the 2XX range indicate that request has been accepted. If the returned code is from the 4XX range then it reveals either problem with the request or unability to discover new data.\
+    
+    \ \n\n| Response Code              | Description|\n \
+    \ |-------------------------|----|\n \
+    \ |200                   | Invalid values / Bad Request  |\n \
+    \ |400                   | Unauthorized. It is usally caused by using a wrong API key or do not using one at all.  |\n \
+    \ |401                   | Too many requests (plase see Rate limits below)  |\n \
+    \ |411                   | Bad request  |\n \
+    \ |405                   | The request was successful  |\n \
+    \ |500                   | Internal Server Error. Please contact API team  |\n \
+
     \ \n\n# API Rate Limits\n\nAPI platform enforces client-level, Rate limiting of the standard API is primarily on a \
     \ per-user basis — or more accurately described, per user access token. If a method allows for X requests per rate limit  \
     \ window, then it allows X requests per window per access token. \
@@ -146,7 +156,7 @@ info:
     \ | Academic Module                                       | `Module`                  |\n\
     \ |Academic Module Delivery                               | `ModuleDelivery`\
     \ \n"
-  version: "7.0.20190409"
+  version: "8.0.20190424"
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png  

@@ -1,0 +1,187 @@
+{
+	"Response": {
+		"Module": {
+			"ModuleCode": "HPSC0068",
+			"ModuleIdentifier": "3460034673F611E89A86FAE8722E8321",
+			"ModuleTitle": "Sleeping and Dreaming",
+			"ModuleContact": {
+				"Faculty": {
+					"FacultyCode": "MAP",
+					"FacultyName": "Faculty of Mathematical and Physical Sciences"
+				},
+				"Department": {
+					"DepartmentCode": "SCITS_MAP",
+					"DepartmentName": "Science and Technology Studies"
+				}
+			},
+			"ModuleValue": "15",
+			"ModuleStudyHours": "150",
+			"ModuleLearningHours": "0",
+			"ModuleSearchKeywords": "HISTORY AND PHILOSOPHY OF SLEEP, DREAMS DREAMING,FREUD JUNG REM INSOMNIA SLEEPWALKING",
+			"Email": "sts-aa@ucl.ac.uk",
+			"ModuleSuperGroup": "",
+			"CEFRLevel": "",
+			"ModuleInstance": {
+				"AcademicYearCode": "2019",
+				"AcademicYearDescription": "2019/20 academic  year",
+				"ModuleInstanceDescription": "<p>\n\tWhat happens during sleep? Why do we dream? Across the centuries there have been many attempts to answer these and other questions surrounding the still-mysterious state of sleep. This course is designed to explore the different ways sleeping and dreaming have been understood in the past, both distant and recent. What is the relation between the physical and mental aspects of sleep; why do some cultures see dreams as true, some see them as false, and other see them as the gateway to the unconscious? We discuss historical understandings of the physiology of sleep, the interpretations of dreams, the material culture of resting, the drugs that produce artificial sleep, and the ways sleeping and dreaming have been used in art, literature and film. The module is designed to familiarise students with the questions and literature in the history of sleep, including medical and psychological materials. The class will follow a seminar-based model, requiring students to read the materials critically and discuss the materials in class. As an advanced course, it is also intended to increase the student&rsquo;s analytical, research and writing skills. The research essay requires students to gather the primary and secondary literature on a topic, synthesise the material and hone their abilities at making a sustained argument.</p>",
+				"ModuleInstanceRestriction": "",
+				"ModuleInstanceSubjectCollection": {
+					"ModuleInstanceSubject": [
+						"Cultural Studies",
+						"History",
+						"Psychoanalytical Studies"
+					]
+				},
+				"ModuleDeliveryCollection": {
+					"ModuleDelivery": [
+						{
+							"ModuleDeliveryIdentifier": "3483A0C673F611E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "WFMAC89",
+								"Name": "William Fleming Maclehose",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "35",
+							"NumberOfStudents": "35",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "346E69B873F611E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L6",
+								"AcademicLevelTitle": "FHEQ Level 6"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "WFMAC89",
+								"Name": "William Fleming Maclehose",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "26",
+							"NumberOfStudents": "26",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,188 @@
+{
+	"Response": {
+		"Module": {
+			"ModuleCode": "HPSC0003",
+			"ModuleIdentifier": "27C5D50273F611E89A86FAE8722E8321",
+			"ModuleTitle": "History of Science: Antiquity to Enlightenment",
+			"ModuleContact": {
+				"Faculty": {
+					"FacultyCode": "MAP",
+					"FacultyName": "Faculty of Mathematical and Physical Sciences"
+				},
+				"Department": {
+					"DepartmentCode": "SCITS_MAP",
+					"DepartmentName": "Science and Technology Studies"
+				}
+			},
+			"ModuleValue": "15",
+			"ModuleStudyHours": "150",
+			"ModuleLearningHours": "0",
+			"ModuleSearchKeywords": "ANCIENT SCIENCE, MEDIEVAL SCIENCE, RENAISSANCE SCIENCE, SCIENTIFIC REVOLUTION, ENLIGHTENMENT.",
+			"Email": "sts-aa@ucl.ac.uk",
+			"ModuleSuperGroup": "",
+			"CEFRLevel": "",
+			"ModuleInstance": {
+				"AcademicYearCode": "2019",
+				"AcademicYearDescription": "2019/20 academic  year",
+				"ModuleInstanceDescription": "<div style=\"left: 120.04px; top: 378.41px; font-size: 16.6px; font-family: sans-serif; transform: scaleX(1.00465);\">\n\t<p>\n\t\tSurveys the origins and development of science from the ancient Greeks to 1800. Main themes are the origins of science in the ancient world, the nature of the scientific revolution and the spread of science during the Enlightenment. Attend all lectures plus one tutorial per week.</p>\n</div>\n<p>\n\t&nbsp;</p>",
+				"ModuleInstanceRestriction": "",
+				"ModuleInstanceSubjectCollection": {
+					"ModuleInstanceSubject": [
+						"Ancient History",
+						"History",
+						"History of Science and Medicine",
+						"Medieval History"
+					]
+				},
+				"ModuleDeliveryCollection": {
+					"ModuleDelivery": [
+						{
+							"ModuleDeliveryIdentifier": "27EBB33A73F611E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T2",
+								"PeriodTitle": "Term 2"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L4",
+								"AcademicLevelTitle": "FHEQ Level 4"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "ADGRE09",
+								"Name": "Andrew David Gregory",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "0",
+							"NumberOfStudents": "0",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						},
+						{
+							"ModuleDeliveryIdentifier": "27D459BA73F611E89A86FAE8722E8321",
+							"LevelOfStudy": "Undergraduate",
+							"ModuleDeliveryPeriod": {
+								"PeriodCode": "T1",
+								"PeriodTitle": "Term 1"
+							},
+							"AcademicLevel": {
+								"AcademicLevelCode": "L4",
+								"AcademicLevelTitle": "FHEQ Level 4"
+							},
+							"ModuleDeliveryType": "",
+							"ModeOfStudy": "Face-to-face",
+							"ModuleDeliveryTutor": {
+								"PersonIdentifier": "ADGRE09",
+								"Name": "Andrew David Gregory",
+								"Email": ""
+							},
+							"PreviousYearStudentCount": "40",
+							"NumberOfStudents": "40",
+							"ModuleDeliveryLocation": {
+								"LocationIdentifier": "",
+								"LocationName": ""
+							},
+							"ModuleDeliveryAssessment": {
+								"AssessmentGroupCollection": {
+									"AssessmentGroup": [
+										{
+											"AssessmentGroupCode": "NULL",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										},
+										{
+											"AssessmentGroupCode": "A",
+											"AssessmentGroupName": "",
+											"AssessmentComponentList": {
+												"AssessmentComponent": [
+													{
+														"AssessmentComponentTitle": "Coursework three",
+														"AssessmentComponentWeightPercentage": "15"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework two (1,800 words)",
+														"AssessmentComponentWeightPercentage": "35"
+													},
+													{
+														"AssessmentComponentTitle": "Coursework one (3,000 words)",
+														"AssessmentComponentWeightPercentage": "50"
+													}
+												]
+											}
+										}
+									],
+									"_DefaultAssessmentGroup": "NULL"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Module>
+        <ModuleCode>BIOL0005</ModuleCode>
+        <ModuleIdentifier>CF06F03873F311E89A86FAE8722E8321</ModuleIdentifier>
+        <ModuleTitle>Fundamentals of Biology</ModuleTitle>
+        <ModuleContact>
+            <Faculty>
+                <FacultyCode>LIF</FacultyCode>
+                <FacultyName>Faculty of Life Sciences</FacultyName>
+            </Faculty>
+            <Department>
+                <DepartmentCode>BIOSC_LIF</DepartmentCode>
+                <DepartmentName>Division of Biosciences</DepartmentName>
+            </Department>
+        </ModuleContact>
+        <ModuleValue>15</ModuleValue>
+        <ModuleStudyHours>150</ModuleStudyHours>
+        <ModuleLearningHours>56</ModuleLearningHours>
+        <ModuleSearchKeywords>CHEMISTRY, THERMODYNAMICS, BIOENERGETICS, SPECTROSCOPY, OCEAN ACIDIFICATION, AGEING, VISUAL ECOLOGY</ModuleSearchKeywords>
+        <Email>hazel.smith@ucl.ac.uk</Email>
+        <ModuleSuperGroup></ModuleSuperGroup>
+        <CEFRLevel></CEFRLevel>
+        <ModuleInstance>
+            <AcademicYearCode>2019</AcademicYearCode>
+            <AcademicYearDescription>2019/20 academic  year</AcademicYearDescription>
+            <ModuleInstanceDescription>&lt;p&gt;
+	&lt;strong&gt;Module information&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+	&lt;em&gt;Fundamentals of Biology&lt;/em&gt; is designed to introduce students with a primary interest in whole organism biology (including Genetics, Human Genetics, Zoology, Biodiversity and Conservation) to fundamental chemical principles and experimental approaches to studying how they underpin living systems. If you have already completed A level Chemistry or equivalent, the module will provide you with the opportunity to apply your knowledge in a specifically biological framework. &amp;nbsp;You will learn to assess and present evidence from a variety of sources through group projects, data analysis and presentations.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;
+	Each section of the module will introduce you to a specific topic in biology before going on to explore the underlying chemical principles. As well as lectures you will attend workshops that will develop your ability to read research papers critically and tutorials to go through chemistry problems in small groups. Instead of an unseen examination in term 3, you will carry out either a field or lab-based research project, which will be written up in the form of a group poster presentation and short (individual) paper. If you choose to do a field project this will be carried out at 4-day field course at Blakeney Point, Norfolk.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;Indicative lecture topics &lt;/strong&gt;&amp;ndash; based on module content in 2018/19&lt;/p&gt;
+&lt;p&gt;
+	&lt;em&gt;Biology and water&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+	Water and biodiversity&lt;/p&gt;
+&lt;p&gt;
+	Chemistry of Water&lt;/p&gt;
+&lt;p&gt;
+	Extremophiles&lt;/p&gt;
+&lt;p&gt;
+	Thermodynamics of Water&lt;/p&gt;
+&lt;p&gt;
+	Coral reef biology and ocean acidification&lt;/p&gt;
+&lt;p&gt;
+	Chemistry of ocean acidification&lt;/p&gt;
+&lt;p&gt;
+	The role of mass spectrometry in biology&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;
+	&lt;em&gt;Biology and colour &lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+	Visual signalling: sex, food and status&lt;/p&gt;
+&lt;p&gt;
+	Plant and animal pigments&lt;/p&gt;
+&lt;p&gt;
+	Quantum mechanics and the colour of atoms&lt;/p&gt;
+&lt;p&gt;
+	Molecular orbitals and UV-visible spectroscopy&lt;/p&gt;
+&lt;p&gt;
+	Fluorescence and phosphorescence&lt;/p&gt;
+&lt;p&gt;
+	Vibration and spin: IR and NMR spectroscopy&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;
+	&lt;em&gt;Biology and ageing&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+	Comparative biology of ageing: model systems&lt;/p&gt;
+&lt;p&gt;
+	Cellular ageing: damage and maintenance&lt;/p&gt;
+&lt;p&gt;
+	Entropy and enthalpy and free energy&lt;/p&gt;
+&lt;p&gt;
+	Bioenergetics&lt;/p&gt;
+&lt;p&gt;
+	Metabolism and ageing&lt;/p&gt;
+&lt;p&gt;
+	Molecular damage and maintenance&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;
+	Introduction to Blakeney Point and term 3 research projects&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&lt;/p&gt;
+            </ModuleInstanceDescription>
+            <ModuleInstanceRestriction>Pre-requisites - A level Biology OR Chemistry or equivalent
+This module is an option for first year Biological Sciences students and can be taken as an elective by students (including affiliate students) on other degree programmes.</ModuleInstanceRestriction>
+            <ModuleInstanceSubjectCollection>
+                <ModuleInstanceSubject>General Chemistry</ModuleInstanceSubject>
+                <ModuleInstanceSubject>Biology</ModuleInstanceSubject>
+                <ModuleInstanceSubject>Cell Biology</ModuleInstanceSubject>
+            </ModuleInstanceSubjectCollection>
+            <ModuleDeliveryCollection>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>CF1590D473F311E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Undergraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L4</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 4</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>HKSMI95</PersonIdentifier>
+                        <Name>Hazel Karen Smith</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount></PreviousYearStudentCount>
+                    <NumberOfStudents></NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>CF2A87F073F311E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Undergraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1/3</PeriodCode>
+                        <PeriodTitle>Term 1 and 3</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L4</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 4</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>HKSMI95</PersonIdentifier>
+                        <Name>Hazel Karen Smith</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>56</PreviousYearStudentCount>
+                    <NumberOfStudents>56</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+            </ModuleDeliveryCollection>
+        </ModuleInstance>
+    </Module>
+</Response>

@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Module>
+        <ModuleCode>CPAS0113</ModuleCode>
+        <ModuleIdentifier>9FBE8D9473F411E89A86FAE8722E8321</ModuleIdentifier>
+        <ModuleTitle>Independent Study</ModuleTitle>
+        <ModuleContact>
+            <Faculty>
+                <FacultyCode>IOE</FacultyCode>
+                <FacultyName>Institute of Education</FacultyName>
+            </Faculty>
+            <Department>
+                <DepartmentCode>CURPA_IOE</DepartmentCode>
+                <DepartmentName>Curriculum, Pedagogy and Assessment</DepartmentName>
+            </Department>
+        </ModuleContact>
+        <ModuleValue>30</ModuleValue>
+        <ModuleStudyHours>300</ModuleStudyHours>
+        <ModuleLearningHours>30</ModuleLearningHours>
+        <ModuleSearchKeywords>INDEPENDENT STUDY MODULE, ADVANCED EDUCATIONAL PRACTICE</ModuleSearchKeywords>
+        <Email>ioe.aep@ucl.ac.uk</Email>
+        <ModuleSuperGroup>Independent Study</ModuleSuperGroup>
+        <CEFRLevel></CEFRLevel>
+        <ModuleInstance>
+            <AcademicYearCode>2019</AcademicYearCode>
+            <AcademicYearDescription>2019/20 academic  year</AcademicYearDescription>
+            <ModuleInstanceDescription>&lt;p&gt;
+	This module allows participants to considering the work they may have done in a recent non-accredited CPD or to study something of their own interest.&lt;br /&gt;
+	A series of ten activities supports participants in choosing and focusing engagement with an idea or concept. The module then moves on to think about each participant as a learner and what hinders learning, before returning to the investigation to support learners in finding their own readings in the field of study &amp;ndash; the course team will also share some to start participants going!&lt;br /&gt;
+	The module is taught online and can be taken in either the Autumn term, Spring term and Summer term in 2019-20.&lt;/p&gt;
+            </ModuleInstanceDescription>
+            <ModuleInstanceRestriction></ModuleInstanceRestriction>
+            <ModuleInstanceSubjectCollection>
+                <ModuleInstanceSubject>Education</ModuleInstanceSubject>
+                <ModuleInstanceSubject>Educational Practice</ModuleInstanceSubject>
+            </ModuleInstanceSubjectCollection>
+            <ModuleDeliveryCollection>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>31D9A2C9FA134BD5B5587910998B8553</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T3</PeriodCode>
+                        <PeriodTitle>Term 3</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Online</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>EASTI41</PersonIdentifier>
+                        <Name>Elizabeth Ann Stiasny</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>2</PreviousYearStudentCount>
+                    <NumberOfStudents>2</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>195B0094250D4F75B7071566E43D3068</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Online</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>EASTI41</PersonIdentifier>
+                        <Name>Elizabeth Ann Stiasny</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>2</PreviousYearStudentCount>
+                    <NumberOfStudents>2</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>A4C5C891DD7F46F78562BB491BB9184F</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T2</PeriodCode>
+                        <PeriodTitle>Term 2</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Online</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>EASTI41</PersonIdentifier>
+                        <Name>Elizabeth Ann Stiasny</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>2</PreviousYearStudentCount>
+                    <NumberOfStudents>2</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>A03DFEDA73F411E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T3</PeriodCode>
+                        <PeriodTitle>Term 3</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L7</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 7</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>20</PreviousYearStudentCount>
+                    <NumberOfStudents>20</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>A02706C673F411E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T2</PeriodCode>
+                        <PeriodTitle>Term 2</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L7</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 7</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>20</PreviousYearStudentCount>
+                    <NumberOfStudents>20</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>A010181273F411E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L7</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 7</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>20</PreviousYearStudentCount>
+                    <NumberOfStudents>20</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>9FF8FA1A73F411E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T3</PeriodCode>
+                        <PeriodTitle>Term 3</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>2</PreviousYearStudentCount>
+                    <NumberOfStudents>2</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>9FE1E44273F411E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T2</PeriodCode>
+                        <PeriodTitle>Term 2</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>2</PreviousYearStudentCount>
+                    <NumberOfStudents>2</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>9FCCC15273F411E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>2</PreviousYearStudentCount>
+                    <NumberOfStudents>2</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>DDB5A4B2EB0F453287D8F17F2B7FD631</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T3</PeriodCode>
+                        <PeriodTitle>Term 3</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L7</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 7</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Online</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>20</PreviousYearStudentCount>
+                    <NumberOfStudents>20</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>8CF4A69B585B4A3D8312BB6295601EEA</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T2</PeriodCode>
+                        <PeriodTitle>Term 2</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L7</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 7</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Online</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>20</PreviousYearStudentCount>
+                    <NumberOfStudents>20</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>610DF6A88DE8405CB7642BA473CE3BE5</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Postgraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L7</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 7</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Online</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>KEINS04</PersonIdentifier>
+                        <Name>Kim Elizabeth Insley</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>20</PreviousYearStudentCount>
+                    <NumberOfStudents>20</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+            </ModuleDeliveryCollection>
+        </ModuleInstance>
+    </Module>
+</Response>

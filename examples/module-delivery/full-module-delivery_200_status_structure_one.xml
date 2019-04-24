@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Module>
+        <ModuleCode>HPSC0068</ModuleCode>
+        <ModuleIdentifier>3460034673F611E89A86FAE8722E8321</ModuleIdentifier>
+        <ModuleTitle>Sleeping and Dreaming</ModuleTitle>
+        <ModuleContact>
+            <Faculty>
+                <FacultyCode>MAP</FacultyCode>
+                <FacultyName>Faculty of Mathematical and Physical Sciences</FacultyName>
+            </Faculty>
+            <Department>
+                <DepartmentCode>SCITS_MAP</DepartmentCode>
+                <DepartmentName>Science and Technology Studies</DepartmentName>
+            </Department>
+        </ModuleContact>
+        <ModuleValue>15</ModuleValue>
+        <ModuleStudyHours>150</ModuleStudyHours>
+        <ModuleLearningHours>0</ModuleLearningHours>
+        <ModuleSearchKeywords>HISTORY AND PHILOSOPHY OF SLEEP, DREAMS DREAMING,FREUD JUNG REM INSOMNIA SLEEPWALKING</ModuleSearchKeywords>
+        <Email>sts-aa@ucl.ac.uk</Email>
+        <ModuleSuperGroup></ModuleSuperGroup>
+        <CEFRLevel></CEFRLevel>
+        <ModuleInstance>
+            <AcademicYearCode>2019</AcademicYearCode>
+            <AcademicYearDescription>2019/20 academic  year</AcademicYearDescription>
+            <ModuleInstanceDescription>&lt;p&gt;
+	What happens during sleep? Why do we dream? Across the centuries there have been many attempts to answer these and other questions surrounding the still-mysterious state of sleep. This course is designed to explore the different ways sleeping and dreaming have been understood in the past, both distant and recent. What is the relation between the physical and mental aspects of sleep; why do some cultures see dreams as true, some see them as false, and other see them as the gateway to the unconscious? We discuss historical understandings of the physiology of sleep, the interpretations of dreams, the material culture of resting, the drugs that produce artificial sleep, and the ways sleeping and dreaming have been used in art, literature and film. The module is designed to familiarise students with the questions and literature in the history of sleep, including medical and psychological materials. The class will follow a seminar-based model, requiring students to read the materials critically and discuss the materials in class. As an advanced course, it is also intended to increase the student&amp;rsquo;s analytical, research and writing skills. The research essay requires students to gather the primary and secondary literature on a topic, synthesise the material and hone their abilities at making a sustained argument.&lt;/p&gt;
+            </ModuleInstanceDescription>
+            <ModuleInstanceRestriction></ModuleInstanceRestriction>
+            <ModuleInstanceSubjectCollection>
+                <ModuleInstanceSubject>Cultural Studies</ModuleInstanceSubject>
+                <ModuleInstanceSubject>History</ModuleInstanceSubject>
+                <ModuleInstanceSubject>Psychoanalytical Studies</ModuleInstanceSubject>
+            </ModuleInstanceSubjectCollection>
+            <ModuleDeliveryCollection>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>3483A0C673F611E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Undergraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T2</PeriodCode>
+                        <PeriodTitle>Term 2</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>WFMAC89</PersonIdentifier>
+                        <Name>William Fleming Maclehose</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>35</PreviousYearStudentCount>
+                    <NumberOfStudents>35</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+                <ModuleDelivery>
+                    <ModuleDeliveryIdentifier>346E69B873F611E89A86FAE8722E8321</ModuleDeliveryIdentifier>
+                    <LevelOfStudy>Undergraduate</LevelOfStudy>
+                    <ModuleDeliveryPeriod>
+                        <PeriodCode>T1</PeriodCode>
+                        <PeriodTitle>Term 1</PeriodTitle>
+                    </ModuleDeliveryPeriod>
+                    <AcademicLevel>
+                        <AcademicLevelCode>L6</AcademicLevelCode>
+                        <AcademicLevelTitle>FHEQ Level 6</AcademicLevelTitle>
+                    </AcademicLevel>
+                    <ModuleDeliveryType></ModuleDeliveryType>
+                    <ModeOfStudy>Face-to-face</ModeOfStudy>
+                    <ModuleDeliveryTutor>
+                        <PersonIdentifier>WFMAC89</PersonIdentifier>
+                        <Name>William Fleming Maclehose</Name>
+                        <Email></Email>
+                    </ModuleDeliveryTutor>
+                    <PreviousYearStudentCount>26</PreviousYearStudentCount>
+                    <NumberOfStudents>26</NumberOfStudents>
+                    <ModuleDeliveryLocation>
+                        <LocationIdentifier></LocationIdentifier>
+                        <LocationName></LocationName>
+                    </ModuleDeliveryLocation>
+                    <ModuleDeliveryAssessment>
+                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>NULL</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                            <AssessmentGroup>
+                                <AssessmentGroupCode>A</AssessmentGroupCode>
+                                <AssessmentGroupName></AssessmentGroupName>
+                                <AssessmentComponentList>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework three</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>15</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework two (1,800 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>35</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                    <AssessmentComponent>
+                                        <AssessmentComponentTitle>Coursework one (3,000 words)</AssessmentComponentTitle>
+                                        <AssessmentComponentWeightPercentage>50</AssessmentComponentWeightPercentage>
+                                    </AssessmentComponent>
+                                </AssessmentComponentList>
+                            </AssessmentGroup>
+                        </AssessmentGroupCollection>
+                    </ModuleDeliveryAssessment>
+                </ModuleDelivery>
+            </ModuleDeliveryCollection>
+        </ModuleInstance>
+    </Module>
+</Response>
