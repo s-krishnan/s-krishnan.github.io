@@ -21,8 +21,8 @@ components:
       # or
       # operationRef: '#/paths/Module/get'
       parameters:
-        $skipParam: $request.query.$skip
-        $limit: $request.query.$limit
+        skipParam: $request.query.skip
+        limit: $request.query.limit
   
   schemas:
 
@@ -601,7 +601,7 @@ components:
         be considered malformed. The subset is determined by selecting only the Entries 
         that satisfy the predicate expression specified by the query option.
         
-        The expression language that is used in `$filter` operators supports references to properties and literals. 
+        The expression language that is used in `filter` operators supports references to properties and literals. 
         
         ### Expression language structure
         ```
@@ -644,9 +644,9 @@ components:
         
         | Description                       |       Example                |
         |-----------------------------------|-----------------------|
-        | Returns one or more entities that has the property ModuleCode with the string ANAT0010 | $filter=ModuleCode Eq 'ANAT0010'|
-        | Returns one or more entities that has the property SuperModuleGroup with the string GE001 | $filter=SuperModuleGroup Eq 'GE001'|
-        | Returns one or more entities that has the property ModuleCode with the string ANAT0010 AND the SuperModuleGroup with the string GE001 | $filter=ModuleCode Eq 'ANAT0010' And SuperModuleGroup Eq 'GE001'|
+        | Returns one or more entities that has the property ModuleCode with the string ANAT0010 | filter=ModuleCode Eq 'ANAT0010'|
+        | Returns one or more entities that has the property SuperModuleGroup with the string GE001 | filter=SuperModuleGroup Eq 'GE001'|
+        | Returns one or more entities that has the property ModuleCode with the string ANAT0010 AND the SuperModuleGroup with the string GE001 | filter=ModuleCode Eq 'ANAT0010' And SuperModuleGroup Eq 'GE001'|
        
       schema:
         type: string
@@ -654,15 +654,15 @@ components:
         Logical-Equal-Number:
           summary:  eq
           description:  Logical Equal
-          value:  $filter=ModuleInAcademicYear eq 2019
+          value:  filter=ModuleInAcademicYear eq 2019
         Logical-Equal-String:
           summary:  and
           description:  Logical Equal
-          value:  $filter=ModuleCode `eq` 'ANAT0010'
+          value:  filter=ModuleCode `eq` 'ANAT0010'
         Logical-And:
           summary:  and
           description:  Logical `And`
-          value:  $filter=AcademicYearCode `eq` 2019 `and` ModuleCode eq 'ANAT0010'
+          value:  filter=AcademicYearCode `eq` 2019 `and` ModuleCode eq 'ANAT0010'
 
     AcademicYearCode:
       name: AcademicYearCode
