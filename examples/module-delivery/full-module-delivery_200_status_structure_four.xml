@@ -59,8 +59,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -124,8 +124,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -189,8 +189,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -254,8 +254,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -319,8 +319,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -384,8 +384,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -449,8 +449,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -514,8 +514,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -579,8 +579,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -644,8 +644,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -709,8 +709,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -774,8 +774,8 @@
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>

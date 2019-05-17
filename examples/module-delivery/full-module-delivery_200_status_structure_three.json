@@ -61,6 +61,7 @@
 								"LocationName": ""
 							},
 							"ModuleDeliveryAssessment": {
+								"_DefaultAssessmentGroup": "NULL",
 								"AssessmentGroupCollection": {
 									"AssessmentGroup": [
 										{
@@ -103,8 +104,7 @@
 												]
 											}
 										}
-									],
-									"_DefaultAssessmentGroup": "NULL"
+									]
 								}
 							}
 						},
@@ -133,6 +133,7 @@
 								"LocationName": ""
 							},
 							"ModuleDeliveryAssessment": {
+								"_DefaultAssessmentGroup": "NULL",
 								"AssessmentGroupCollection": {
 									"AssessmentGroup": [
 										{
@@ -175,8 +176,7 @@
 												]
 											}
 										}
-									],
-									"_DefaultAssessmentGroup": "NULL"
+									]
 								}
 							}
 						}

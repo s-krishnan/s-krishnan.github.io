@@ -121,8 +121,8 @@ This module is an option for first year Biological Sciences students and can be 
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
@@ -186,8 +186,8 @@ This module is an option for first year Biological Sciences students and can be 
                         <LocationIdentifier></LocationIdentifier>
                         <LocationName></LocationName>
                     </ModuleDeliveryLocation>
-                    <ModuleDeliveryAssessment>
-                        <AssessmentGroupCollection DefaultAssessmentGroup="NULL">
+                    <ModuleDeliveryAssessment DefaultAssessmentGroup="NULL">
+                        <AssessmentGroupCollection>
                             <AssessmentGroup>
                                 <AssessmentGroupCode>NULL</AssessmentGroupCode>
                                 <AssessmentGroupName></AssessmentGroupName>
