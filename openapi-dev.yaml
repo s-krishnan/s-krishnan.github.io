@@ -3,9 +3,9 @@ openapi: 3.0.2
 # Added by API Auto Mocking Plugin
 servers:
   - description:  Production
-    url: https://api.ucl.ac.uk/AcademicModule/v1
-  # - description:  UAT
-  #   url: https://api.ucl.ac.uk/
+    url: https://api.ucl.ac.uk/AcademicModule/0.8
+  - description:  UAT
+    url: https://api-uat.ucl.ac.uk/AcademicModule/0.8
   # - description:   Performance Test
   #   url: http://api.ucl.ac.uk/
 info:
@@ -22,7 +22,7 @@ info:
     \ do to make it better.\n\n## Access to the API\n\n
     \ You can access the UCL Academic REST API via one of the following endpoints:\n\n| Environment\
     \              | Base URL for REST Endpoints |\n|-------------------------|-------------------------|\n\
-    |Production | TBC   |\n|UAT    | TBC|\n\
+    |Production | https://api.ucl.ac.uk/AcademicModule   |\n|UAT    | https://api.ucl.ac.uk/AcademicModule|\n\
     |Performance Test | TBC |\n\nThe Production endpoint\
     \ provides access to the live data. UAT tenants are a good place\
     \ to test code without affecting real-world data. If you would like UCL to provision\
@@ -156,7 +156,7 @@ info:
     \ | Academic Module                                       | `Module`                  |\n\
     \ |Academic Module Delivery                               | `ModuleDelivery`\
     \ \n"
-  version: "8.1.20190424"
+  version: "8.1.20190621"
   title: UCL Academic API Reference
   x-logo:
     url: Images/isdi_logo_grey-trans-large.png  

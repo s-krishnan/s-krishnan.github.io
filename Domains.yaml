@@ -8,7 +8,7 @@ openapi: 4.0.0
 
 info:
   description: "This is a collection of domain models for module catalogue in UCL"
-  version: '3.0.0'
+  version: '4.0.0'
   title:  Domain models
 
 components:
@@ -233,7 +233,9 @@ components:
           $ref: '#/components/schemas/Person'
         ModuleDeliveryAssessment:
           $ref: '#/components/schemas/ModuleDeliveryAssessment'
-
+        ModuleDeliveryDescription:
+          title:  Module delivery description contains a mark scheme. 
+          type: string
     ModuleInstanceFull:
       type: object
       allOf:
@@ -879,13 +881,13 @@ components:
                 $ref: 'examples/module/module_200_status_structure_100.json'
         application/xml:
           <<: *modules_200_status_structure
-          examples:
-            fifty_moduleinstances: 
-              value:
-                $ref: 'examples/module/module_200_status_structure_50.xml'
-            hundred_moduleinstances: 
-              value:
-                $ref: 'examples/module/module_200_status_structure_100.xml'
+          # examples:
+          #   fifty_moduleinstances: 
+          #     value:
+          #       $ref: 'examples/module/module_200_status_structure_50.xml'
+            # hundred_moduleinstances: 
+            #   value:
+            #     $ref: 'examples/module/module_200_status_structure_100.xml'
       headers:
         <<: *RateLimitHeader
       # links:
@@ -974,15 +976,15 @@ components:
             BDOID_2BCF806C73F611E89A86FAE8722E8321_XML:
               value: 
                 $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_two.xml'
-            BDOID_27C5D50273F611E89A86FAE8722E8321_XML:
-              value: 
-                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_three.xml'
+            # BDOID_27C5D50273F611E89A86FAE8722E8321_XML:
+            #   value: 
+            #       $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_three.xml'
             BDOID_9FBE8D9473F411E89A86FAE8722E8321_XML:
               value: 
                   $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_four.xml'
-            BDOID_CF06F03873F311E89A86FAE8722E8321_XML:
-              value: 
-                  $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_five.xml'
+            # BDOID_CF06F03873F311E89A86FAE8722E8321_XML:
+            #   value: 
+            #       $ref: 'examples/module-delivery/full-module-delivery_200_status_structure_five.xml'
       headers:
         <<: *RateLimitHeader
       # links:
